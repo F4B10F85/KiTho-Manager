@@ -30,14 +30,6 @@ function initializeApplication() {
  */
 function buildApplication() {
 
-    const app = document.getElementById("app");
-
-    app.innerHTML = `
-    
-        <h1>KiTho Manager</h1>
-
-        <p>Il gestionale è stato avviato correttamente.</p>
-
-    `;
+    buildLayout();
 
 }
