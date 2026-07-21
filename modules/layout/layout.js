@@ -27,25 +27,25 @@ function buildLayout() {
 
                 <nav class="km-menu">
 
-                    <button>🏠 Dashboard</button>
+                    <button onclick="navigate('dashboard')">🏠 Dashboard</button>
+                   
+                    <button onclick="navigate('new-order')">📝 Nuovo Ordine</button>
 
-                    <button>📝 Nuovo Ordine</button>
+                    <button onclick="navigate('customers')">👥 Clienti</button>
 
-                    <button>👥 Clienti</button>
+                    <button onclick="navigate('orders')">📦 Ordini</button>
 
-                    <button>📦 Ordini</button>
+                    <button onclick="navigate('production')">🏭 Produzione</button>
 
-                    <button>🏭 Produzione</button>
+                    <button onclick="navigate('ddt')">🚚 DDT</button>
 
-                    <button>🚚 DDT</button>
+                    <button onclick="navigate('invoices')">🧾 Fatture</button>
 
-                    <button>🧾 Fatture</button>
+                    <button onclick="navigate('warehouse')">📦 Magazzino</button>
 
-                    <button>📦 Magazzino</button>
+                    <button onclick="navigate('statistics')">📊 Statistiche</button>
 
-                    <button>📊 Statistiche</button>
-
-                    <button>⚙ Impostazioni</button>
+                    <button onclick="navigate('settings')">⚙ Impostazioni</button>
 
                 </nav>
 

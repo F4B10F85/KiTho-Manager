@@ -18,7 +18,7 @@ function initializeApplication() {
     console.clear();
 
     console.log("========================================");
-    console.log("      KiTho Manager v0.1.0");
+    console.log("      KiTho Business v0.1.0");
     console.log("========================================");
 
     buildApplication();

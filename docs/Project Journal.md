@@ -88,3 +88,15 @@ Dashboard diversa per ogni ruolo utente.
 - [ ] Dashboard
 - [ ] Nuovo Ordine
 - [ ] Clienti
+
+MILESTONE M3
+
+Navigation Engine
+
+✔ Router funzionante
+
+✔ Workspace dinamico
+
+✔ Navigazione tra moduli
+
+Versione completata
