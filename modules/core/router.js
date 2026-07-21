@@ -10,6 +10,8 @@
 
 function navigate(page) {
 
+    highlightMenu(page);
+
     switch (page) {
 
         case "dashboard":
@@ -57,5 +59,29 @@ function navigate(page) {
             setWorkspaceTitle("Pagina non trovata");
 
     }
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Evidenzia il menu attivo
+|--------------------------------------------------------------------------
+*/
+
+function highlightMenu(page) {
+
+    const buttons = document.querySelectorAll(".km-menu-button");
+
+    buttons.forEach(button => {
+
+        button.classList.remove("active");
+
+        if (button.dataset.page === page) {
+
+            button.classList.add("active");
+
+        }
+
+    });
 
 }

@@ -4,16 +4,30 @@
 |--------------------------------------------------------------------------
 | Workspace
 |--------------------------------------------------------------------------
-| Gestisce l'area centrale del gestionale.
+| Gestisce il Workspace centrale.
 |--------------------------------------------------------------------------
 */
 
 function setWorkspaceTitle(title) {
 
+    // Aggiorna il titolo dell'header
+    const pageTitle = document.getElementById("km-page-title");
+
+    if (pageTitle) {
+
+        pageTitle.textContent = title;
+
+    }
+
+    // Aggiorna il contenuto del Workspace
     const workspace = document.querySelector(".km-workspace");
 
-    workspace.innerHTML = `
-        <h1>${title}</h1>
-    `;
+    if (workspace) {
+
+        workspace.innerHTML = `
+            <h1>${title}</h1>
+        `;
+
+    }
 
 }

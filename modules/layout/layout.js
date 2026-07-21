@@ -27,25 +27,95 @@ function buildLayout() {
 
                 <nav class="km-menu">
 
-                    <button onclick="navigate('dashboard')">🏠 Dashboard</button>
+                    <button
+                        class="km-menu-button"
+                        data-page="dashboard"
+                        onclick="navigate('dashboard')">
+
+                        🏠 Dashboard
+
+                    </button>
                    
-                    <button onclick="navigate('new-order')">📝 Nuovo Ordine</button>
+                    <button
+                        class="km-menu-button"
+                        data-page="new-order"
+                        onclick="navigate('new-order')">
 
-                    <button onclick="navigate('customers')">👥 Clienti</button>
+                        📝 Nuovo ordine
 
-                    <button onclick="navigate('orders')">📦 Ordini</button>
+                    </button>
 
-                    <button onclick="navigate('production')">🏭 Produzione</button>
+                    <button
+                        class="km-menu-button"
+                        data-page="customers"
+                        onclick="navigate('customers')">
 
-                    <button onclick="navigate('ddt')">🚚 DDT</button>
+                        👥 Clienti
 
-                    <button onclick="navigate('invoices')">🧾 Fatture</button>
+                    </button>
 
-                    <button onclick="navigate('warehouse')">📦 Magazzino</button>
+                    <button
+                        class="km-menu-button"
+                        data-page="orders"
+                        onclick="navigate('orders')">
 
-                    <button onclick="navigate('statistics')">📊 Statistiche</button>
+                        🏠 Ordini
 
-                    <button onclick="navigate('settings')">⚙ Impostazioni</button>
+                    </button>
+
+                    <button
+                        class="km-menu-button"
+                        data-page="production"
+                        onclick="navigate('production')">
+
+                        🏭 Produzione
+
+                    </button>
+
+                    <button
+                        class="km-menu-button"
+                        data-page="ddt"
+                        onclick="navigate('ddt')">
+
+                        🚚 DDT
+
+                    </button>
+
+                    <button
+                        class="km-menu-button"
+                        data-page="invoices"
+                        onclick="navigate('invoices')">
+
+                        🧾 Fatture
+
+                    </button>
+
+                    <button
+                        class="km-menu-button"
+                        data-page="warehouse"
+                        onclick="navigate('warehouse')">
+
+                        📦 Magazzino
+
+                    </button>
+
+                    <button
+                        class="km-menu-button"
+                        data-page="statistics"
+                        onclick="navigate('statistics')">
+
+                        📊 Statistiche
+
+                    </button>
+
+                    <button
+                        class="km-menu-button"
+                        data-page="settings"
+                        onclick="navigate('settings')">
+
+                        ⚙ Impostazioni
+
+                    </button>
 
                 </nav>
 
@@ -55,7 +125,11 @@ function buildLayout() {
 
                 <header class="km-header">
 
-                    KiTho Business
+                    <span id="km-page-title">
+
+                        Dashboard
+
+                    </span>
 
                 </header>
 
