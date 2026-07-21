@@ -4,30 +4,44 @@
 |--------------------------------------------------------------------------
 | Workspace
 |--------------------------------------------------------------------------
-| Gestisce il Workspace centrale.
+| Gestisce header e workspace centrale.
 |--------------------------------------------------------------------------
 */
 
+/**
+ * Aggiorna il breadcrumb.
+ */
+function setBreadcrumb(...items) {
+
+    const breadcrumb = document.getElementById("km-breadcrumb");
+
+    if (!breadcrumb) {
+
+        return;
+
+    }
+
+    breadcrumb.textContent = items.join(" > ");
+
+}
+
+/**
+ * Aggiorna il contenuto del Workspace.
+ */
 function setWorkspaceTitle(title) {
 
-    // Aggiorna il titolo dell'header
-    const pageTitle = document.getElementById("km-page-title");
+    setBreadcrumb(title);
 
-    if (pageTitle) {
-
-        pageTitle.textContent = title;
-
-    }
-
-    // Aggiorna il contenuto del Workspace
     const workspace = document.querySelector(".km-workspace");
 
-    if (workspace) {
+    if (!workspace) {
 
-        workspace.innerHTML = `
-            <h1>${title}</h1>
-        `;
+        return;
 
     }
+
+    workspace.innerHTML = `
+        <h1>${title}</h1>
+    `;
 
 }

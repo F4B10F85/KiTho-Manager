@@ -125,11 +125,21 @@ function buildLayout() {
 
                 <header class="km-header">
 
-                    <span id="km-page-title">
+                    <div class="km-header-content">
 
-                        Dashboard
+                        <div class="km-app-name">
 
-                    </span>
+                            KiTho Business
+
+                        </div>
+
+                        <div id="km-breadcrumb" class="km-breadcrumb">
+
+                            Dashboard
+
+                        </div>
+
+                    </div>
 
                 </header>
 

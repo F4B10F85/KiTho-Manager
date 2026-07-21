@@ -1,3 +1,16 @@
-:root{
+:root {
+
+    /* ==========================================================
+       COLORS
+    ========================================================== */
+
+    --km-text-primary: #222222;
+    --km-text-secondary: #666666;
+
+    --km-background: #f4f4f4;
+
+    --km-sidebar-background: #ffffff;
+
+    --km-sidebar-active: #d8c8a5;
 
 }

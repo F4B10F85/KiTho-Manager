@@ -20,3 +20,25 @@
     font-weight: 600;
 
 }
+
+.km-header-content {
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+}
+
+.km-app-name {
+
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+.km-breadcrumb {
+
+    font-size: 14px;
+    color: var(--km-text-secondary);
+
+}
