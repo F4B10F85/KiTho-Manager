@@ -22,7 +22,7 @@ function showNewOrder() {
 
 function showCustomers() {
 
-    setWorkspaceTitle("Clienti");
+    setWorkspaceTitle("Anagrafiche");
 
 }
 

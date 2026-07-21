@@ -100,3 +100,120 @@ Navigation Engine
 ✔ Navigazione tra moduli
 
 Versione completata
+
+
+21/07/26 - 23:26
+
+Cosa comprende questo commit
+
+✅ Introduzione del Breadcrumb Engine.
+
+✅ Header dinamico.
+
+✅ Separazione tra nome dell'applicazione e breadcrumb.
+
+✅ Introduzione delle variabili CSS per i colori.
+
+✅ Miglioramento dell'organizzazione dei componenti CSS.
+
+✅ Sidebar con stato attivo già funzionante.
+
+Siamo a questo punto del progetto
+KiTho Business
+
+✔ Layout Engine
+✔ Navigation Engine
+✔ Workspace Engine
+✔ Breadcrumb Engine
+
+↓
+
+Prossimo:
+Clienti >> anagrafiche
+
+
+
+
+M5 - Sidebar Engine
+
+e comprenderà:
+
+✅ menu con sottomenù;
+✅ apertura/chiusura con animazione;
+✅ evidenziazione della voce attiva;
+✅ gestione tramite struttura dati;
+✅ base pronta per la futura sidebar dei Preferiti (la tua idea, che continuo a ritenere ottima).
+
+Questa milestone chiuderà definitivamente il sistema di navigazione.
+
+
+Specifica M5 - Sidebar
+Voce padre
+👥 Anagrafiche                     ▶
+
+Caratteristiche:
+
+icona a sinistra;
+testo allineato a sinistra;
+freccia completamente a destra;
+la freccia ruota all'apertura.
+
+
+📘 KiTho Business - Standard Sidebar v1.0
+Menu principale
+icona a sinistra;
+testo allineato a sinistra;
+freccia all'estrema destra se esistono sottomenù;
+nessuna freccia se il menu non ha figli;
+pulsante a tutta larghezza;
+altezza uniforme.
+Sottomenu
+stessa larghezza del menu principale;
+maggiore padding sinistro;
+nessuna icona;
+simbolo grafico generato via CSS (::before);
+animazione di apertura/chiusura;
+click sull'intera riga.
+Voce selezionata
+
+La voce attiva avrà:
+
+leggero sfondo;
+bordo sinistro colorato (molto sottile);
+testo leggermente più marcato.
+
+Non la farei diventare di un blu acceso o verde fluorescente. I gestionali devono accompagnare il lavoro per ore. Un'interfaccia che "urla" stanca.
+
+Menu padre aperto
+
+Quando sei dentro una sottovoce:
+
+👥 Anagrafiche                     ▼
+
+    Clienti        ← attivo
+
+    Fornitori
+
+    Agenti
+
+    Trasportatori
+
+il menu padre rimane aperto automaticamente.
+
+Non deve richiudersi ogni volta che cambi pagina.
+
+
+Un'altra proposta (questa la metto "in osservazione")
+
+Le frecce:
+
+▶
+▼
+
+sono perfette per partire.
+
+In futuro, però, potremmo sostituirle con piccole icone SVG disegnate da noi, animate con una rotazione di 90°. Avremmo un aspetto più uniforme rispetto alle emoji e un controllo totale su dimensioni, spessori e colori.
+
+Non lo farei ora.
+
+Ora usiamo quello che è semplice e funziona. Lo segniamo semplicemente come possibile evoluzione grafica.

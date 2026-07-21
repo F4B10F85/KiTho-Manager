@@ -25,97 +25,7 @@ function buildLayout() {
                     KiTho Business
                 </div>
 
-                <nav class="km-menu">
-
-                    <button
-                        class="km-menu-button"
-                        data-page="dashboard"
-                        onclick="navigate('dashboard')">
-
-                        🏠 Dashboard
-
-                    </button>
-                   
-                    <button
-                        class="km-menu-button"
-                        data-page="new-order"
-                        onclick="navigate('new-order')">
-
-                        📝 Nuovo ordine
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="customers"
-                        onclick="navigate('customers')">
-
-                        👥 Clienti
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="orders"
-                        onclick="navigate('orders')">
-
-                        🏠 Ordini
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="production"
-                        onclick="navigate('production')">
-
-                        🏭 Produzione
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="ddt"
-                        onclick="navigate('ddt')">
-
-                        🚚 DDT
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="invoices"
-                        onclick="navigate('invoices')">
-
-                        🧾 Fatture
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="warehouse"
-                        onclick="navigate('warehouse')">
-
-                        📦 Magazzino
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="statistics"
-                        onclick="navigate('statistics')">
-
-                        📊 Statistiche
-
-                    </button>
-
-                    <button
-                        class="km-menu-button"
-                        data-page="settings"
-                        onclick="navigate('settings')">
-
-                        ⚙ Impostazioni
-
-                    </button>
+                <nav class="km-menu" id="km-menu">
 
                 </nav>
 
@@ -155,4 +65,7 @@ function buildLayout() {
 
     `;
 
+    buildSidebar();
+
 }
+
