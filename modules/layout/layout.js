@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 | Layout Engine
 |--------------------------------------------------------------------------
-| Costruisce il layout principale di KiTho Manager.
+| Costruisce il layout principale di KiTho Business.
 |--------------------------------------------------------------------------
 */
 
@@ -22,24 +22,30 @@ function buildLayout() {
             <aside class="km-sidebar">
 
                 <div class="km-logo">
-                    KiTho Manager
+                    KiTho Business
                 </div>
 
                 <nav class="km-menu">
 
-                    <button>Dashboard</button>
+                    <button>🏠 Dashboard</button>
 
-                    <button>Nuovo Ordine</button>
+                    <button>📝 Nuovo Ordine</button>
 
-                    <button>Clienti</button>
+                    <button>👥 Clienti</button>
 
-                    <button>Ordini</button>
+                    <button>📦 Ordini</button>
 
-                    <button>Produzione</button>
+                    <button>🏭 Produzione</button>
 
-                    <button>Statistiche</button>
+                    <button>🚚 DDT</button>
 
-                    <button>Impostazioni</button>
+                    <button>🧾 Fatture</button>
+
+                    <button>📦 Magazzino</button>
+
+                    <button>📊 Statistiche</button>
+
+                    <button>⚙ Impostazioni</button>
 
                 </nav>
 
@@ -49,7 +55,7 @@ function buildLayout() {
 
                 <header class="km-header">
 
-                    KiTho Manager
+                    KiTho Business
 
                 </header>
 
