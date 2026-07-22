@@ -171,7 +171,14 @@ function setActiveMenu(pageId) {
         customers: "records",
         suppliers: "records",
         agents: "records",
-        carriers: "records"
+        carriers: "records",
+
+        "new-order": "orders",
+        "orders-list": "orders",
+
+        "ddt-sales": "ddt",
+        "ddt-gift": "ddt",
+        "ddt-account-sale": "ddt"
 
     };
 

@@ -10,102 +10,102 @@
 
 function showDashboard() {
 
-    setWorkspaceTitle("Dashboard");
+    setWorkspacePage("dashboard");
 
 }
 
 function showNewOrder() {
 
-    setWorkspaceTitle("Nuovo Ordine");
-
-}
-
-function showCustomers() {
-
-    setWorkspaceTitle("Anagrafiche");
+    setWorkspacePage("new-order");
 
 }
 
 function showOrders() {
 
-    setWorkspaceTitle("Ordini");
+    setWorkspacePage("orders");
 
 }
 
 function showProduction() {
 
-    setWorkspaceTitle("Produzione");
+    setWorkspacePage("production");
 
 }
 
 function showDDT() {
 
-    setWorkspaceTitle("DDT");
+    setWorkspacePage("ddt");
 
 }
 
 function showInvoices() {
 
-    setWorkspaceTitle("Fatture");
+    setWorkspacePage("invoices");
 
 }
 
 function showWarehouse() {
 
-    setWorkspaceTitle("Magazzino");
+    setWorkspacePage("warehouse");
 
 }
 
 function showStatistics() {
 
-    setWorkspaceTitle("Statistiche");
+    setWorkspacePage("statistics");
 
 }
 
 function showSettings() {
 
-    setWorkspaceTitle("Impostazioni");
+    setWorkspacePage("settings");
 
 }
 
 function showCustomers() {
 
-    setWorkspaceTitle("Clienti");
+    setWorkspacePage("customers");
 
 }
 
 function showSuppliers() {
 
-    setWorkspaceTitle("Fornitori");
+    setWorkspacePage("suppliers");
 
 }
 
 function showAgents() {
 
-    setWorkspaceTitle("Agenti");
+    setWorkspacePage("agents");
 
 }
 
 function showCarriers() {
 
-    setWorkspaceTitle("Trasportatori");
+    setWorkspacePage("carriers");
 
 }
 
 function showDDTSales() {
 
-    setWorkspaceTitle("DDT vendita");
+    setWorkspacePage("ddt-sales");
 
 }
 
 function showDDTGift() {
 
-    setWorkspaceTitle("DDT omaggio");
+    setWorkspacePage("ddt-gift");
 
 }
 
 function showDDTAccountSale() {
 
-    setWorkspaceTitle("DDT Conto Vendita");
+    setWorkspacePage("ddt-account-sale");
+
+}
+
+function showOrdersList() {
+
+    setWorkspacePage("orders-list");
 
 }

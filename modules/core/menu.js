@@ -48,15 +48,24 @@ const menu = [
     },
 
     {
-        id: "new-order",
-        title: "Nuovo Ordine",
-        icon: "📝"
-    },
-
-    {
         id: "orders",
         title: "Ordini",
-        icon: "📦"
+        icon: "📦",
+
+        children: [
+
+            {
+                id: "new-order",
+                title: "Nuovo Ordine"
+            },
+
+            {
+                id: "orders-list",
+                title: "Elenco Ordini"
+            }
+
+        ]
+
     },
 
     {
@@ -84,7 +93,7 @@ const menu = [
 
             {
                 id: "ddt-account-sale",
-                title: "DDT c/vendita"
+                title: "DDT conto vendita"
             }
 
         ]
@@ -116,3 +125,51 @@ const menu = [
     }
 
 ];
+
+
+/**
+ * Restituisce le informazioni di una pagina.
+ */
+function getPageInfo(pageId) {
+
+    for (const item of menu) {
+
+        if (item.id === pageId) {
+
+            return {
+                title: item.title,
+                parent: null
+            };
+
+        }
+
+        if (item.children) {
+
+            for (const child of item.children) {
+
+                if (child.id === pageId) {
+
+                    return {
+
+                        title: child.title,
+
+                        parent: item.title
+
+                    };
+
+                }
+
+            }
+
+        }
+
+    }
+
+    return {
+
+        title: "Pagina non trovata",
+        parent: null
+
+    };
+
+}

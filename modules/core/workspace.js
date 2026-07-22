@@ -28,20 +28,27 @@ function setBreadcrumb(...items) {
 /**
  * Aggiorna il contenuto del Workspace.
  */
-function setWorkspaceTitle(title) {
+function setWorkspacePage(pageId) {
 
-    setBreadcrumb(title);
+    const page = getPageInfo(pageId);
 
-    const workspace = document.querySelector(".km-workspace");
+    console.log(pageId);
+    console.log(page);
 
-    if (!workspace) {
+    if (page.parent) {
 
-        return;
+        setBreadcrumb(page.parent, page.title);
+
+    } else {
+
+        setBreadcrumb(page.title);
 
     }
 
+    const workspace = document.querySelector(".km-workspace");
+
     workspace.innerHTML = `
-        <h1>${title}</h1>
+        <h1>${page.title}</h1>
     `;
 
 }

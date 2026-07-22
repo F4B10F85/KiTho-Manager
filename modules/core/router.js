@@ -22,6 +22,10 @@ function navigate(page) {
             showNewOrder();
             break;
 
+        case "orders-list":
+            showOrdersList();
+            break;
+
         case "records":
             showCustomers();
             break;
