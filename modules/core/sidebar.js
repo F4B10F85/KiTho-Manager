@@ -129,9 +129,27 @@ function toggleSubmenu(group) {
 
     const arrow = group.querySelector(".km-menu-arrow");
 
-    submenu.classList.toggle("open");
+    const isOpen = submenu.classList.contains("open");
 
-    arrow.classList.toggle("open");
+    document.querySelectorAll(".km-submenu.open").forEach(menu => {
+
+        menu.classList.remove("open");
+
+    });
+
+    document.querySelectorAll(".km-menu-arrow.open").forEach(item => {
+
+        item.classList.remove("open");
+
+    });
+
+    if (!isOpen) {
+
+        submenu.classList.add("open");
+
+        arrow.classList.add("open");
+
+    }
 
 }
 

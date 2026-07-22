@@ -68,7 +68,27 @@ const menu = [
     {
         id: "ddt",
         title: "DDT",
-        icon: "🚚"
+        icon: "🚚",
+
+        children: [
+
+            {
+                id: "ddt-sales",
+                title: "DDT vendita"
+            },
+
+            {
+                id: "ddt-gift",
+                title: "DDT omaggio"
+            },
+
+            {
+                id: "ddt-account-sale",
+                title: "DDT c/vendita"
+            }
+
+        ]
+
     },
 
     {

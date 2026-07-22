@@ -38,6 +38,18 @@ function navigate(page) {
             showDDT();
             break;
 
+        case "ddt-sales":
+            showDDTSales();
+            break;
+
+        case "ddt-gift":
+            showDDTGift();
+            break;
+
+        case "ddt-account-sale":
+            showDDTAccountSale();
+            break;
+
         case "invoices":
             showInvoices();
             break;
@@ -54,7 +66,7 @@ function navigate(page) {
             showSettings();
             break;
 
-            case "customers":
+        case "customers":
             showCustomers();
             break;
 

@@ -91,3 +91,21 @@ function showCarriers() {
     setWorkspaceTitle("Trasportatori");
 
 }
+
+function showDDTSales() {
+
+    setWorkspaceTitle("DDT vendita");
+
+}
+
+function showDDTGift() {
+
+    setWorkspaceTitle("DDT omaggio");
+
+}
+
+function showDDTAccountSale() {
+
+    setWorkspaceTitle("DDT Conto Vendita");
+
+}
