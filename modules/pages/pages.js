@@ -67,3 +67,27 @@ function showSettings() {
     setWorkspaceTitle("Impostazioni");
 
 }
+
+function showCustomers() {
+
+    setWorkspaceTitle("Clienti");
+
+}
+
+function showSuppliers() {
+
+    setWorkspaceTitle("Fornitori");
+
+}
+
+function showAgents() {
+
+    setWorkspaceTitle("Agenti");
+
+}
+
+function showCarriers() {
+
+    setWorkspaceTitle("Trasportatori");
+
+}

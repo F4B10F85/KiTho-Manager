@@ -217,3 +217,32 @@ In futuro, però, potremmo sostituirle con piccole icone SVG disegnate da noi, a
 Non lo farei ora.
 
 Ora usiamo quello che è semplice e funziona. Lo segniamo semplicemente come possibile evoluzione grafica.
+
+
+
+M5 - Sidebar Engine
+
+- Sidebar generata dinamicamente
+- Menu espandibili
+- Supporto ai sottomenu
+- Rotazione frecce
+- Hover
+- Linea guida
+- Struttura pronta per moduli futuri
+
+
+E domani mattina apriamo una milestone completamente nuova:
+
+M6 - Application State
+
+Da lì nascerà uno "stato centrale" che useranno:
+
+sidebar;
+router;
+breadcrumb;
+header;
+workspace;
+form;
+notifiche.
+
+E quando torneremo sulla sidebar, aggiungere la memoria del menu aperto richiederà letteralmente tre righe, invece di dover ripensare tutto.

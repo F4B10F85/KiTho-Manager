@@ -10,7 +10,7 @@
 
 function navigate(page) {
 
-    highlightMenu(page);
+    setActiveMenu(page);
 
     switch (page) {
 
@@ -54,6 +54,22 @@ function navigate(page) {
             showSettings();
             break;
 
+            case "customers":
+            showCustomers();
+            break;
+
+        case "suppliers":
+            showSuppliers();
+            break;
+
+        case "agents":
+            showAgents();
+            break;
+
+        case "carriers":
+            showCarriers();
+            break;
+
         default:
 
             setWorkspaceTitle("Pagina non trovata");
@@ -68,20 +84,3 @@ function navigate(page) {
 |--------------------------------------------------------------------------
 */
 
-function highlightMenu(page) {
-
-    const buttons = document.querySelectorAll(".km-menu-button");
-
-    buttons.forEach(button => {
-
-        button.classList.remove("active");
-
-        if (button.dataset.page === page) {
-
-            button.classList.add("active");
-
-        }
-
-    });
-
-}

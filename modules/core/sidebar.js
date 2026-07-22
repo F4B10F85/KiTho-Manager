@@ -78,6 +78,8 @@ function createMenuItem(item) {
 
         }
 
+        setActiveMenu(item.id);
+
         toggleSubmenu(group);
 
     };
@@ -130,5 +132,59 @@ function toggleSubmenu(group) {
     submenu.classList.toggle("open");
 
     arrow.classList.toggle("open");
+
+}
+
+/**
+ * Evidenzia il menu attivo.
+ */
+function setActiveMenu(pageId) {
+
+    document
+        .querySelectorAll(".km-menu-button, .km-submenu-button")
+        .forEach(button => {
+
+            button.classList.remove("active");
+
+        });
+
+    const parentMap = {
+
+        customers: "records",
+        suppliers: "records",
+        agents: "records",
+        carriers: "records"
+
+    };
+
+    const parentPage = parentMap[pageId];
+
+    if (parentPage) {
+
+        const parentButton = document.querySelector(
+
+            `[data-page="${parentPage}"]`
+
+        );
+
+        if (parentButton) {
+
+            parentButton.classList.add("active");
+
+        }
+
+    }
+
+    const activeButton = document.querySelector(
+
+        `[data-page="${pageId}"]`
+
+    );
+
+    if (activeButton) {
+
+        activeButton.classList.add("active");
+
+    }
 
 }
