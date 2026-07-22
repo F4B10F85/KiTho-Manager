@@ -32,9 +32,9 @@ body {
 
     width: 260px;
 
-    background: #2b2b2b;
+    background: var(--km-sidebar-bg);
 
-    color: white;
+    color: var(--km-sidebar-text);
 
     display: flex;
 
