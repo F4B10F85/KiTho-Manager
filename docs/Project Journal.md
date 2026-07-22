@@ -246,3 +246,17 @@ form;
 notifiche.
 
 E quando torneremo sulla sidebar, aggiungere la memoria del menu aperto richiederà letteralmente tre righe, invece di dover ripensare tutto.
+
+
+## UI / UX Architecture Rules
+
+Nessuna finestra deve far "saltare" il layout
+
+Cioè:
+
+una tabella enorme non allarga la sidebar;
+una descrizione lunghissima non sposta l'header;
+un nome cliente di 80 caratteri non rompe una colonna;
+un menu con 37 voci non allunga la pagina.
+
+Ogni zona del gestionale ha i propri limiti e il proprio comportamento di overflow.
