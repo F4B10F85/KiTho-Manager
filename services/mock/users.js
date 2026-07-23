@@ -2,8 +2,11 @@ const users = [
 
     {
         username: "FABIO.FILIPPINI",
-        password: null,
+        name: "Fabio",
+        surname: "Filippini",        
+        password: "0000",
         role: "ADMIN",
+        roleDescription: "Amministratore",
         active: true,
         lastLogin:null
     },
