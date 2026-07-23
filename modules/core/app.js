@@ -43,3 +43,25 @@ function buildApplication() {
     }
 
 }
+
+/** 
+function buildApplication() {
+
+    if (APP.developerMode) {
+
+        const user = findUser("FABIO.FILIPPINI");
+
+        setCurrentUser(user);
+
+        buildLayout();
+
+        navigate("dashboard");
+
+        return;
+
+    }
+
+    showLogin();
+
+}
+*/

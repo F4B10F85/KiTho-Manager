@@ -8,6 +8,8 @@ const APP = {
 
     milestone: "M7",
 
-    copyright: "© 2026 KiTho Business"
+    copyright: "© 2026 KiTho Business",
+
+    developerMode: false
 
 };

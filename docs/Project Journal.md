@@ -275,3 +275,72 @@ Per la versione attuale va benissimo.
 Però io me lo segnerei come TODO.
 
 In una versione più rifinita farei comparire un popup interno di KTB (coerente con la grafica del gestionale) invece dell'alert() del browser, che è un po' spartano. Ma non gli dedicherei nemmeno un minuto adesso: non aggiunge valore funzionale.
+
+## togliere e mettere il login
+
+in config/version.js   e  in modules/core/app.js
+
+
+Ti propongo una "Developer Mode"
+
+Nel nostro config/version.js (che ormai sta diventando il file delle impostazioni globali) aggiungiamo una proprietà:
+
+"use strict";
+
+const APP = {
+
+    name: "KiTho Business",
+
+    version: "0.7.0",
+
+    milestone: "M7",
+
+    copyright: "© 2026 KiTho Business",
+
+    developerMode: true   <<<<<<<<<<<  CAMBIARE QUESTO IN FALSE >>>>>>>>>>>
+
+};
+Poi in buildApplication()
+
+Oggi hai qualcosa del genere:
+
+function buildApplication() {
+
+    showLogin();
+
+}
+
+Lo trasformiamo in:
+
+function buildApplication() {
+
+    if (APP.developerMode) {
+
+        const user = findUser("FABIO.FILIPPINI");
+
+        setCurrentUser(user);
+
+        buildLayout();
+
+        navigate("dashboard");
+
+        return;
+
+    }
+
+    showLogin();
+
+}
+Risultato
+
+Quando sviluppi:
+
+developerMode: true
+
+Apri KTB e sei immediatamente dentro come Admin.
+
+Quando vuoi tornare alla modalità normale:
+
+developerMode: false
+
+e ricompare il login.

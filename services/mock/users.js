@@ -15,7 +15,7 @@ const users = [
         name: "Giulia",
         surname: "Caldari",
         password: "1234",
-        role: "COMMERCIALE",
+        role: "DIRETTORECOMMERCIALE",
         active: true
     }
 
