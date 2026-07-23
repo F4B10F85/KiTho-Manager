@@ -22,11 +22,11 @@
        SIDEBAR
     ========================================================== */
 
-    --km-sidebar-bg: #0F6560;
+    --km-sidebar-bg: #2b2b2b;
     --km-sidebar-text: #ffffff;
     --km-sidebar-hover: #3a3a3a;
     --km-sidebar-active: #d8c8a5;
-    --km-sidebar-tree-line: #ffffff;
+    --km-sidebar-tree-line: #5f5f5f;
 
     /* ==========================================================
        BORDERS

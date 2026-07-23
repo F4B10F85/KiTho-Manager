@@ -30,6 +30,16 @@ function initializeApplication() {
  */
 function buildApplication() {
 
-    buildLayout();
+    if (getCurrentUser()) {
+
+        buildLayout();
+
+        navigate("dashboard");
+
+    } else {
+
+        showLogin();
+
+    }
 
 }
