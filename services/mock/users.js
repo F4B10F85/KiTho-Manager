@@ -6,18 +6,16 @@ const users = [
         surname: "Filippini",        
         password: "0000",
         role: "ADMIN",
-        roleDescription: "Amministratore",
         active: true,
         lastLogin:null
     },
 
     {
-        username: "MARIO.ROSSI",
-        name: "Mario",
-        surname: "Rossi",
+        username: "GIULIA.CALDARI",
+        name: "Giulia",
+        surname: "Caldari",
         password: "1234",
         role: "COMMERCIALE",
-        roleDescription: "Commerciale",
         active: true
     }
 

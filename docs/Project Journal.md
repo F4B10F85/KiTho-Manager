@@ -260,3 +260,18 @@ un nome cliente di 80 caratteri non rompe una colonna;
 un menu con 37 voci non allunga la pagina.
 
 Ogni zona del gestionale ha i propri limiti e il proprio comportamento di overflow.
+
+
+
+
+Una piccola rifinitura che mi annoterei
+
+Quando blocchiamo l'accesso ad una pagina, oggi mostriamo:
+
+alert("Accesso negato.");
+
+Per la versione attuale va benissimo.
+
+Però io me lo segnerei come TODO.
+
+In una versione più rifinita farei comparire un popup interno di KTB (coerente con la grafica del gestionale) invece dell'alert() del browser, che è un po' spartano. Ma non gli dedicherei nemmeno un minuto adesso: non aggiunge valore funzionale.

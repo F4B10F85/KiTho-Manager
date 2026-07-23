@@ -119,7 +119,7 @@ function buildLayout() {
     `${user.name} ${user.surname}`;
 
     document.getElementById("km-user-role").textContent =
-        user.roleDescription;
+        roles[user.role].description;
 
     const userPanel = document.getElementById("km-header-user");
     const userMenu = document.getElementById("km-user-menu");

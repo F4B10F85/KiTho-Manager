@@ -12,11 +12,21 @@ function buildSidebar() {
  */
 function buildMenu() {
 
+    const user = getCurrentUser();
+
+    const role = getRole(user.role);
+
     const menuContainer = document.getElementById("km-menu");
 
     menuContainer.innerHTML = "";
 
     menu.forEach(item => {
+
+        if (!hasModuleAccess(user.role, item.id)) {
+
+            return;
+
+        }
 
         menuContainer.appendChild(
             createMenuItem(item)
@@ -35,8 +45,6 @@ function createMenuItem(item) {
     const group = document.createElement("div");
 
     group.className = "km-menu-group";
-
-
 
     const button = document.createElement("button");
 

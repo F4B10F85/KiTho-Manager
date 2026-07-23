@@ -173,3 +173,33 @@ function getPageInfo(pageId) {
     };
 
 }
+
+function getModuleId(pageId) {
+
+    for (const item of menu) {
+
+        if (item.id === pageId) {
+
+            return item.id;
+
+        }
+
+        if (item.children) {
+
+            for (const child of item.children) {
+
+                if (child.id === pageId) {
+
+                    return item.id;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}

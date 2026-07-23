@@ -10,6 +10,18 @@
 
 function navigate(page) {
 
+    const user = getCurrentUser();
+
+    const moduleId = getModuleId(page);
+
+    if (!hasModuleAccess(user.role, moduleId)) {
+
+        alert("Accesso negato.");
+
+        return;
+
+    }
+
     setActiveMenu(page);
 
     switch (page) {
