@@ -62,10 +62,21 @@ function showLogin() {
                     class="km-login-message">
                 </div>
 
+                <div
+                    id="km-version"
+                    class="km-login-version">
+                </div>
+
             </div>
 
         </div>
 
+    `;
+
+    document.getElementById("km-version").innerHTML = `
+        Versione ${APP.version} (${APP.milestone})
+        <br>
+        ${APP.copyright}
     `;
 
 }
