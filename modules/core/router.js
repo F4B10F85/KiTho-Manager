@@ -98,6 +98,26 @@ function navigate(page) {
             showCarriers();
             break;
 
+        case "company":
+            showCompany();
+            break;
+
+        case "access":
+            showAccess();
+            break;
+
+        case "documents":
+            showDocuments();
+            break;
+
+        case "appearance":
+            showAppearance();
+            break;
+
+        case "system":
+            showSystem();
+            break;
+
         default:
 
             setWorkspaceTitle("Pagina non trovata");

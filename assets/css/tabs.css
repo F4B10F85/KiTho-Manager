@@ -1,0 +1,47 @@
+.km-tabs {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin: 25px 0;
+
+}
+
+.km-tab {
+
+    padding: 10px 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #ececec;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+.km-tab.active {
+
+    background: #2d6a4f;
+
+    color: white;
+
+}
+
+.km-tab-content {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    min-height: 400px;
+
+    box-shadow: 0 1px 5px rgba(0,0,0,.08);
+
+}

@@ -121,7 +121,36 @@ const menu = [
     {
         id: "settings",
         title: "Impostazioni",
-        icon: "⚙"
+        icon: "⚙",
+
+        children: [
+
+            {
+                id: "company",
+                title: "Azienda"
+            },
+
+            {
+                id: "access",
+                title: "Accessi"
+            },
+
+            {
+                id: "documents",
+                title: "Documenti"
+            },
+
+            {
+                id: "appearance",
+                title: "Aspetto"
+            },
+
+            {
+                id: "system",
+                title: "Sistema"
+            }
+
+        ]
     }
 
 ];

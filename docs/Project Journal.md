@@ -4,6 +4,17 @@
 
 ---
 
+# SALVATAGGI
+
+git add .
+
+git commit -m "........................"
+
+git push
+
+
+
+
 # DECISIONI
 
 ## DEC-001
