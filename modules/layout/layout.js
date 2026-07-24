@@ -99,7 +99,7 @@ function buildLayout() {
 
                 </header>
 
-                <main class="km-workspace">
+                <main id="km-workspace" class="km-workspace">
 
                     Workspace
 

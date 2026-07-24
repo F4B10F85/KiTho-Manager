@@ -20,9 +20,29 @@ const roles = {
 
     },
 
-    DIRETTORECOMMERCIALE: {
+    CEO: {
 
-        description: "Direttore Commerciale",
+        description: "CEO",
+
+        modules: [
+
+            "dashboard",
+            "records",
+            "orders",
+            "production",
+            "ddt",
+            "invoices",
+            "warehouse",
+            "statistics",
+            "settings"
+
+        ]
+
+    },
+
+    COMMERCIALE: {
+
+        description: "Commerciale",
 
         modules: [
 
@@ -30,8 +50,24 @@ const roles = {
             "records",
             "orders",
             "ddt",
-            "invoices"
+            "invoices",
+                        
+        ]
 
+    },
+
+    AMMINISTRAZIONE: {
+
+        description: "Amministrazione",
+
+        modules: [
+
+            "dashboard",
+            "records",
+            "production",
+            "invoices",
+            "statistics",
+            
         ]
 
     }

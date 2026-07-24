@@ -8,9 +8,45 @@
 |--------------------------------------------------------------------------
 */
 
+/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+|
+| Dashboard temporanea.
+|
+| In questa fase mostra solamente il logo aziendale.
+|
+| FUTURA IMPLEMENTAZIONE:
+|
+| - KPI commerciali
+| - Ordini da evadere
+| - Produzione
+| - DDT
+| - Statistiche
+|
+|--------------------------------------------------------------------------
+*/
+
+
 function showDashboard() {
 
-    setWorkspacePage("dashboard");
+    //setWorkspaceTitle("Dashboard");
+
+    const workspace = document.getElementById("km-workspace");
+
+    workspace.innerHTML = `
+
+        <div class="km-dashboard">
+
+            <img
+                src="assets/images/logo_KTB.png"
+                class="km-dashboard-logo"
+                alt="KiTho Business">
+
+        </div>
+
+    `;
 
 }
 

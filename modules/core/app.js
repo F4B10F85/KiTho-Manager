@@ -27,7 +27,7 @@ function initializeApplication() {
 
 /**
  * Costruisce l'applicazione.
- */
+*/
 function buildApplication() {
 
     if (getCurrentUser()) {
