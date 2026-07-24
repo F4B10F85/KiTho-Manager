@@ -200,6 +200,77 @@ function showUsersTab() {
 
     document.getElementById("km-tab-content").innerHTML = `
 
+        <button
+            class="km-button km-button-primary"
+            onclick="testModal()">
+
+            + Nuovo utente
+
+        </button>
+
+        <br><br>
+
+        <div id="km-users-table"></div>
+
+    `;
+
+    createTable({
+
+        containerId:"km-users-table",
+
+        columns:[
+
+            {
+
+                title:"Nome",
+
+                render:user=>user.name
+
+            },
+
+            {
+
+                title:"Cognome",
+
+                render:user=>user.surname
+
+            },
+
+            {
+
+                title:"Ruolo",
+
+                render:user=>user.role
+
+            },
+
+            {
+
+                title:"Attivo",
+
+                render:user=>user.active ? "✔" : "✖"
+
+            },
+
+            {
+
+                title:"Ultimo accesso",
+
+                render:user=>user.lastLogin ?? "-"
+
+            }
+
+        ],
+
+        data:users
+
+    });
+
+
+
+    /**
+    document.getElementById("km-tab-content").innerHTML = `
+
         <div class="km-placeholder">
 
             <h3>
@@ -223,7 +294,7 @@ function showUsersTab() {
         </div>
 
     `;
-
+    */
 }
 
 function showRolesTab() {
@@ -274,29 +345,6 @@ function showPermissionsTab() {
 
 }
 
-
-/**
-function showAccess() {
-
-    const workspace =
-        document.getElementById("km-workspace");
-
-    workspace.innerHTML = `
-
-        <div class="km-page-placeholder">
-
-            <h2>Accessi</h2>
-
-            <p>
-                Modulo disponibile dalla milestone M8.
-            </p>
-
-        </div>
-
-    `;
-
-}
-*/
 function showDocuments() {
 
     const workspace =
@@ -405,5 +453,52 @@ function showDDTAccountSale() {
 function showOrdersList() {
 
     setWorkspacePage("orders-list");
+
+}
+
+function testModal(){
+
+    createModal({
+
+        id:"test",
+
+        title:"Nuovo Utente",
+
+        size:"medium",
+
+        content:`
+
+            Questo è il primo Modal
+            intelligente di KiTho Business.
+
+        `,
+
+        buttons:[
+
+            {
+
+                text:"Annulla",
+
+                action:closeModal
+
+            },
+
+            {
+
+                text:"Salva",
+
+                primary:true,
+
+                action:function(){
+
+                    alert("Salvataggio simulato");
+
+                }
+
+            }
+
+        ]
+
+    });
 
 }

@@ -10,6 +10,6 @@ const APP = {
 
     copyright: "© 2026 KiTho Business",
 
-    developerMode: true
+    developerMode: false
 
 };

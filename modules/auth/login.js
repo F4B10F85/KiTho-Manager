@@ -51,7 +51,9 @@ function showLogin() {
                     placeholder="Password"
                 >
 
-                <button onclick="login()">
+                <button
+                    class="km-button km-button-primary"
+                    onclick="login()">
 
                     Accedi
 

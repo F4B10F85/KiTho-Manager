@@ -1,20 +1,10 @@
 /*
 |--------------------------------------------------------------------------
-| Tabs
+| Buttons
 |--------------------------------------------------------------------------
 */
 
-.km-tabs{
-
-    display:flex;
-
-    gap:10px;
-
-    margin-bottom:20px;
-
-}
-
-.km-tab{
+.km-button{
 
     display:inline-flex;
 
@@ -22,17 +12,15 @@
 
     justify-content:center;
 
+    gap:8px;
+
     min-height:40px;
 
     padding:10px 18px;
 
-    border:1px solid #d8d8d8;
-
     border-radius:8px;
 
-    background:#ffffff;
-
-    color:#333333;
+    border:1px solid transparent;
 
     font-size:14px;
 
@@ -44,20 +32,54 @@
 
 }
 
-.km-tab:hover{
-
-    background:#f7f7f7;
+.km-button:hover{
 
     transform:translateY(-1px);
 
 }
 
-.km-tab.active{
+.km-button-primary{
 
     background:#4f6f52;
 
     color:#ffffff;
 
     border-color:#4f6f52;
+
+}
+
+.km-button-primary:hover{
+
+    background:#446148;
+
+}
+
+.km-button-secondary{
+
+    background:#ffffff;
+
+    color:#333333;
+
+    border-color:#d8d8d8;
+
+}
+
+.km-button-secondary:hover{
+
+    background:#f7f7f7;
+
+}
+
+.km-button-danger{
+
+    background:#c84d4d;
+
+    color:#ffffff;
+
+}
+
+.km-button-danger:hover{
+
+    background:#b44141;
 
 }
