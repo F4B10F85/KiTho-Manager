@@ -67,4 +67,15 @@ const users = [
         createdAt: "2026-07-23 09:00:00",
         lastLogin: "2026-07-24 17:29:59"
     },
+
+    {
+        username: "MASSIMO.GALLI",
+        name: "Massimo",
+        surname: "Galli",
+        password: "6666",
+        role: "MAGAZZINIERE",
+        active: false,
+        createdAt: "2026-07-23 09:00:00",
+        lastLogin: null
+    }
 ];

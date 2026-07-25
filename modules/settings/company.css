@@ -1,0 +1,65 @@
+.km-company-section{
+
+    margin-top:20px;
+
+}
+
+.km-company-section h3{
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.km-company-section p{
+
+    margin:10px 0 36px;
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+.km-company-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:40px;
+
+    padding-top:24px;
+
+    border-top:1px solid #ececec;
+
+}
+
+.km-tabs{
+
+    margin-top:24px;
+
+    margin-bottom:30px;
+
+}
+
+.km-company-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+.km-company-content{
+
+    flex:1;
+
+}

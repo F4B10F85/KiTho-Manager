@@ -146,21 +146,21 @@ function buildLayout() {
 
     });
 
-document
-    .getElementById("km-change-password-button")
-    .addEventListener("click", function () {
+    document
+        .getElementById("km-change-password-button")
+        .addEventListener("click", function () {
 
-        alert("Cambio password in costruzione.");
+            alert("Cambio password in costruzione.");
 
-    });
+        });
 
-document
-    .getElementById("km-logout-button")
-    .addEventListener("click", function () {
+    document
+        .getElementById("km-logout-button")
+        .addEventListener("click", function () {
 
-        logout();
+            logout();
 
-    });
+        });
 
 }
 

@@ -98,26 +98,6 @@ function showSettings() {
 
 }
 
-function showCompany() {
-
-    const workspace =
-        document.getElementById("km-workspace");
-
-    workspace.innerHTML = `
-
-        <div class="km-page-placeholder">
-
-            <h2>Azienda</h2>
-
-            <p>
-                Modulo disponibile dalla milestone M8.
-            </p>
-
-        </div>
-
-    `;
-
-}
 
 function showAccess() {
 
