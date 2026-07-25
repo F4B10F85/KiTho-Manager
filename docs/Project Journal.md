@@ -355,3 +355,43 @@ Quando vuoi tornare alla modalità normale:
 developerMode: false
 
 e ricompare il login.
+
+
+
+# DATI SEZIONE AZIENDA
+
+TAB 1 - Generale
+Ragione sociale
+Nome commerciale
+Codice azienda (eventuale)
+Logo
+Descrizione
+TAB 2 - Contatti
+Indirizzo
+CAP
+Città
+Provincia
+Stato
+Telefono
+Cellulare
+Email
+PEC
+Sito web
+TAB 3 - Fiscale
+Partita IVA
+Codice fiscale
+Codice SDI
+REA
+Capitale sociale (se servirà)
+Regime IVA (eventuale)
+TAB 4 - Banca
+Banca
+IBAN
+BIC/SWIFT
+Intestatario conto
+TAB 5 - Branding
+Logo
+Colore principale
+Colore secondario
+Firma documenti
+Timbro (eventuale)
