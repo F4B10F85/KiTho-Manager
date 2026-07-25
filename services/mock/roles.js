@@ -70,6 +70,19 @@ const roles = {
             
         ]
 
+    },
+
+        MAGAZZINIERE: {
+
+        description: "Magazziniere",
+
+        modules: [
+
+            "dashboard",
+            "warehouse",
+                        
+        ]
+
     }
 
 };

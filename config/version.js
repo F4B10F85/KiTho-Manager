@@ -4,12 +4,12 @@ const APP = {
 
     name: "KiTho Business",
 
-    version: "0.7.0",
+    version: "0.9.0",
 
-    milestone: "M7",
+    milestone: "M9",
 
     copyright: "© 2026 KiTho Business",
 
-    developerMode: true
+    developerMode: false
 
 };

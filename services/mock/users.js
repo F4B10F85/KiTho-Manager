@@ -8,7 +8,7 @@ const users = [
         role: "ADMIN",
         active: true,
         createdAt: "2026-07-20 09:00:00",
-        lastLogin: "2026-07-26 08:42:00"
+        lastLogin: null
         
     },
 

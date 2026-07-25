@@ -26,8 +26,8 @@ function initializeApplication() {
 }
 
 /**
- * Costruisce l'applicazione.
-
+ * Costruisce l'applicazione - utilizzare per login ver.
+*/
 function buildApplication() {
 
     if (getCurrentUser()) {
@@ -43,8 +43,14 @@ function buildApplication() {
     }
 
 }
-*/
 
+
+
+/**
+ * Costruisce l'applicazione - utilizzare per sviluppo.
+*/ 
+  
+/** 
 function buildApplication() {
 
     if (APP.developerMode) {
@@ -64,3 +70,4 @@ function buildApplication() {
     showLogin();
 
 }
+*/

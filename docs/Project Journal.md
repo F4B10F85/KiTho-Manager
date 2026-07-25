@@ -2,7 +2,6 @@
 
 > Project Journal
 
----
 
 # SALVATAGGI
 
@@ -11,6 +10,39 @@ git add .
 git commit -m "........................"
 
 git push
+
+
+# LOGIN PER SVILUPPO
+File version.js
+developerMode: true
+modules/core/app.js
+
+
+
+
+
+
+
+
+# LOGIN REALE
+File version.js
+developerMode: fasle
+modules/core/app.js
+commentare:
+/**
+function buildApplication() {
+    if (APP.developerMode) {
+        const user = findUser("FABIO.FILIPPINI");
+        setCurrentUser(user);
+        buildLayout();
+        navigate("dashboard");
+        return;
+    }
+    showLogin();
+}
+*/
+
+
 
 
 
