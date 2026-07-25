@@ -44,6 +44,27 @@ const users = [
         active: true,
         createdAt: "2026-07-25 08:07:55",
         lastLogin: "2026-07-25 09:13:47"
-    }
+    },
 
+    {
+        username: "LAURA.VERDI",
+        name: "Laura",
+        surname: "Verdi",
+        password: "8888",
+        role: "COMMERCIALE",
+        active: true,
+        createdAt: "2026-07-24 10:37:25",
+        lastLogin: "2026-07-24 19:13:47"
+    },
+
+    {
+        username: "ENRICO.CHIESA",
+        name: "Enrico",
+        surname: "Chiesa",
+        password: "7777",
+        role: "MAGAZZINIERE",
+        active: true,
+        createdAt: "2026-07-23 09:00:00",
+        lastLogin: "2026-07-24 17:29:59"
+    },
 ];

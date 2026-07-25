@@ -24,6 +24,8 @@ function navigate(page) {
 
     setActiveMenu(page);
 
+    setNavigationContext(page);
+
     switch (page) {
 
         case "dashboard":
@@ -120,7 +122,7 @@ function navigate(page) {
 
         default:
 
-            setWorkspaceTitle("Pagina non trovata");
+            console.error("Pagina non trovata:", page);
 
     }
 
