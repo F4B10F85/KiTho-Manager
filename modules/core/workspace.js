@@ -25,9 +25,64 @@ function setBreadcrumb(...items) {
 
 }
 
+function setNavigationContext(pageId){
+
+    const page = getPageInfo(pageId);
+
+    if(!page){
+
+        return;
+
+    }
+
+    if(page.parent){
+
+        setBreadcrumb(
+
+            page.parent,
+
+            page.title
+
+        );
+
+    }
+
+    else{
+
+        setBreadcrumb(
+
+            page.title
+
+        );
+
+    }
+
+}
+
 /**
  * Aggiorna il contenuto del Workspace.
  */
+
+function setWorkspacePage(pageId){
+
+    setNavigationContext(pageId);
+
+    const page = getPageInfo(pageId);
+
+    const workspace = document.querySelector(".km-workspace");
+
+    workspace.innerHTML = `
+
+        <h1>${page.title}</h1>
+
+    `;
+
+}
+
+
+/**
+ * Aggiorna il contenuto del Workspace.
+ 
 function setWorkspacePage(pageId) {
 
     const page = getPageInfo(pageId);
@@ -52,3 +107,4 @@ function setWorkspacePage(pageId) {
     `;
 
 }
+*/

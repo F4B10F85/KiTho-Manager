@@ -88,6 +88,8 @@ function createMenuItem(item) {
 
         setActiveMenu(item.id);
 
+        setNavigationContext(item.id);
+
         toggleSubmenu(group);
 
     };

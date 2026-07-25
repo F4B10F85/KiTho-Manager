@@ -31,7 +31,7 @@
 
 function showDashboard() {
 
-    //setWorkspaceTitle("Dashboard");
+    setNavigationContext("dashboard");
 
     const workspace = document.getElementById("km-workspace");
 
