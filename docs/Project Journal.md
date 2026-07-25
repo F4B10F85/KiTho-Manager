@@ -395,3 +395,12 @@ Colore principale
 Colore secondario
 Firma documenti
 Timbro (eventuale)
+
+# Mxx - Versioning & Deployment
+⏳ Versionamento semantico (SemVer)
+⏳ version.json generato automaticamente
+⏳ Build automatica
+⏳ Numero commit visualizzato
+⏳ Data dell'ultima release
+⏳ Changelog automatico
+⏳ Eventuale controllo aggiornamenti

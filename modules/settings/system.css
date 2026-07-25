@@ -1,0 +1,45 @@
+.km-system-section{
+
+    margin-bottom:42px;
+
+    padding-bottom:28px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.km-system-section:last-of-type{
+
+    border-bottom:none;
+
+}
+
+.km-system-section h3{
+
+    margin-bottom:24px;
+
+    font-size:22px;
+
+}
+
+.km-system-buttons{
+
+    display:flex;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+}
+
+.km-company-value{
+
+    display:flex;
+
+    align-items:center;
+
+    min-height:38px;
+
+    color:#555;
+
+}
