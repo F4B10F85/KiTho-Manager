@@ -7,8 +7,8 @@ const users = [
         password: "0000",
         role: "ADMIN",
         active: true,
-        createdAt: null,
-        lastLogin: null
+        createdAt: "2026-07-20 09:00:00",
+        lastLogin: "2026-07-26 08:42:00"
         
     },
 
@@ -19,8 +19,9 @@ const users = [
         password: "1234",
         role: "CEO",
         active: true,
-        createdAt: null,
-        lastLogin: null
+        createdAt: "2026-07-15 10:20:00",
+        lastLogin: "2026-07-25 17:13:00"
+
     },
 
     {
@@ -29,8 +30,8 @@ const users = [
         surname: "Rossi",
         password: "5678",
         role: "COMMERCIALE",
-        active: true,
-        createdAt: null,
+        active: false,
+        createdAt: "2026-07-18 14:30:00",
         lastLogin: null
     },
 
@@ -41,8 +42,8 @@ const users = [
         password: "9999",
         role: "AMMINISTRAZIONE",
         active: true,
-        createdAt: null,
-        lastLogin: null
+        createdAt: "2026-07-25 08:07:55",
+        lastLogin: "2026-07-25 09:13:47"
     }
 
 ];

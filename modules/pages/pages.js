@@ -221,43 +221,35 @@ function showUsersTab() {
         columns:[
 
             {
-
-                title:"Nome",
-
-                render:user=>user.name
-
+                key:"name",
+                title:"Nome"
             },
 
             {
-
-                title:"Cognome",
-
-                render:user=>user.surname
-
+                key:"surname",
+                title:"Cognome"
             },
 
             {
-
-                title:"Ruolo",
-
-                render:user=>user.role
-
+                key:"role",
+                title:"Ruolo"
             },
 
             {
-
+                key:"active",
                 title:"Attivo",
-
-                render:user=>user.active ? "✔" : "✖"
-
+                type:"badge"
             },
 
             {
-
+                key:"lastLogin",
                 title:"Ultimo accesso",
+                type:"date"
+            },
 
-                render:user=>user.lastLogin ?? "-"
-
+            {
+                title:"Azioni",
+                type:"actions"
             }
 
         ],
@@ -266,35 +258,6 @@ function showUsersTab() {
 
     });
 
-
-
-    /**
-    document.getElementById("km-tab-content").innerHTML = `
-
-        <div class="km-placeholder">
-
-            <h3>
-
-                Utenti
-
-            </h3>
-
-            <button class="km-primary-button">
-
-                + Nuovo utente
-
-            </button>
-
-            <p>
-
-                Elenco utenti disponibile dalla milestone M8.
-
-            </p>
-
-        </div>
-
-    `;
-    */
 }
 
 function showRolesTab() {
