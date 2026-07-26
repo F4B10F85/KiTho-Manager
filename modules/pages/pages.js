@@ -309,24 +309,9 @@ function showDocuments() {
 
 }
 
-function showAppearance() {
+function showAppearance(){
 
-    const workspace =
-        document.getElementById("km-workspace");
-
-    workspace.innerHTML = `
-
-        <div class="km-page-placeholder">
-
-            <h2>Aspetto</h2>
-
-            <p>
-                Modulo disponibile dalla milestone M8.
-            </p>
-
-        </div>
-
-    `;
+    renderAppearancePage();
 
 }
 
