@@ -98,6 +98,11 @@ function showSettings() {
 
 }
 
+function showCompany(){
+
+    renderCompanyPage();
+
+}
 
 function showAccess() {
 
@@ -288,24 +293,9 @@ function showPermissionsTab() {
 
 }
 
-function showDocuments() {
+function showDocuments(){
 
-    const workspace =
-        document.getElementById("km-workspace");
-
-    workspace.innerHTML = `
-
-        <div class="km-page-placeholder">
-
-            <h2>Documenti</h2>
-
-            <p>
-                Modulo disponibile dalla milestone M8.
-            </p>
-
-        </div>
-
-    `;
+    renderDocumentsPage();
 
 }
 
