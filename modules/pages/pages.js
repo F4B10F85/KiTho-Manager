@@ -120,9 +120,31 @@ function showAccess() {
 
             <div id="km-tabs-container"></div>
 
-            <div id="km-tab-content"></div>
+            <div id="km-tab-content" class="km-page-content"></div>
+
+            <div class="km-company-footer">
+
+                <div class="km-company-footer-right">
+
+                    <button class="km-button">
+
+                        Annulla
+
+                    </button>
+
+                    <button class="km-button km-button-primary">
+
+                        Salva
+
+                    </button>
+
+                </div>
+
+            </div>
 
         </div>
+
+        
 
     `;
 
@@ -248,20 +270,136 @@ function showUsersTab() {
 function showRolesTab() {
 
     document.getElementById("km-tab-content").innerHTML = `
+        
+        <div class="km-page">
 
-        <div class="km-placeholder">
+            <div class="km-settings-toolbar">
 
-            <h3>
+                <button
+                    class="km-button km-button-primary"
+                    onclick="testModal2()">
 
-                Ruoli
+                    + Aggiungi ruolo
 
-            </h3>
+                </button>
 
-            <p>
+            </div>
 
-                Gestione ruoli disponibile dalla milestone M8.
+            <div class="km-page-content">
 
-            </p>
+                <div class="km-settings-table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+
+                                    Ruolo
+
+                                </th>
+
+                                <th>
+
+                                    Azioni
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+
+                                    CEO
+
+                                </td>
+
+                                <td class="km-settings-actions">
+
+                                    ✏️ 🗑
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+
+                                    ADMIN
+
+                                </td>
+
+                                <td class="km-settings-actions">
+
+                                    ✏️ 🗑
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+
+                                    COMMERCIALE
+
+                                </td>
+
+                                <td class="km-settings-actions">
+
+                                    ✏️ 🗑
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+
+                                    AMMINISTRAZIONE
+
+                                </td>
+
+                                <td class="km-settings-actions">
+
+                                    ✏️ 🗑
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+
+                                    MAGAZZINIERE
+
+                                </td>
+
+                                <td class="km-settings-actions">
+
+                                    ✏️ 🗑
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -273,19 +411,223 @@ function showPermissionsTab() {
 
     document.getElementById("km-tab-content").innerHTML = `
 
-        <div class="km-placeholder">
+        <div class="km-settings-table">
 
-            <h3>
+            <table>
 
-                Permessi
+                <thead>
 
-            </h3>
+                    <tr>
 
-            <p>
+                        <th>
 
-                Matrice permessi disponibile dalla milestone M8.
+                            Ruolo
 
-            </p>
+                        </th>
+
+                        <th>
+
+                            Dashboard
+
+                        </th>
+
+                        <th>
+
+                            Anagrafiche
+
+                        </th>
+
+                        <th>
+
+                            Ordini
+
+                        </th>
+
+                        <th>
+
+                            Produzione
+
+                        </th>
+
+                        <th>
+
+                            DDT
+
+                        </th>
+
+                        <th>
+
+                            Fatture
+
+                        </th>
+
+                        <th>
+
+                            Magazzino
+
+                        </th>
+
+                        <th>
+
+                            Statistiche
+
+                        </th>
+
+                        <th>
+
+                            Impostazioni
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            CEO
+
+                        </td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            ADMIN
+
+                        </td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            COMMERCIALE
+
+                        </td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox"></td>
+                        
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            AMMINISTRAZIONE
+
+                        </td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            MAGAZZINIERE
+
+                        </td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox" checked></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                        <td><input type="checkbox"></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
 
         </div>
 
@@ -367,6 +709,53 @@ function testModal(){
         content:`
 
             Questo è il primo Modal
+            intelligente di KiTho Business.
+
+        `,
+
+        buttons:[
+
+            {
+
+                text:"Annulla",
+
+                action:closeModal
+
+            },
+
+            {
+
+                text:"Salva",
+
+                primary:true,
+
+                action:function(){
+
+                    alert("Salvataggio simulato");
+
+                }
+
+            }
+
+        ]
+
+    });
+
+}
+
+function testModal2(){
+
+    createModal({
+
+        id:"test",
+
+        title:"Nuovo Utente",
+
+        size:"medium",
+
+        content:`
+
+            Questo è il secondo Modal
             intelligente di KiTho Business.
 
         `,

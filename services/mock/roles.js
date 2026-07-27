@@ -2,7 +2,7 @@ const roles = {
 
     ADMIN: {
 
-        description: "IT Manager",
+        description: "Admin",
 
         modules: [
 
