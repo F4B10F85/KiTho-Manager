@@ -48,9 +48,8 @@ function buildApplication() {
 
 /**
  * Costruisce l'applicazione - utilizzare per sviluppo.
-*/ 
-  
 
+*/
 function buildApplication() {
 
     if (APP.developerMode) {
@@ -70,3 +69,5 @@ function buildApplication() {
     showLogin();
 
 }
+
+  

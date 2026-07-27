@@ -114,15 +114,19 @@ body {
 
 }
 
-.km-workspace {
+.km-workspace{
 
-    flex: 1;
+    flex:1;
 
     display:flex;
 
     flex-direction:column;
 
     padding:30px;
+
+    overflow-y:auto;
+
+    scrollbar-gutter:stable;
 
 }
 

@@ -207,17 +207,27 @@ function showUsersTab() {
 
     document.getElementById("km-tab-content").innerHTML = `
 
-        <button
-            class="km-button km-button-primary"
-            onclick="testModal()">
+        <div class="km-list-page">
 
-            + Nuovo utente
+            <div class="km-list-toolbar">
 
-        </button>
+                <button
+                    class="km-button km-button-primary"
+                    onclick="testModal()">
 
-        <br><br>
+                    + Nuovo utente
 
-        <div id="km-users-table"></div>
+                </button>
+
+            </div>
+
+            <div class="km-list-body">
+
+                <div id="km-users-table"></div>
+
+            </div>
+
+        </div>
 
     `;
 

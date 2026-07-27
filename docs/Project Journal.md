@@ -13,8 +13,9 @@ git push
 
 
 # LOGIN PER SVILUPPO
-File version.js
+assets/config/version.js
 developerMode: true
+
 modules/core/app.js
 
 
@@ -25,8 +26,9 @@ modules/core/app.js
 
 
 # LOGIN REALE
-File version.js
+assets/config/version.js
 developerMode: fasle
+
 modules/core/app.js
 commentare:
 /**
