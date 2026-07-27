@@ -1,0 +1,96 @@
+*{
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    margin:0;
+
+    padding:0;
+
+    background:#ECECEC;
+
+    font-family:Ebrima,sans-serif;
+
+}
+
+.ktb-document{
+
+    width:210mm;
+
+    min-height:297mm;
+
+    margin:20px auto;
+
+    background:#FFFFFF;
+
+    padding:15mm;
+
+    box-shadow:0 0 8px rgba(0,0,0,.15);
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.ktb-header{
+
+    display:grid;
+
+    grid-template-columns:130mm 35mm;
+
+    column-gap:5mm;
+
+    align-items:start;
+
+}
+
+.ktb-company{
+
+    width:145mm;
+
+}
+
+.ktb-company h1{
+
+    margin:0 0 1mm;
+
+    font-size:5mm;
+
+    font-weight:700;
+
+}
+
+.ktb-company p{
+
+    margin:0 0 1.5mm;
+
+    font-size:3.6mm;
+
+    line-height:1.0;
+
+    font-weight:400;
+
+}
+
+.ktb-logo{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:flex-start;
+
+}
+
+.ktb-logo img{
+
+    width:65mm;
+
+    height:auto;
+
+}
