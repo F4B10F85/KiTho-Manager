@@ -279,8 +279,36 @@ function showUsersTab() {
 
 function showRolesTab() {
 
+    const roles = getRoles();
+
+    let rows = "";
+
+    roles.forEach(role => {
+
+        rows += `
+
+            <tr>
+
+                <td>
+
+                    ${role.name}
+
+                </td>
+
+                <td class="km-settings-actions">
+
+                    ✏️ 🗑
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
     document.getElementById("km-tab-content").innerHTML = `
-        
+
         <div class="km-page">
 
             <div class="km-settings-toolbar">
@@ -323,85 +351,7 @@ function showRolesTab() {
 
                         <tbody>
 
-                            <tr>
-
-                                <td>
-
-                                    CEO
-
-                                </td>
-
-                                <td class="km-settings-actions">
-
-                                    ✏️ 🗑
-
-                                </td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>
-
-                                    ADMIN
-
-                                </td>
-
-                                <td class="km-settings-actions">
-
-                                    ✏️ 🗑
-
-                                </td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>
-
-                                    COMMERCIALE
-
-                                </td>
-
-                                <td class="km-settings-actions">
-
-                                    ✏️ 🗑
-
-                                </td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>
-
-                                    AMMINISTRAZIONE
-
-                                </td>
-
-                                <td class="km-settings-actions">
-
-                                    ✏️ 🗑
-
-                                </td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>
-
-                                    MAGAZZINIERE
-
-                                </td>
-
-                                <td class="km-settings-actions">
-
-                                    ✏️ 🗑
-
-                                </td>
-
-                            </tr>
+                            ${rows}
 
                         </tbody>
 
@@ -419,7 +369,11 @@ function showRolesTab() {
 
 function showPermissionsTab() {
 
-    document.getElementById("km-tab-content").innerHTML = `
+    const modules = getSidebarModules();
+
+    const roles = getRoles();
+
+    let html = `
 
         <div class="km-settings-table">
 
@@ -435,59 +389,23 @@ function showPermissionsTab() {
 
                         </th>
 
-                        <th>
+    `;
 
-                            Dashboard
+    modules.forEach(module => {
 
-                        </th>
-
-                        <th>
-
-                            Anagrafiche
-
-                        </th>
+        html += `
 
                         <th>
 
-                            Ordini
+                            ${module}
 
                         </th>
 
-                        <th>
+        `;
 
-                            Produzione
+    });
 
-                        </th>
-
-                        <th>
-
-                            DDT
-
-                        </th>
-
-                        <th>
-
-                            Fatture
-
-                        </th>
-
-                        <th>
-
-                            Magazzino
-
-                        </th>
-
-                        <th>
-
-                            Statistiche
-
-                        </th>
-
-                        <th>
-
-                            Impostazioni
-
-                        </th>
+    html += `
 
                     </tr>
 
@@ -495,145 +413,48 @@ function showPermissionsTab() {
 
                 <tbody>
 
-                    <tr>
+    `;
 
-                        <td>
+    roles.forEach(role => {
 
-                            CEO
-
-                        </td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                    </tr>
+        html += `
 
                     <tr>
 
                         <td>
 
-                            ADMIN
+                            ${role.name}
 
                         </td>
 
-                        <td><input type="checkbox" checked></td>
+        `;
 
-                        <td><input type="checkbox" checked></td>
+        modules.forEach(module => {
 
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                    </tr>
-
-                    <tr>
+            html += `
 
                         <td>
 
-                            COMMERCIALE
+                            <input
+                                type="checkbox"
+                                data-role="${role.name}"
+                                data-module="${module}">
 
                         </td>
 
-                        <td><input type="checkbox" checked></td>
+            `;
 
-                        <td><input type="checkbox"></td>
+        });
 
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox"></td>
-                        
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox" checked></td>
+        html += `
 
                     </tr>
 
-                    <tr>
+        `;
 
-                        <td>
+    });
 
-                            AMMINISTRAZIONE
-
-                        </td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-
-                            MAGAZZINIERE
-
-                        </td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox" checked></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                        <td><input type="checkbox"></td>
-
-                    </tr>
+    html += `
 
                 </tbody>
 
@@ -642,6 +463,8 @@ function showPermissionsTab() {
         </div>
 
     `;
+
+    document.getElementById("km-tab-content").innerHTML = html;
 
 }
 
