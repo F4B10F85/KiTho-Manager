@@ -438,3 +438,39 @@ Timbro (eventuale)
 ⏳ Data dell'ultima release
 ⏳ Changelog automatico
 ⏳ Eventuale controllo aggiornamenti
+
+# TASK TABELLA
+
+Una precisazione importante
+
+Fra qualche giorno, quando renderemo dinamico il documento, non fisseremo l'altezza della tabella, ma quella dell'area articoli.
+
+Questo perché:
+
+se hai 3 righe, ci saranno molti spazi vuoti;
+se hai 30 righe, la tabella si fermerà a fine area e continuerà sulla pagina successiva.
+
+TODO - Gestione dinamica dei layout di stampa
+
+Area articoli a dimensione fissa, contenuto variabile
+
+Regole:
+
+L'area destinata agli articoli ha altezza fissa (es. 150 mm).
+La tabella non ha altezza fissa: riempie l'area disponibile.
+Se le righe sono poche, rimane spazio bianco.
+Se le righe eccedono l'area disponibile:
+viene generata automaticamente una nuova pagina;
+l'intestazione della tabella (Codice, Descrizione, ecc.) viene ripetuta;
+il numero pagina viene aggiornato;
+il riporto dei totali viene gestito solo nell'ultima pagina (o secondo le regole che decideremo).
+
+In futuro il renderer dovrà quindi:
+
+calcolare l'altezza di una riga;
+sapere quante righe stanno nell'area articoli;
+suddividere automaticamente il documento in più pagine.
+
+Questa è una funzionalità che non va improvvisata. Conviene progettare il renderer con questa logica fin dall'inizio, perché rifarla dopo sarebbe molto più costoso.
+
+Io la considererei una milestone del modulo documenti, non un semplice dettaglio. È una di quelle cose che, una volta implementata bene, verrà riutilizzata identica per ordini, DDT, fatture, packing list e qualsiasi altro documento stampabile.

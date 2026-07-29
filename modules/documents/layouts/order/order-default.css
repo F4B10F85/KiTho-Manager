@@ -19,6 +19,36 @@ body{
 
 .ktb-document{
 
+    position:relative;
+
+}
+
+.ktb-document::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:url("../../../../assets/images/logo_KTB.png");
+
+    background-repeat: no-repeat;
+    
+    background-position: center 145mm;
+    
+    background-size: 120mm;
+
+    opacity: 0.15;
+
+    pointer-events:none;
+
+}
+
+
+
+.ktb-document{
+
     width:210mm;
 
     min-height:297mm;
@@ -27,7 +57,7 @@ body{
 
     background:#FFFFFF;
 
-    padding:15mm;
+    padding:12mm;
 
     box-shadow:0 0 8px rgba(0,0,0,.15);
 
@@ -94,3 +124,317 @@ body{
     height:auto;
 
 }
+
+
+/* ==========================================================
+   BLOCCO INTESTAZIONE ORDINE CON ANAGRAFICA CLIENTE
+========================================================== */
+
+.ktb-order-head{
+
+    display:grid;
+
+    grid-template-columns:90mm 90mm;
+
+    column-gap:6mm;
+
+    margin-top:4mm;
+    margin-right:auto;
+    margin-bottom:8mm;
+    margin-left:auto;
+
+}
+
+.ktb-box-title{
+
+    font-size:4mm;
+
+    margin-bottom:3mm;
+
+    font-weight:700;
+
+}
+
+.ktb-customer-box{
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    padding:2mm;
+
+    min-height:10mm;
+
+}
+
+.ktb-customer-name{
+
+    font-size:5mm;
+
+    font-weight:700;
+
+    margin-bottom:2mm;
+
+}
+
+.ktb-customer-address,
+.ktb-customer-city{
+
+    font-size:4mm;  
+
+}
+
+/* ==========================================================
+   BLOCCO DATI SPEDIZIONE
+========================================================== */
+
+
+
+.ktb-shipping-box{
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    padding:2mm;
+
+    min-height:18mm;
+
+}
+
+.ktb-customer-shippingname{
+
+    font-size:5mm;
+
+    font-weight:700;
+
+    margin-bottom:2mm;
+
+}
+
+.ktb-customer-shippingaddress,
+.ktb-customer-shippingcity{
+
+    font-size:4mm;
+   
+}
+
+
+
+/* ==========================================================
+   RIGA NOTE
+========================================================== */
+
+
+.ktb-note{
+
+    margin-top:3mm;
+
+    font-size:2.5mm;
+
+    font-weight:400;
+
+    text-align: center;
+    
+    grid-column:1 / -1;
+
+}
+
+
+
+/* ==========================================================
+   BLOCCO DATI ORDINE - NUMERO - TIPO - DATA - PAGINA
+========================================================== */
+
+
+
+.ktb-order-info{
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    overflow:hidden;
+
+    margin-top:3mm;
+
+    grid-column:1 / -1;
+
+}
+
+.ktb-order-info table{
+
+    width:100%;
+
+    height:100%;
+
+    border-collapse:collapse;
+
+}
+
+.ktb-order-info th{
+
+    font-size:4mm;
+
+    font-weight:700;
+
+    border-right:0.3mm solid #000;
+
+    border-bottom:0.3mm solid #000;
+
+    text-align:center;
+
+}
+
+.ktb-order-info td{
+
+    font-size:4mm;
+
+    font-weight:500;
+
+    text-align:center;
+
+    border-right:0.3mm solid #000;
+
+}
+
+.ktb-order-info th:last-child,
+.ktb-order-info td:last-child{
+
+    border-right:none;
+
+}
+
+
+
+/* ==========================================================
+   BLOCCO CORPO ORDINE
+========================================================== */
+
+
+.ktb-order-body{
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    overflow:hidden;
+
+    margin-top:-3mm;
+
+    grid-column:1 / -1;
+
+    height: 125mm;
+
+}
+
+.ktb-order-body table{
+
+    width:100%;
+
+    table-layout: fixed;
+
+    border-collapse:collapse;
+
+}
+
+.ktb-order-body th{
+
+    font-size:3mm;
+
+    font-weight:700;
+
+        border-right:0.3mm solid #000;
+
+    border-bottom:0.3mm solid #000;
+
+    text-align:left;
+}
+
+.ktb-order-body td{
+
+    font-size:4mm;
+
+    font-weight:500;
+
+    text-align:left;
+
+    border-right:0.3mm solid #000;
+}
+
+.ktb-order-body th:last-child,
+.ktb-order-body td:last-child{
+
+    border-right:none;
+
+}
+
+.ktb-order-body tbody tr{
+
+    height:135mm;
+
+}
+
+/* ==========================================================
+   BLOCCO DATI BANCA
+========================================================== */
+
+
+
+.ktb-order-bank{
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    overflow:hidden;
+
+    margin-top:3mm;
+
+    grid-column:1 / -1;
+
+}
+
+.ktb-order-bank table{
+
+    width:100%;
+
+    height:100%;
+
+    border-collapse:collapse;
+
+}
+
+.ktb-order-bank th{
+
+    font-size:3.5mm;
+
+    font-weight:500;
+
+    border-right:0.3mm solid #000;
+
+    border-bottom:0.3mm solid #000;
+
+    text-align:left;
+
+}
+
+.ktb-order-bank td{
+
+    font-size:3.5mm;
+
+    font-weight:500;
+
+    text-align:left;
+
+    border-right:0.3mm solid #000;
+
+}
+
+.ktb-order-bank th:last-child,
+.ktb-order-bank td:last-child{
+
+    border-right:none;
+
+}
+
