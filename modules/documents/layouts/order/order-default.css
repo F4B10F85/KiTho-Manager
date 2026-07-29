@@ -21,6 +21,12 @@ body{
 
     position:relative;
 
+    width:210mm;
+
+    height:297mm;
+
+    outline:0.8mm dashed red;
+
 }
 
 .ktb-document::before{
@@ -127,7 +133,7 @@ body{
 
 
 /* ==========================================================
-   BLOCCO INTESTAZIONE ORDINE CON ANAGRAFICA CLIENTE
+   BLOCCO INTESTATARIO ORDINE CON ANAGRAFICA CLIENTE
 ========================================================== */
 
 .ktb-order-head{
@@ -147,11 +153,11 @@ body{
 
 .ktb-box-title{
 
-    font-size:4mm;
+    font-size:3mm;
 
     margin-bottom:3mm;
 
-    font-weight:700;
+    font-weight:400;
 
 }
 
@@ -165,11 +171,13 @@ body{
 
     min-height:10mm;
 
+    background-color: #e2f0ea;
+
 }
 
 .ktb-customer-name{
 
-    font-size:5mm;
+    font-size:4mm;
 
     font-weight:700;
 
@@ -180,7 +188,7 @@ body{
 .ktb-customer-address,
 .ktb-customer-city{
 
-    font-size:4mm;  
+    font-size:3mm;  
 
 }
 
@@ -200,11 +208,13 @@ body{
 
     min-height:18mm;
 
+    background-color: #e2f0ea;
+
 }
 
 .ktb-customer-shippingname{
 
-    font-size:5mm;
+    font-size:4mm;
 
     font-weight:700;
 
@@ -215,30 +225,11 @@ body{
 .ktb-customer-shippingaddress,
 .ktb-customer-shippingcity{
 
-    font-size:4mm;
+    font-size:3mm;
    
 }
 
 
-
-/* ==========================================================
-   RIGA NOTE
-========================================================== */
-
-
-.ktb-note{
-
-    margin-top:3mm;
-
-    font-size:2.5mm;
-
-    font-weight:400;
-
-    text-align: center;
-    
-    grid-column:1 / -1;
-
-}
 
 
 
@@ -246,7 +237,13 @@ body{
    BLOCCO DATI ORDINE - NUMERO - TIPO - DATA - PAGINA
 ========================================================== */
 
+.ktb-accent{
 
+    color:#000;
+
+    font-weight:700;
+
+}
 
 .ktb-order-info{
 
@@ -274,13 +271,13 @@ body{
 
 .ktb-order-info th{
 
-    font-size:4mm;
+    font-size:2.5mm;
 
     font-weight:700;
 
-    border-right:0.3mm solid #000;
+    border-right:0.2mm solid #000;
 
-    border-bottom:0.3mm solid #000;
+    border-bottom:0.2mm solid #000;
 
     text-align:center;
 
@@ -288,13 +285,13 @@ body{
 
 .ktb-order-info td{
 
-    font-size:4mm;
+    font-size:3mm;
 
     font-weight:500;
 
     text-align:center;
 
-    border-right:0.3mm solid #000;
+    border-right:0.2mm solid #000;
 
 }
 
@@ -311,8 +308,11 @@ body{
    BLOCCO CORPO ORDINE
 ========================================================== */
 
-
 .ktb-order-body{
+
+    position:relative;
+
+    height:140mm;
 
     border:0.2mm solid #000;
 
@@ -320,60 +320,130 @@ body{
 
     overflow:hidden;
 
-    margin-top:-3mm;
-
-    grid-column:1 / -1;
-
-    height: 125mm;
+    margin-top:-5mm;
 
 }
 
-.ktb-order-body table{
+.ktb-order-grid{
 
-    width:100%;
+    position:absolute;
 
-    table-layout: fixed;
-
-    border-collapse:collapse;
+    inset:0;
 
 }
 
-.ktb-order-body th{
+.grid-line{
+
+    position:absolute;
+
+    top:0;
+
+    bottom:0;
+
+    width:0.2mm;
+
+    background:#000;
+
+}
+
+.l1{ left:30mm; }
+
+.l2{ left:115mm; }
+
+.l3{ left:125mm; }
+
+.l4{ left:135mm; }
+
+.l5{ left:150mm; }
+
+.l6{ left:160mm; }
+
+.l7{ left:175mm; }
+
+.ktb-order-header{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:30mm 85mm 11mm 11mm 12mm 12mm 15mm 12mm;
+
+    height:5mm;
+
+    border-bottom:0.2mm solid #000;
 
     font-size:3mm;
 
     font-weight:700;
 
-        border-right:0.3mm solid #000;
+    z-index:2;
 
-    border-bottom:0.3mm solid #000;
-
-    text-align:left;
-}
-
-.ktb-order-body td{
-
-    font-size:4mm;
-
-    font-weight:500;
-
-    text-align:left;
-
-    border-right:0.3mm solid #000;
-}
-
-.ktb-order-body th:last-child,
-.ktb-order-body td:last-child{
-
-    border-right:none;
+    background:#FFF;
 
 }
 
-.ktb-order-body tbody tr{
+.ktb-order-header div{
 
-    height:135mm;
+    display:flex;
+
+    align-items:center;
+
+    padding-left:1mm;
 
 }
+
+.ktb-order-row{
+
+    display:grid;
+
+    grid-template-columns:30mm 85mm 10mm 10mm 15mm 10mm 15mm 12mm;
+
+    min-height:6mm;
+
+    font-size: 3mm;
+
+    align-items:start;
+
+}
+
+.ktb-order-row > div{
+
+    padding:1mm;
+
+    white-space:normal;
+
+    overflow-wrap:anywhere;
+
+    word-break:break-word;
+
+}
+
+.c2{
+
+    white-space:normal;
+
+    overflow-wrap:break-word;
+
+}
+
+.ktb-order-row .c3,
+.ktb-order-row .c4,
+.ktb-order-row .c8{
+
+    text-align:center;
+
+}
+
+.ktb-order-row .c5,
+.ktb-order-row .c6,
+.ktb-order-row .c7{
+
+    text-align:right;
+
+    padding-right:1mm;
+
+}
+
 
 /* ==========================================================
    BLOCCO DATI BANCA
@@ -389,7 +459,7 @@ body{
 
     overflow:hidden;
 
-    margin-top:3mm;
+    margin-top:1mm;
 
     grid-column:1 / -1;
 
@@ -407,13 +477,13 @@ body{
 
 .ktb-order-bank th{
 
-    font-size:3.5mm;
+    font-size:3mm;
 
-    font-weight:500;
+    font-weight:600;
 
-    border-right:0.3mm solid #000;
+    border-right:0.2mm solid #000;
 
-    border-bottom:0.3mm solid #000;
+    border-bottom:0.2mm solid #000;
 
     text-align:left;
 
@@ -421,13 +491,13 @@ body{
 
 .ktb-order-bank td{
 
-    font-size:3.5mm;
+    font-size:3mm;
 
     font-weight:500;
 
     text-align:left;
 
-    border-right:0.3mm solid #000;
+    border-right:0.2mm solid #000;
 
 }
 
@@ -438,3 +508,149 @@ body{
 
 }
 
+/* ======================================================
+RIGA TOTALI
+======================================================= */
+
+
+.ktb-summary{
+
+    display:grid;
+
+    grid-template-columns:
+        28mm
+        24mm
+        30mm
+        24mm
+        24mm
+        18mm
+        40mm;
+
+    margin-top:3mm;
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    overflow:hidden;
+
+}
+
+.sum-col{
+
+    border-right:0.2mm solid #000;
+
+    padding:1mm;
+
+}
+
+.sum-col:last-child{
+
+    border-right:none;
+
+}
+
+.sum-title{
+
+    font-size:3mm;
+
+    font-weight:500;
+
+    margin-bottom:0mm;
+
+}
+
+.sum-value{
+
+    font-size:4mm;
+
+    font-weight:500;
+
+    text-align:right;
+
+    padding-right:2mm;
+}
+
+.total{
+
+    background:#f5f5f5;
+
+}
+
+.total .sum-title,
+.total .sum-value{
+
+    font-weight:700;
+
+}
+
+.total .sum-value{
+
+    text-align:right;
+
+    padding-right:5mm;
+
+}
+
+/* ======================================================
+ANNOTAZIONI
+======================================================= */
+
+.ktb-notes{
+
+    border:0.2mm solid #000;
+
+    border-radius:2mm;
+
+    overflow:hidden;
+
+    margin-top:3mm;
+
+    grid-column:1 / -1;
+
+    height: 20mm;
+}
+
+.notes-title{
+
+    font-size:3mm;
+
+    font-weight:500;
+
+    padding:1.5mm 2mm;
+
+    border-bottom:none
+
+}
+
+#order-notes{
+
+    font-size:3mm;
+
+    padding:2mm;
+
+    white-space:pre-wrap;
+
+    overflow-wrap:break-word;
+
+}
+
+
+/* ==========================================================
+   RIGA NOTE
+========================================================== */
+
+
+.ktb-note{
+
+    margin-top:6mm;
+
+    font-size:3mm;
+
+    font-weight:400;
+
+    text-align: center;
+    
+    grid-column:1 / -1;
+
+}

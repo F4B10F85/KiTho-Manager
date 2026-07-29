@@ -106,7 +106,7 @@
 
                 <div class="ktb-box-title">
 
-                    Dest. merce
+                    Destinazione merce
 
                 </div>
 
@@ -130,11 +130,55 @@
 
             </div>
 
-            <section class="ktb-note">
+            <!-- ======================================================
+            BANCA
+            ======================================================= -->        
+            
+            <div class="ktb-order-bank">
 
-                I dati personali forniti dal Cliente saranno trattati in base alle norme vigenti esclusivamente per gli adempimenti amministrativi e fiscali.
+                <table>
 
-            </section>
+                    <colgroup>
+
+                            <col style="width:25mm">
+                            <col style="width:71mm">
+                            <col style="width:20mm">
+                            <col style="width:20mm">
+
+
+                        </colgroup>
+
+                    <tr>
+
+                        <th>Cond.di pag.</th>
+
+                        <th>Anticipato</th>
+
+                        <th>Cod. Agente</th>
+
+                        <th>Cod. Cliente</th>
+
+                        <th>P.IVA / Cod.Fiscale cliente</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Banca</td>
+
+                        <td>CREDIT AGRICOLE - IBAN IT0022002200220022</td>
+
+                        <td></td>
+
+                        <td></td>
+
+                        <td></td>
+
+                    </tr>
+
+                </table>
+
+            </div>
 
             
             <!-- ======================================================
@@ -147,7 +191,7 @@
 
                     <tr>
 
-                        <th>Ordine</th>
+                        <th class="ktb-accent">Nr. Ordine</th>
 
                         <th>tipo ordine</th>
 
@@ -159,13 +203,13 @@
 
                     <tr>
 
-                        <td>N. 001/2026</td>
+                        <td id="order-number"></td>
 
-                        <td>Vendita</td>
+                        <td id="order-type"></td>
 
-                        <td>11/02/2026</td>
+                        <td id="order-date"></td>
 
-                        <td>1</td>
+                        <td id="order-page"></td>
 
                     </tr>
 
@@ -181,104 +225,104 @@
 
         <div class="ktb-order-body">
 
-                <table>
+            <!-- Griglia di sfondo -->
+            <div class="ktb-order-grid">
 
-                    <colgroup>
+                <div class="grid-line l1"></div>
+                <div class="grid-line l2"></div>
+                <div class="grid-line l3"></div>
+                <div class="grid-line l4"></div>
+                <div class="grid-line l5"></div>
+                <div class="grid-line l6"></div>
+                <div class="grid-line l7"></div>
 
-                        <col style="width:25mm">
-                        <col style="width:70mm">
-                        <col style="width:10mm">
-                        <col style="width:10mm">
-                        <col style="width:20mm">
-                        <col style="width:15mm">
-                        <col style="width:20mm">
-                        <col style="width:12mm">
+            </div>
 
-                    </colgroup>
+            <!-- Intestazione colonne -->
+            <div class="ktb-order-header">
 
-                    <thead>
+                <div class="c1">Codice</div>
+                <div class="c2">Descrizione</div>
+                <div class="c3">U.M.</div>
+                <div class="c4">Q.tà</div>
+                <div class="c5">Prezzo</div>
+                <div class="c6">Sconto</div>
+                <div class="c7">Importo</div>
+                <div class="c8">IVA</div>
 
-                        <tr>
+            </div>
 
-                            <th>Codice</th>
-
-                            <th>Descrizione</th>
-
-                            <th>U.M.</th>
-
-                            <th>Q.tà</th>
-
-                            <th>Prezzo</th>
-
-                            <th>Sconto</th>
-
-                            <th>Importo</th>
-
-                            <th>IVA</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="order-body">
-                    
-                    </tbody>
-
-                </table>
-
-         </div>
-
-         <!-- ======================================================
-            BANCA
-            ======================================================= -->        
-            
-        <div class="ktb-order-bank">
-
-            <table>
-
-                <colgroup>
-
-                        <col style="width:25mm">
-                        <col style="width:82mm">
-                        <col style="width:10mm">
-                        <col style="width:10mm">
-
-
-                    </colgroup>
-
-                <tr>
-
-                    <th>Cond.di pag.</th>
-
-                    <th>Anticipato</th>
-
-                    <th>Cod.Agente</th>
-
-                    <th>Cod.Cliente</th>
-
-                    <th>P.IVA/Cod.Fiscale</th>
-
-                </tr>
-
-                <tr>
-
-                    <td>Banca</td>
-
-                    <td>CREDIT AGRICOLE - IBAN IT0022002200220022</td>
-
-                    <td></td>
-
-                    <td></td>
-
-                    <td></td>
-
-                </tr>
-
-            </table>
+            <!-- Qui finiranno le righe -->
+            <div id="order-rows"></div>
 
         </div>
 
-        
+        <!-- ======================================================
+        RIGA TOTALI
+        ======================================================= -->
+
+        <div class="ktb-summary">
+
+            <div class="sum-col">
+                <div class="sum-title">Importo</div>
+                <div class="sum-value" id="sum-importo">110,00 €</div>
+            </div>
+
+            <div class="sum-col">
+                <div class="sum-title">Sconti</div>
+                <div class="sum-value" id="sum-sconti">10,00 €</div>
+            </div>
+
+            <div class="sum-col">
+                <div class="sum-title">Totale Netto</div>
+                <div class="sum-value" id="sum-netto">100,00 €</div>
+            </div>
+
+            <div class="sum-col">
+                <div class="sum-title">IVA*</div>
+                <div class="sum-value" id="sum-iva">0,00 €</div>
+            </div>
+
+            <div class="sum-col">
+                <div class="sum-title">Trasporto</div>
+                <div class="sum-value" id="sum-trasporto">15,00 €</div>
+            </div>
+
+            <div class="sum-col">
+                <div class="sum-title">Bollo</div>
+                <div class="sum-value" id="sum-bollo">2,00 €</div>
+            </div>
+
+            <div class="sum-col total">
+                <div class="sum-title">Totale</div>
+                <div class="sum-value" id="sum-totale">117,00 €</div>
+            </div>
+
+        </div>
+
+        <!-- ======================================================
+        BLOCCO ANNOTAZIONI 
+        ======================================================= -->
+
+        <div class="ktb-notes">
+
+            <div class="notes-title">
+
+                Note
+
+            </div>
+
+            <div id="order-notes"></div>
+
+        </div>
+
+        <section class="ktb-note">
+
+            <div>*Esenzione IVA N2.2, operazioni non seggette - Art.1, c. 54-89, L. 190/2014</spandiv>
+            <div>I dati personali forniti dal Cliente saranno trattati in base alle norme vigenti esclusivamente per gli adempimenti amministrativi e fiscali.</div>
+
+        </section>
+
 
     </div>
 
