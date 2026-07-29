@@ -124,7 +124,164 @@ const currentOrder = {
 
             vat:"N2.2"
 
+        },
+
+        {    code:"KT.COL.M.BRO.001",
+
+            description:"Collare in pelle Marrone, con foglie rosa e cristalli azzurri, anello al centro - tg. XL",
+
+            unit:"PZ",
+
+            qty:2,
+
+            price:"24,90",
+
+            discount:"0%",
+
+            total:"49,80",
+
+            vat:"N2.2"
+
+        },
+
+        {
+
+            code:"KT.GUA.NER.002",
+
+            description:"Guinzaglio in pelle nera, 180 cm",
+
+            unit:"PZ",
+
+            qty:1,
+
+            price:"18,50",
+
+            discount:"10%",
+
+            total:"16,65",
+
+            vat:"N2.2"
+
+        },
+
+        {
+
+            code:"KT.PETT.003",
+
+            description:"Pettorina in pelle rossa con foglie arancioni, cristalli aquamarine e borche a piramide, doppio passante anteriore con anello sul retro - tg. XL",
+
+            unit:"PZ",
+
+            qty:3,
+
+            price:"31,00",
+
+            discount:"5%",
+
+            total:"88,35",
+
+            vat:"N2.2"
+
+        },
+
+        {
+
+            code:"KT.TARG.004",
+
+            description:"Medaglietta Personalizzata",
+
+            unit:"PZ",
+
+            qty:5,
+
+            price:"6,90",
+
+            discount:"0%",
+
+            total:"34,50",
+
+            vat:"N2.2"
+
+        },
+
+        {    code:"KT.COL.M.BRO.001",
+
+            description:"Collare in pelle Marrone, con foglie rosa e cristalli azzurri, anello al centro - tg. XL",
+
+            unit:"PZ",
+
+            qty:2,
+
+            price:"24,90",
+
+            discount:"0%",
+
+            total:"49,80",
+
+            vat:"N2.2"
+
+        },
+
+        {
+
+            code:"KT.GUA.NER.002",
+
+            description:"Guinzaglio in pelle nera, 180 cm",
+
+            unit:"PZ",
+
+            qty:1,
+
+            price:"18,50",
+
+            discount:"10%",
+
+            total:"16,65",
+
+            vat:"N2.2"
+
+        },
+
+        {
+
+            code:"KT.PETT.003",
+
+            description:"Pettorina in pelle rossa con foglie arancioni, cristalli aquamarine e borche a piramide, doppio passante anteriore con anello sul retro - tg. XL",
+
+            unit:"PZ",
+
+            qty:3,
+
+            price:"31,00",
+
+            discount:"5%",
+
+            total:"88,35",
+
+            vat:"N2.2"
+
+        },
+
+        {
+
+            code:"KT.TARG.004",
+
+            description:"Medaglietta Personalizzata",
+
+            unit:"PZ",
+
+            qty:5,
+
+            price:"6,90",
+
+            discount:"0%",
+
+            total:"34,50",
+
+            vat:"N2.2"
+
         }
+        
 
     ],
 
