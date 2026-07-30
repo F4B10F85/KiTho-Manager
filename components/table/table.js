@@ -24,6 +24,19 @@ function renderCell(column, row){
 
     switch(column.type){
 
+        case "details":
+
+            return `
+                <button
+                    class="km-action-button km-details-button"
+                    title="Visualizza dettagli"
+                    onclick="showCustomerDetails('${row.code}')">
+
+                    🔍
+
+                </button>
+            `;
+
         case "badge":
 
             return renderBadge(
@@ -60,26 +73,45 @@ function renderCell(column, row){
 |--------------------------------------------------------------------------
 */
 
-function renderBadge(value, type = "boolean") {
+/*
+switch(column.type){
 
-    switch (type) {
+    case "badge":
 
-        case "boolean":
+        return renderBadge(
+            row[column.key],
+            column.badgeType
+        );
 
-            return value
+    case "date":
 
-                ? `<span class="km-badge km-badge-success">Attivo</span>`
+        return formatDate(
+            row[column.key]
+        );
 
-                : `<span class="km-badge km-badge-danger">Disattivo</span>`;
+    case "actions":
 
-        default:
+        return renderActions(row);
 
-            return `<span class="km-badge km-badge-info">${value}</span>`;
+    case "details":
 
-    }
+        return `
+            <button
+                class="km-action-button km-details-button"
+                title="Visualizza dettagli"
+                onclick="showCustomerDetails('${row.code}')">
+
+                🔍
+
+            </button>
+        `;
+
+    default:
+
+        return row[column.key] ?? "";
 
 }
-
+*/
 /*
 |--------------------------------------------------------------------------
 | Date Formatter
@@ -205,7 +237,73 @@ function createTable(config) {
 
     thead.appendChild(headRow);
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filtri
+    |--------------------------------------------------------------------------
+    */
+
+    let filterRow = null;
+
+    if(config.filters){
+
+        filterRow = document.createElement("tr");
+
+        filterRow.className = "km-table-filter-row";
+
+        config.columns.forEach(column => {
+
+            if(column.type === "details"){
+
+                const filterCell = document.createElement("td");
+
+                filterCell.className = "km-details-column";
+
+                filterRow.appendChild(filterCell);
+
+                return;
+
+            }
+
+            const filterCell = document.createElement("td");
+
+            if(column.type === "actions"){
+
+                filterCell.classList.add("km-actions-column");
+
+            }
+
+            const input = document.createElement("input");
+
+            input.type = "text";
+
+            input.className = "km-table-filter";
+
+            input.placeholder = "Cerca...";
+
+            input.dataset.key = column.key;
+
+
+            input.addEventListener("input", function(){
+
+                renderFilteredRows();
+
+            });
+
+
+            filterCell.appendChild(input);
+
+            filterRow.appendChild(filterCell);
+
+        });
+
+        thead.appendChild(filterRow);
+
+    }
+
     table.appendChild(thead);
+
 
     /*
     |--------------------------------------------------------------------------
@@ -215,32 +313,106 @@ function createTable(config) {
 
     const tbody = document.createElement("tbody");
 
-    config.data.forEach(row => {
-
-        const tr = document.createElement("tr");
-
-        config.columns.forEach(column => {
-
-            const td = document.createElement("td");
-
-            if(column.type === "actions"){
-
-                td.classList.add("km-actions-column");
-
-            }
-
-            td.innerHTML = renderCell(column, row);
-
-            tr.appendChild(td);
-
-        });
-
-        tbody.appendChild(tr);
-
-    });
-
     table.appendChild(tbody);
 
     container.appendChild(table);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Rendering righe
+    |--------------------------------------------------------------------------
+    */
+
+    function renderFilteredRows(){
+
+        tbody.innerHTML = "";
+
+        let filteredData = [...config.data];
+
+
+        if(config.filters){
+
+            const filters = {};
+
+            filterRow
+                .querySelectorAll(".km-table-filter")
+                .forEach(input => {
+
+                    const value = input.value
+                        .trim()
+                        .toLowerCase();
+
+                    if(value){
+
+                        filters[input.dataset.key] = value;
+
+                    }
+
+                });
+
+
+            filteredData = filteredData.filter(row => {
+
+                return Object.entries(filters).every(
+                    ([key, value]) => {
+
+                        return String(
+                            row[key] ?? ""
+                        )
+                        .toLowerCase()
+                        .includes(value);
+
+                    }
+                );
+
+            });
+
+        }
+
+
+        filteredData.forEach(row => {
+
+            const tr = document.createElement("tr");
+
+            config.columns.forEach(column => {
+
+                const td = document.createElement("td");
+
+                if(column.type === "actions"){
+
+                    td.classList.add("km-actions-column");
+
+                }
+
+                if(column.type === "details"){
+
+                    td.classList.add("km-details-column");
+
+                }
+
+                td.innerHTML = renderCell(
+                    column,
+                    row
+                );
+
+                tr.appendChild(td);
+
+            });
+
+            tbody.appendChild(tr);
+
+        });
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Primo rendering
+    |--------------------------------------------------------------------------
+    */
+
+    renderFilteredRows();
 
 }

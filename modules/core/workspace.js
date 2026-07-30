@@ -60,9 +60,39 @@ function setNavigationContext(pageId){
 }
 
 /**
- * Aggiorna il contenuto del Workspace.
- */
+* Aggiorna il contenuto del Workspace.
+*/
 
+function setWorkspacePage(pageId){
+
+    setNavigationContext(pageId);
+
+    const page = getPageInfo(pageId);
+
+    const workspace = document.querySelector(".km-workspace");
+
+    switch(pageId){
+
+        case "customers":
+
+            renderCustomersPage();
+
+            return;
+
+        default:
+
+            workspace.innerHTML = `
+
+                <h1>${page.title}</h1>
+
+            `;
+
+    }
+
+}
+
+
+/**
 function setWorkspacePage(pageId){
 
     setNavigationContext(pageId);
@@ -78,7 +108,7 @@ function setWorkspacePage(pageId){
     `;
 
 }
-
+*/
 
 /**
  * Aggiorna il contenuto del Workspace.
