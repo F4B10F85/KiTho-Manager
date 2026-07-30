@@ -47,6 +47,10 @@ function navigate(page) {
         case "orders":
             showOrders();
             break;
+        
+        case "purchasing":
+            showPurchasing();
+            break;
 
         case "production":
             showProduction();

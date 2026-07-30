@@ -49,7 +49,7 @@ const menu = [
 
     {
         id: "orders",
-        title: "Ordini",
+        title: "Ordini Vendita",
         icon: "📦",
 
         children: [
@@ -66,6 +66,12 @@ const menu = [
 
         ]
 
+    },
+
+    {
+        id: "purchasing",
+        title: "Ordini Acquisto",
+        icon: "💶"
     },
 
     {

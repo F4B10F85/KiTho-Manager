@@ -62,6 +62,12 @@ function showOrders() {
 
 }
 
+function showPurchasing() {
+
+    setWorkspacePage("purchasing");
+
+}
+
 function showProduction() {
 
     setWorkspacePage("production");
