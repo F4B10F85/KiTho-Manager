@@ -97,6 +97,24 @@ function showDocumentsTab(tabId){
 
     const content = document.getElementById("km-documents-content");
 
+    document
+        .querySelectorAll(".km-tabs .km-tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+        });
+
+    const activeTab = document.querySelector(
+        `.km-tabs .km-tab[onclick="showDocumentsTab('${tabId}')"]`
+    );
+
+    if(activeTab){
+
+        activeTab.classList.add("active");
+
+    }
+    
     switch(tabId){
 
         case "orders":
