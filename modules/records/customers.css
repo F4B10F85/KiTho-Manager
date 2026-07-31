@@ -157,3 +157,207 @@
 
     white-space: nowrap;
 }
+
+.km-customer-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+#km-customer-content{
+
+    flex:1;
+
+    overflow:auto;
+
+}
+
+.km-company-footer{
+
+    flex-shrink:0;
+
+}
+
+/* ==========================================================
+   PER FASCIA RIASSUNTIVA HEADER _ V02
+   ========================================================== */
+/*
+
+.km-customer-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:6mm;
+
+}
+
+.km-customer-code{
+
+    font-weight:600;
+
+    color:#6B7280;
+
+}
+
+.km-customer-summary{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:6mm;
+
+    margin-bottom:6mm;
+
+}
+
+.km-customer-summary-left{
+
+    display:flex;
+
+    gap:3mm;
+
+    flex:1;
+
+}
+
+.km-summary-card{
+
+    flex:1;
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:2mm;
+
+    padding:3mm;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5mm;
+
+}
+
+.km-summary-card span{
+
+    font-size:3.5mm;
+
+    color:#6B7280;
+
+}
+
+.km-summary-card strong{
+
+    font-size:5mm;
+
+}
+
+.km-customer-summary-right{
+
+    width:60mm;
+
+}
+
+.km-summary-status{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:2mm;
+
+    padding:4mm;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2mm;
+
+}
+
+.km-summary-title{
+
+    font-weight:600;
+
+}
+
+.km-customer-tabs{
+
+    margin-bottom:6mm;
+
+}
+
+.km-customer-content{
+
+    min-height:120mm;
+
+}
+*/
+
+/* ==========================================================
+   FASCIA RIASSUNTIVA CLIENTE _V03
+   ========================================================== */
+
+.km-customer-summary{
+
+    display:flex;
+
+    gap:4mm;
+
+    margin-bottom:5mm;
+
+}
+
+.km-summary-card{
+
+    flex:1;
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:3mm;
+
+    padding:4mm;
+
+    box-shadow:0 1px 4px rgba(0,0,0,.05);
+
+}
+
+.km-summary-title{
+
+    font-size:3.2mm;
+
+    color:#6B7280;
+
+    margin-bottom:2mm;
+
+}
+
+.km-summary-value{
+
+    font-size:5mm;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+.km-summary-highlight .km-summary-value{
+
+    color:#0B5FFF;
+
+}

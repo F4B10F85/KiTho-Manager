@@ -255,7 +255,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                type="text"
+                                value="${company.banks[0].bank}"
+                                oninput="company.banks[0].bank=this.value">
                         </div>
 
                         <div class="km-company-label">
@@ -263,7 +266,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[0].iban}"
+                                oninput="company.banks[0].iban=this.value">
                         </div>
 
                         <div class="km-company-label">
@@ -271,7 +277,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[0].bic}"
+                                oninput="company.banks[0].bic=this.value">
                         </div>
 
                         <div class="km-company-label">
@@ -279,7 +288,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[0].accountHolder}"
+                                oninput="company.banks[0].accountHolder=this.value">
                         </div>
 
                         <div class="km-company-spacer"></div>
@@ -289,7 +301,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[1].bank}"
+                                oninput="company.banks[1].bank=this.value">
                         </div>
 
                         <div class="km-company-label">
@@ -297,7 +312,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[1].iban}"
+                                oninput="company.banks[1].iban=this.value">
                         </div>
 
                         <div class="km-company-label">
@@ -305,7 +323,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[1].bic}"
+                                oninput="company.banks[1].bic=this.value">
                         </div>
 
                         <div class="km-company-label">
@@ -313,7 +334,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input 
+                                type="text"
+                                value="${company.banks[1].accountHolder}"
+                                oninput="company.banks[1].accountHolder=this.value">
                         </div>
 
                     </div>
