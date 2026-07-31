@@ -227,7 +227,8 @@ function renderCustomersPage() {
 
             {
                 title: "",
-                type: "details"
+                type: "details",
+                onClick:"showCustomerDetails"
             },
 
             {

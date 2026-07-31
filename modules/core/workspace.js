@@ -79,6 +79,12 @@ function setWorkspacePage(pageId){
 
             return;
 
+        case "agents":
+
+            renderAgentsPage();
+
+            break;
+
         default:
 
             workspace.innerHTML = `

@@ -26,16 +26,24 @@ function renderCell(column, row){
 
         case "details":
 
-            return `
-                <button
-                    class="km-action-button km-details-button"
-                    title="Visualizza dettagli"
-                    onclick="showCustomerDetails('${row.code}')">
+            if(column.onClick){
 
-                    🔍
+                return `
 
-                </button>
-            `;
+                    <button
+                        class="km-action-button km-details-button"
+                        title="Visualizza dettagli"
+                        onclick="${column.onClick}('${row.code}')">
+
+                        🔍
+
+                    </button>
+
+                `;
+
+            }
+
+            return "";
 
         case "badge":
 
@@ -254,11 +262,21 @@ function createTable(config) {
 
         config.columns.forEach(column => {
 
-            if(column.type === "details"){
+            if(column.type === "details" || column.type === "actions"){
 
                 const filterCell = document.createElement("td");
 
-                filterCell.className = "km-details-column";
+                if(column.type === "details"){
+
+                    filterCell.className = "km-details-column";
+
+                }
+
+                if(column.type === "actions"){
+
+                    filterCell.className = "km-actions-column";
+
+                }
 
                 filterRow.appendChild(filterCell);
 
@@ -267,12 +285,6 @@ function createTable(config) {
             }
 
             const filterCell = document.createElement("td");
-
-            if(column.type === "actions"){
-
-                filterCell.classList.add("km-actions-column");
-
-            }
 
             const input = document.createElement("input");
 
@@ -284,13 +296,11 @@ function createTable(config) {
 
             input.dataset.key = column.key;
 
-
             input.addEventListener("input", function(){
 
                 renderFilteredRows();
 
             });
-
 
             filterCell.appendChild(input);
 
