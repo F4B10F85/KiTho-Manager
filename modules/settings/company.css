@@ -264,3 +264,11 @@
     object-fit:contain;
 
 }
+
+.km-company-spacer{
+
+    grid-column: 1 / -1;
+
+    height: 12mm;
+
+}

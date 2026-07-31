@@ -81,6 +81,26 @@ function renderCell(column, row){
 |--------------------------------------------------------------------------
 */
 
+function renderBadge(value, type = "boolean") {
+
+    switch(type){
+
+        case "boolean":
+
+            return value
+                ? `<span class="km-badge km-badge-success">Attivo</span>`
+                : `<span class="km-badge km-badge-danger">Disattivo</span>`;
+
+        default:
+
+            return `<span class="km-badge km-badge-info">${value}</span>`;
+
+    }
+
+}
+
+
+
 /*
 switch(column.type){
 

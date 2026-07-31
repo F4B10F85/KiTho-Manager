@@ -251,7 +251,7 @@ function showCompanyTab(tabId){
                     <div class="km-company-form">
 
                         <div class="km-company-label">
-                            Banca
+                            Banca 1
                         </div>
 
                         <div class="km-company-field">
@@ -259,7 +259,7 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-label">
-                            IBAN
+                            IBAN 1
                         </div>
 
                         <div class="km-company-field">
@@ -267,7 +267,7 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-label">
-                            BIC / SWIFT
+                            BIC / SWIFT 1
                         </div>
 
                         <div class="km-company-field">
@@ -275,7 +275,41 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-label">
-                            Intestatario conto
+                            Intestatario conto 1
+                        </div>
+
+                        <div class="km-company-field">
+                            <input type="text">
+                        </div>
+
+                        <div class="km-company-spacer"></div>
+
+                        <div class="km-company-label">
+                            Banca 2
+                        </div>
+
+                        <div class="km-company-field">
+                            <input type="text">
+                        </div>
+
+                        <div class="km-company-label">
+                            IBAN 2
+                        </div>
+
+                        <div class="km-company-field">
+                            <input type="text">
+                        </div>
+
+                        <div class="km-company-label">
+                            BIC / SWIFT 2
+                        </div>
+
+                        <div class="km-company-field">
+                            <input type="text">
+                        </div>
+
+                        <div class="km-company-label">
+                            Intestatario conto 2
                         </div>
 
                         <div class="km-company-field">
