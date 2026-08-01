@@ -95,6 +95,34 @@ function renderBadge(value, type = "boolean") {
 
             return `<span class="km-badge km-badge-info">${value}</span>`;
 
+        case "attachmentCategory":
+
+            const classes = {
+
+                "Contratto":"km-badge-contract",
+
+                "Documento":"km-badge-document",
+
+                "Certificazione":"km-badge-certification",
+
+                "Visura":"km-badge-visura",
+
+                "Preventivo":"km-badge-quote",
+
+                "Altro":"km-badge-other"
+
+            };
+
+            return `
+
+                <span class="km-badge ${classes[value] ?? "km-badge-other"}">
+
+                    ${value}
+
+                </span>
+
+            `;
+
     }
 
 }

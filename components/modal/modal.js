@@ -76,8 +76,8 @@ function createModal(config) {
 
         config.buttons.forEach(btn => {
 
-            const button =
-                document.createElement("button");
+    const button =
+        document.createElement("button");
 
             button.textContent = btn.text;
 
@@ -85,6 +85,24 @@ function createModal(config) {
                 btn.primary
                     ? "km-button km-button-primary"
                     : "km-button km-button-secondary";
+
+            if(btn.id){
+
+                button.id = btn.id;
+
+            }
+
+            if(btn.disabled){
+
+                button.disabled = true;
+
+            }
+
+            if(btn.className){
+
+                button.classList.add(btn.className);
+
+            }
 
             button.addEventListener("click", btn.action);
 

@@ -1,0 +1,132 @@
+.km-document-toolbar{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    margin-bottom:15px;
+
+}
+
+.km-badge-contract{
+
+    background:#dbeafe;
+    color:#1d4ed8;
+
+}
+
+.km-badge-document{
+
+    background:#f3f4f6;
+    color:#374151;
+
+}
+
+.km-badge-certification{
+
+    background:#dcfce7;
+    color:#15803d;
+
+}
+
+.km-badge-visura{
+
+    background:#ede9fe;
+    color:#6d28d9;
+
+}
+
+.km-badge-quote{
+
+    background:#ffedd5;
+    color:#c2410c;
+
+}
+
+.km-badge-other{
+
+    background:#e5e7eb;
+    color:#4b5563;
+
+}
+
+/*------------------------
+PER ALLEGARE UN DOCUMENTO
+-------------------------*/
+
+.km-upload-row{
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:center;
+
+}
+
+.km-upload-row input{
+
+    flex:1;
+
+}
+
+.km-upload-selector{
+
+    font-size: 4mm;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:8px 10px;
+
+    border:1px solid var(--km-border);
+
+    border-radius:9px;
+
+    background:#d6f4e0;
+
+    cursor:pointer;
+
+    min-height:36px;
+
+}
+
+.km-upload-selector:hover{
+
+    border-color:#999;
+
+}
+
+.km-company-label-attachments{
+
+    padding-top:5mm;
+
+    font-size: 5mm;
+
+}
+
+.km-company-field-attachment select{
+
+    width:100%;
+
+    height:38px;
+
+    padding:0 12px;
+
+    border:1px solid #d4d4d4;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    font-size:14px;
+
+    outline:none;
+
+    cursor:pointer;
+
+}
+

@@ -48,6 +48,15 @@ function showCustomerTab(tabId, customer = {}){
 
             break;
 
+        case "attachments":
+
+            content.innerHTML =
+                renderCustomerAttachments(customer);
+
+            initCustomerAttachments(customer);
+
+            break;
+
     }
 
 }
@@ -157,6 +166,20 @@ function renderCustomerTabs(showDocuments = true){
                 ">
 
                 Note
+
+            </button> 
+
+            <button
+                class="km-tab"
+                data-tab="attachments"
+                onclick="
+
+                    setActiveCustomerTab('attachments');
+                    showCustomerTab('attachments');
+
+                ">
+
+                Allegati
 
             </button> 
 
