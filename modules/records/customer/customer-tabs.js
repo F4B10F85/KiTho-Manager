@@ -134,11 +134,15 @@ function renderCustomerTabs(showDocuments = true){
 
                 <button
                     class="km-tab"
-                    onclick="showCustomerTab('documents')">
+                    data-tab="documents"
+                    onclick="
+
+                        setActiveCustomerTab('documents');
+                        showCustomerTab('documents');
+
+                    ">
 
                     Documenti
-
-                </button>
 
             ` : ""} 
 
