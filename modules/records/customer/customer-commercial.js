@@ -163,8 +163,8 @@ function renderCustomerCommercial(customer = {}){
                         ${getCompanyBankAccounts().map(account => `
 
                             <option
-                                value="${account.bank}"
-                                ${customer.bank === account.bank ? "selected" : ""}>
+                                value="${account.id}"
+                                ${customer.companyBankId === account.id ? "selected" : ""}>
 
                                 ${account.bank}
 
@@ -193,8 +193,8 @@ function renderCustomerCommercial(customer = {}){
                         ${getCompanyBankAccounts().map(account => `
 
                             <option
-                                value="${account.iban}"
-                                ${customer.iban === account.iban ? "selected" : ""}>
+                                value="${account.id}"
+                                ${customer.companyBankId === account.id ? "selected" : ""}>
 
                                 ${account.iban}
 
@@ -256,38 +256,16 @@ function syncCustomerBank(source){
 
     }
 
-    const accounts = getCompanyBankAccounts();
+    const selectedId =
 
-    if(source === "bank"){
+        source === "bank"
 
-        const account = accounts.find(a =>
+            ? bankSelect.value
 
-            a.bank === bankSelect.value
+            : ibanSelect.value;
 
-        );
+    bankSelect.value = selectedId;
 
-        if(account){
-
-            ibanSelect.value = account.iban;
-
-        }
-
-    }
-
-    if(source === "iban"){
-
-        const account = accounts.find(a =>
-
-            a.iban === ibanSelect.value
-
-        );
-
-        if(account){
-
-            bankSelect.value = account.bank;
-
-        }
-
-    }
+    ibanSelect.value = selectedId;
 
 }
