@@ -178,6 +178,7 @@ function setActiveMenu(pageId) {
 
     const parentMap = {
 
+        items: "records",
         customers: "records",
         suppliers: "records",
         agents: "records",

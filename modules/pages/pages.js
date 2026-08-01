@@ -74,6 +74,12 @@ function showProduction() {
 
 }
 
+function showItems() {
+
+    setWorkspacePage("items");
+
+}
+
 function showDDT() {
 
     setWorkspacePage("ddt");

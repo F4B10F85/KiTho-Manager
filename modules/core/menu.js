@@ -24,6 +24,11 @@ const menu = [
         children: [
 
             {
+                id: "items",
+                title: "Articoli"
+            },
+            
+            {
                 id: "customers",
                 title: "Clienti"
             },
