@@ -1,0 +1,23 @@
+.km-customer-notes{
+
+    width:100%;
+
+    min-height:450px;
+
+    resize:vertical;
+
+    padding:12px;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    border:1px solid #d5d5d5;
+
+    border-radius:6px;
+
+    background:#fff;
+
+}

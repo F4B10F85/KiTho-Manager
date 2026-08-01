@@ -34,6 +34,20 @@ const masterData = {
         "RD 30/60 gg",
         "Rimessa Diretta"
 
+    ],
+
+    vatCodes: [
+
+        "N1",
+        "N2.1",
+        "N2.2",
+        "N3.1",
+        "4%",
+        "5%",
+        "10%",
+        "22%"
+
     ]
 
 };
+

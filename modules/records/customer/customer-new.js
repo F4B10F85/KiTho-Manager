@@ -20,7 +20,7 @@ function showNewCustomer(){
 
             </div>
 
-            ${renderCustomerTabs()}
+            ${renderCustomerTabs(false)}
 
             <div id="km-customer-content"></div>
 

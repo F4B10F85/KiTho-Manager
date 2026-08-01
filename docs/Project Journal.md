@@ -474,3 +474,45 @@ suddividere automaticamente il documento in più pagine.
 Questa è una funzionalità che non va improvvisata. Conviene progettare il renderer con questa logica fin dall'inizio, perché rifarla dopo sarebbe molto più costoso.
 
 Io la considererei una milestone del modulo documenti, non un semplice dettaglio. È una di quelle cose che, una volta implementata bene, verrà riutilizzata identica per ordini, DDT, fatture, packing list e qualsiasi altro documento stampabile.
+
+# Roadmap - Migrazione dati
+
+📌 Roadmap - Migrazione dati
+Obiettivo
+
+Consentire a un'azienda già operativa di iniziare a usare KM senza dover ricreare manualmente il proprio archivio storico.
+
+Formati supportati
+CSV
+Excel (.xlsx)
+Entità importabili
+Clienti
+Fornitori
+Articoli
+Agenti
+Listini
+Ordini
+DDT
+Fatture
+Workflow
+Selezione file
+Anteprima dati
+Mappatura colonne → campi KM
+Validazione
+Importazione
+Report finale (importati, duplicati, errori)
+Caratteristiche
+Nessuna sovrascrittura accidentale.
+Possibilità di aggiornare record esistenti.
+Gestione duplicati.
+Report errori scaricabile.
+Motore unico riutilizzabile per tutte le entità.
+E aggiungo una nota
+
+Secondo me questa funzione sarà anche un ottimo argomento commerciale.
+
+Perché potrai dire:
+
+"Passare a KM richiede pochi minuti: importa il tuo archivio clienti, fornitori e articoli direttamente da Excel e sei operativo."
+
+È una frase che abbassa tantissimo la barriera all'adozione.

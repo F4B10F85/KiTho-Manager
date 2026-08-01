@@ -27,19 +27,24 @@ function showCustomerTab(tabId, customer = {}){
 
         case "tax":
 
-            content.innerHTML = "TAB Fiscale";
+            content.innerHTML = 
+                content.innerHTML = renderCustomerTax(customer);
 
             break;
 
         case "documents":
 
-            content.innerHTML = "TAB Documenti";
+            content.innerHTML =
+                content.innerHTML = renderCustomerDocuments(customer);
+                
+                initCustomerDocuments(customer);
 
             break;
 
         case "notes":
 
-            content.innerHTML = "TAB Note";
+            content.innerHTML =
+                renderCustomerNotes(customer);
 
             break;
 
@@ -63,7 +68,7 @@ function setActiveCustomerTab(tabId){
 
 }
 
-function renderCustomerTabs(){
+function renderCustomerTabs(showDocuments = true){
 
     return `
 
@@ -125,19 +130,17 @@ function renderCustomerTabs(){
 
             </button> 
 
-            <button
-                class="km-tab"
-                data-tab="documents"
-                onclick="
+            ${showDocuments ? `
 
-                    setActiveCustomerTab('documents');
-                    showCustomerTab('documents');
+                <button
+                    class="km-tab"
+                    onclick="showCustomerTab('documents')">
 
-                ">
+                    Documenti
 
-                Documenti
+                </button>
 
-            </button> 
+            ` : ""} 
 
             <button
                 class="km-tab"
