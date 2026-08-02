@@ -1,0 +1,63 @@
+/*
+|--------------------------------------------------------------------------
+| Items
+|--------------------------------------------------------------------------
+*/
+
+.ktb-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    height:100%;
+
+}
+
+.ktb-page-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.ktb-page-header h1{
+
+    margin:0;
+
+    font-size:28px;
+
+    font-weight:600;
+
+    color:var(--ktb-text-primary);
+
+}
+
+.ktb-page-toolbar{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+}
+
+.ktb-page-toolbar .ktb-button{
+
+    min-width:180px;
+
+}
+
+#items-table{
+
+    flex:1;
+
+    overflow:auto;
+
+}

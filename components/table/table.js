@@ -67,9 +67,15 @@ function renderCell(column, row){
 
             return renderActions(row);
 
+        case "status":
+
+            return renderStatus(row[column.key]);
+
         default:
 
             return row[column.key] ?? "";
+
+        
 
     }
 
@@ -472,5 +478,19 @@ function createTable(config) {
     */
 
     renderFilteredRows();
+
+}
+
+function renderStatus(value){
+
+    return `
+
+        <div class="ktb-status">
+
+            <span class="ktb-status-dot ${value ? "active" : "inactive"}"></span>
+
+        </div>
+
+    `;
 
 }

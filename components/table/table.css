@@ -161,3 +161,52 @@
     text-align:center;
 
 }
+
+/*----------------------------------------------------
+SETTAGGIO TASTI ATTIVODISATTIVO IN ANAGRAFICA ARTICOLI
+----------------------------------------------------*/
+
+.ktb-status{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.ktb-status-dot{
+
+    display:inline-block;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+   
+    box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.35),
+    0 1px 2px rgba(0,0,0,.20);
+
+}
+
+.ktb-status-dot.active{
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            #8dff8d 0%,
+            #27c227 40%,
+            #0a8c0a 100%);
+
+}
+
+.ktb-status-dot.inactive{
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            #ff8c8c 0%,
+            #e12626 40%,
+            #980000 100%);
+}

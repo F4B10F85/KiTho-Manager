@@ -516,3 +516,124 @@ Perché potrai dire:
 "Passare a KM richiede pochi minuti: importa il tuo archivio clienti, fornitori e articoli direttamente da Excel e sei operativo."
 
 È una frase che abbassa tantissimo la barriera all'adozione.
+
+# PROMEMORIA PER CONFIGURATORE
+
+Cosa mi serve per capire quanto è riutilizzabile?
+
+Molto meno di quello che pensi.
+
+Mi servono principalmente 4 cose.
+
+1.
+
+La struttura delle cartelle.
+
+Mi basta l'albero.
+
+Tipo
+
+configurator/
+
+components/
+
+services/
+
+data/
+
+...
+2.
+
+Il punto di ingresso.
+
+Cioè:
+
+initConfigurator()
+
+showConfigurator()
+
+renderConfigurator()
+
+
+Qual è la funzione che fa partire tutto.
+
+3.
+
+Come sono strutturati i dati.
+
+Ad esempio
+
+skins[]
+
+sizes[]
+
+decorations[]
+
+...
+
+oppure
+
+JSON.
+
+4.
+
+Come viene generato il codice finale.
+
+Quella funzione mi interessa tantissimo.
+
+Perché secondo me diventerà una funzione "core" di KTB.
+
+Cosa NON mi serve.
+
+Tutto il CSS.
+
+Quello si adatta.
+
+Tutte le pagine.
+
+Tutti gli HTML.
+
+Tutte le icone.
+
+Ti dico già una cosa che farei.
+
+Io estrarrei il configuratore in questo modo.
+
+modules/
+
+configurator/
+
+configurator.js
+
+configurator-render.js
+
+configurator-events.js
+
+configurator-code.js
+
+configurator-data.js
+
+configurator-ui.js
+
+Così il giorno che servirà configurare:
+
+un articolo
+una produzione
+una variante
+un preventivo
+
+richiami semplicemente
+
+openConfigurator()
+
+e lui restituisce
+
+{
+
+    code:
+
+    "KT.CS.XXS.YEL.01.05.00",
+
+    ...
+
+}
