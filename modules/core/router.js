@@ -93,8 +93,8 @@ function navigate(page) {
             break;
         
         case "customers":
-        showCustomers();
-        break;
+            showCustomers();
+            break;
 
         case "suppliers":
             showSuppliers();

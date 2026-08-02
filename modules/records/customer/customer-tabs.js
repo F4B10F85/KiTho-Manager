@@ -53,7 +53,7 @@ function showCustomerTab(tabId, customer = {}){
             content.innerHTML =
                 renderCustomerAttachments(customer);
 
-            initCustomerAttachments(customer);
+                initCustomerAttachments(customer);
 
             break;
 

@@ -73,6 +73,18 @@ function setWorkspacePage(pageId){
 
     switch(pageId){
 
+        case "carriers":
+
+            renderCarriersPage();
+
+            return;
+
+        case "suppliers":
+
+            renderSuppliersPage();
+
+            return;
+
         case "customers":
 
             renderCustomersPage();

@@ -2,11 +2,11 @@
 
 /*
 |--------------------------------------------------------------------------
-| TAB Allegati Cliente
+| TAB Allegati Fornitore
 |--------------------------------------------------------------------------
 */
 
-function renderCustomerAttachments(customer = {}){
+function renderSupplierAttachments(supplier = {}){
 
     return `
 
@@ -24,7 +24,7 @@ function renderCustomerAttachments(customer = {}){
 
             </div>
 
-            <div id="customer-attachments-table"></div>
+            <div id="supplier-attachments-table"></div>
 
         </div>
 
@@ -33,15 +33,15 @@ function renderCustomerAttachments(customer = {}){
 }
 
 
-function initCustomerAttachments(customer){
+function initSupplierAttachments(supplier){
 
     createTable({
 
-        containerId:"customer-attachments-table",
+        containerId:"supplier-attachments-table",
 
         filters:true,
 
-        data:getCustomerAttachments(customer.code),
+        data:getSupplierAttachments(supplier.code),
 
         columns:[
 
@@ -62,7 +62,7 @@ function initCustomerAttachments(customer){
                 title:"Data"
             },
 
-           {
+            {
                 key:"size",
                 title:"Dimensione"
             },
@@ -121,7 +121,7 @@ function initCustomerAttachments(customer){
 |--------------------------------------------------------------------------
 */
 
-function getCustomerAttachments(customerCode){
+function getSupplierAttachments(supplierCode){
 
     return [
 
@@ -142,34 +142,6 @@ function getCustomerAttachments(customerCode){
         {
 
             id:2,
-
-            fileName:"Carta_Identita.pdf",
-
-            category:"Documento",
-
-            uploaded:"12/06/2026",
-
-            size:"540 KB"
-
-        },
-
-        {
-
-            id:3,
-
-            fileName:"Visura_Camerale.pdf",
-
-            category:"Visura",
-
-            uploaded:"03/05/2026",
-
-            size:"1.8 MB"
-
-        },
-
-        {
-
-            id:4,
 
             fileName:"Preventivo_Firmato.pdf",
 

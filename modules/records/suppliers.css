@@ -1,0 +1,364 @@
+/* ==========================================================
+   FILTRI TABELLA CLIENTI
+   ========================================================== */
+
+.km-customers-page .km-table-filter-row td {
+
+    padding: 1mm 1mm;
+
+    background: #F8F9FB;
+
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+
+}
+
+
+.km-customers-page .km-table-filter {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    height: 9mm;
+
+    padding: 0 2.5mm;
+
+    border: 1px solid #D1D5DB;
+
+    border-radius: 1.5mm;
+
+    background: #FFFFFF;
+
+    color: #374151;
+
+    font-family: inherit;
+
+    font-size: 4.2mm;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+
+}
+
+
+.km-customers-page .km-table-filter::placeholder {
+
+    color: #9CA3AF;
+
+    opacity: 1;
+
+}
+
+
+.km-customers-page .km-table-filter:hover {
+
+    border-color: #B8BEC8;
+
+}
+
+
+.km-customers-page .km-table-filter:focus {
+
+    border-color: #0B5FFF;
+
+    box-shadow: 0 0 0 0.6mm rgba(11, 95, 255, 0.10);
+
+    background: #FFFFFF;
+
+}
+
+/* ==========================================================
+   COLONNA DETTAGLI CLIENTE
+   ========================================================== */
+
+.km-customers-page .km-details-column {
+
+    width: 9mm;
+
+    min-width: 9mm;
+
+    max-width: 9mm;
+
+    text-align: center;
+
+    padding: 0;
+
+}
+
+
+.km-customers-page .km-details-button {
+
+    width: 6mm;
+
+    height: 6mm;
+
+    padding: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 3.5mm;
+
+    border-radius: 1.5mm;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+
+}
+
+
+.km-customers-page .km-details-button:hover {
+
+    background: #EEF3FF;
+
+    transform: scale(1.08);
+
+}
+
+
+.km-customers-page .km-details-button:active {
+
+    transform: scale(0.96);
+
+}
+
+.km-customers-page .km-table th:nth-child(2),
+.km-customers-page .km-table td:nth-child(2) {
+
+    width: 22mm;
+    min-width: 22mm;
+
+    white-space: nowrap;
+}
+
+.km-customers-page .km-table {
+
+    width: 100%;
+    table-layout: auto;
+}
+
+.km-customers-page .km-table th,
+.km-customers-page .km-table td {
+
+    white-space: nowrap;
+}
+
+.km-customer-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+#km-customer-content{
+
+    flex:1;
+
+    overflow:auto;
+
+}
+
+.km-company-footer{
+
+    flex-shrink:0;
+
+}
+
+/* ==========================================================
+   PER FASCIA RIASSUNTIVA HEADER _ V02
+   ========================================================== */
+/*
+
+.km-customer-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:6mm;
+
+}
+
+.km-customer-code{
+
+    font-weight:600;
+
+    color:#6B7280;
+
+}
+
+.km-customer-summary{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:6mm;
+
+    margin-bottom:6mm;
+
+}
+
+.km-customer-summary-left{
+
+    display:flex;
+
+    gap:3mm;
+
+    flex:1;
+
+}
+
+.km-summary-card{
+
+    flex:1;
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:2mm;
+
+    padding:3mm;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5mm;
+
+}
+
+.km-summary-card span{
+
+    font-size:3.5mm;
+
+    color:#6B7280;
+
+}
+
+.km-summary-card strong{
+
+    font-size:5mm;
+
+}
+
+.km-customer-summary-right{
+
+    width:60mm;
+
+}
+
+.km-summary-status{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:2mm;
+
+    padding:4mm;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2mm;
+
+}
+
+.km-summary-title{
+
+    font-weight:600;
+
+}
+
+.km-customer-tabs{
+
+    margin-bottom:6mm;
+
+}
+
+.km-customer-content{
+
+    min-height:120mm;
+
+}
+*/
+
+/* ==========================================================
+   FASCIA RIASSUNTIVA CLIENTE _V03
+   ========================================================== */
+
+.km-customer-summary{
+
+    display:flex;
+
+    gap:4mm;
+
+    margin-bottom:5mm;
+
+}
+
+.km-summary-card{
+
+    flex:1;
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:3mm;
+
+    padding:4mm;
+
+    box-shadow:0 1px 4px rgba(0,0,0,.05);
+
+}
+
+.km-summary-title{
+
+    font-size:3.2mm;
+
+    color:#6B7280;
+
+    margin-bottom:2mm;
+
+}
+
+.km-summary-value{
+
+    font-size:5mm;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+.km-summary-highlight .km-summary-value{
+
+    color:#0B5FFF;
+
+}
+
