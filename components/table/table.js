@@ -65,6 +65,12 @@ function renderCell(column, row){
 
         case "actions":
 
+            if(column.renderer && typeof window[column.renderer] === "function"){
+
+                return window[column.renderer](row);
+
+            }
+
             return renderActions(row);
 
         case "status":
@@ -239,14 +245,6 @@ function renderActions(row){
             </button>
 
             <button
-                class="km-action-button km-delete-button"
-                title="Elimina">
-
-                🗑
-
-            </button>
-
-            <button
                 class="km-action-button km-lock-button"
                 title="Blocca">
 
@@ -254,6 +252,14 @@ function renderActions(row){
 
             </button>
 
+            <button
+                class="km-action-button km-delete-button"
+                title="Elimina">
+
+                ❌
+
+            </button>
+    
         </div>
 
     `;
@@ -488,6 +494,52 @@ function renderStatus(value){
         <div class="ktb-status">
 
             <span class="ktb-status-dot ${value ? "active" : "inactive"}"></span>
+
+        </div>
+
+    `;
+
+}
+
+function renderActions_01(row){
+
+    return `
+
+        <div class="km-table-actions">
+
+            <button
+                class="km-action-button km-edit-button"
+                title="Modifica">
+
+                ✏
+
+            </button>
+
+            <button
+                class="km-action-button km-print-button"
+                title="Stampa">
+
+                🖨️
+
+            </button>
+            
+            <button
+                class="km-action-button km-lock-button"
+                title="Blocca">
+
+                🔒
+
+            </button>
+
+            <button
+                class="km-action-button km-delete-button"
+                title="Elimina">
+
+                ❌
+
+            </button>
+
+
 
         </div>
 

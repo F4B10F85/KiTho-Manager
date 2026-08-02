@@ -73,6 +73,18 @@ function setWorkspacePage(pageId){
 
     switch(pageId){
 
+        case "ddt":
+
+            renderDDTPage();
+
+            return;
+        
+        case "invoices":
+
+            renderInvoicePage();
+
+            return;
+
         case "carriers":
 
             renderCarriersPage();

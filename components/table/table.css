@@ -138,19 +138,25 @@
 
 .km-edit-button:hover{
 
-    background:#dff3e2;
+    background:#c8eecd;
+
+}
+
+.km-print-button:hover{
+
+    background:#f1fa99;
 
 }
 
 .km-delete-button:hover{
 
-    background:#fde7e7;
+    background:#f7b5b5;
 
 }
 
 .km-lock-button:hover{
 
-    background:#e8f1ff;
+    background:#c8dbf8;
 
 }
 
