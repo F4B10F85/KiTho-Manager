@@ -26,7 +26,7 @@ function initializeApplication() {
 }
 
 /**
- * Costruisce l'applicazione - utilizzare per login ver.
+ * Costruisce l'applicazione - utilizzare per login vero.
 
 function buildApplication() {
 

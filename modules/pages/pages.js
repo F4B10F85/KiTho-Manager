@@ -49,18 +49,20 @@ function showDashboard() {
     `;
 
 }
-
+/*
 function showNewOrder() {
 
     setWorkspacePage("new-order");
 
 }
-
+*/
+/*
 function showOrders() {
 
     setWorkspacePage("orders");
 
 }
+*/
 
 function showPurchasing() {
 
@@ -516,28 +518,30 @@ function showCarriers() {
     setWorkspacePage("carriers");
 
 }
-
+/*
 function showDDTSales() {
 
     setWorkspacePage("ddt-sales");
 
 }
-
+*/
+/*
 function showDDTGift() {
 
     setWorkspacePage("ddt-gift");
 
 }
-
+*/
+/*
 function showDDTAccountSale() {
 
     setWorkspacePage("ddt-account-sale");
 
 }
+*/
+function showOrders() {
 
-function showOrdersList() {
-
-    setWorkspacePage("orders-list");
+    setWorkspacePage("orders");
 
 }
 

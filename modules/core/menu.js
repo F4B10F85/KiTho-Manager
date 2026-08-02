@@ -56,7 +56,7 @@ const menu = [
         id: "orders",
         title: "Ordini Vendita",
         icon: "📦",
-
+        /*
         children: [
 
             {
@@ -70,7 +70,7 @@ const menu = [
             }
 
         ]
-
+        */
     },
 
     {
@@ -89,7 +89,7 @@ const menu = [
         id: "ddt",
         title: "DDT",
         icon: "🚚",
-
+        /*
         children: [
 
             {
@@ -108,7 +108,7 @@ const menu = [
             }
 
         ]
-
+        */
     },
 
     {
