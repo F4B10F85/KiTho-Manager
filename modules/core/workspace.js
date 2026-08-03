@@ -79,6 +79,18 @@ function setWorkspacePage(pageId){
 
             return;
 
+        case "stock-warehouse":
+
+            renderStockWarehousePage();
+
+            return;
+
+        case "pn-warehouse":
+
+            renderPNWarehousePage();
+
+            return;
+
         case "ddt":
 
             renderDDTPage();
@@ -94,6 +106,18 @@ function setWorkspacePage(pageId){
         case "purchasing-invoices":
 
             renderPurchasingInvoicesPage();
+
+            return;
+
+        case "sales-orders":
+
+            renderSalesOrdersPage();
+
+            return;
+
+        case "purchasing-orders":
+
+            renderPurchasingOrdersPage();
 
             return;
 
@@ -180,3 +204,4 @@ function setWorkspacePage(pageId) {
 
 }
 */
+

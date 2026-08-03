@@ -8,7 +8,7 @@
 |--------------------------------------------------------------------------
 */
 
-const warehouse = [
+const stockwarehouse = [
     {
         code: "KT.CC.M.BLK.02",
         category: "Collare",
@@ -67,7 +67,7 @@ const warehouse = [
 |--------------------------------------------------------------------------
 */
 
-function renderWarehousePage(){
+function renderStockWarehousePage(){
 
     const workspace = document.getElementById("km-workspace");
 
@@ -77,7 +77,7 @@ function renderWarehousePage(){
 
             <div class="km-page-header">
 
-                <h1>Magazzino</h1>
+                <h1>Giacenze di Magazzino</h1>
 
             </div>
 
@@ -85,7 +85,7 @@ function renderWarehousePage(){
 
                 <button
                     class="km-button km-button-primary"
-                    onclick="showNewWarehouse()">
+                    onclick="importStockWarehouse()">
 
                     Carica da Excel
 
@@ -93,9 +93,9 @@ function renderWarehousePage(){
 
                 <button
                     class="km-button km-button"
-                    onclick="showNewWarehouse()">
+                    onclick="exportStockWarehouse()">
 
-                    Estrapola Excel
+                    Estrapola in Excel
 
                 </button>
 
@@ -103,7 +103,7 @@ function renderWarehousePage(){
 
             <div class="km-customers-table-wrapper">
 
-                <div id="km-warehouse-table"></div>
+                <div id="km-stock-stockwarehouse-table"></div>
 
             </div>
 
@@ -113,14 +113,14 @@ function renderWarehousePage(){
 
     createTable({
 
-        containerId: "km-warehouse-table",
+        containerId: "km-stock-stockwarehouse-table",
 
         columns: [
 
             {
                 title:"",
                 type:"details",
-                onClick:"showInvoiceDetails"
+                onClick:"showStockWarehouseDetails"
             },
 
             {
@@ -151,7 +151,7 @@ function renderWarehousePage(){
 
         ],
 
-        data: warehouse,
+        data: stockwarehouse,
 
         filters:true
 

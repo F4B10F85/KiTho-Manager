@@ -60,7 +60,7 @@ const menu = [
         children: [
 
             {
-                id: "sell-order",
+                id: "sales-order",
                 title: "Ordini di Vendita"
             },
 
@@ -72,14 +72,7 @@ const menu = [
         ]
         
     },
-    /*
-    {
-        id: "purchasing",
-        title: "Ordini Acquisto",
-        icon: "💶"
-    },
-    */
-
+ 
     {
         id: "production",
         title: "Produzione",
@@ -135,7 +128,21 @@ const menu = [
     {
         id: "warehouse",
         title: "Magazzino",
-        icon: "📦"
+        icon: "📦",
+        
+        children: [
+
+            {
+                id: "stock-warehouse",
+                title: "Giacenza di Magazzino"
+            },
+
+            {
+                id: "pn-warehouse",
+                title: "Prima Nota di Magazzino"
+            }
+
+        ]
     },
 
     {

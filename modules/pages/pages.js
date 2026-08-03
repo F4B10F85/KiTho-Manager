@@ -49,20 +49,24 @@ function showDashboard() {
     `;
 
 }
-/*
-function showNewOrder() {
 
-    setWorkspacePage("new-order");
-
-}
-*/
-/*
 function showOrders() {
 
     setWorkspacePage("orders");
 
 }
-*/
+
+function showSalesOrders() {
+
+    setWorkspacePage("sales-order");
+
+}
+
+function showPurchasingOrders() {
+
+    setWorkspacePage("purchasing-order");
+
+}
 
 function showProduction() {
 
@@ -103,6 +107,18 @@ function showPurchasingInvoices() {
 function showWarehouse() {
 
     setWorkspacePage("warehouse");
+
+}
+
+function showStockWarehouse() {
+
+    setWorkspacePage("stock-warehouse");
+
+}
+
+function showPNWarehouse() {
+
+    setWorkspacePage("pn-warehouse");
 
 }
 
@@ -545,11 +561,7 @@ function showDDTAccountSale() {
 
 }
 */
-function showOrders() {
 
-    setWorkspacePage("orders");
-
-}
 
 function testModal(){
 

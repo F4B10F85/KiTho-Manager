@@ -104,7 +104,7 @@ function renderSalesInvoicesPage(){
 
             <div class="km-page-header">
 
-                <h1>Fatture</h1>
+                <h1>Fatture di Vendita</h1>
 
             </div>
 
@@ -198,38 +198,3 @@ function renderSalesInvoicesPage(){
 
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| Nuova Fattura
-|--------------------------------------------------------------------------
-*/
-
-function showNewSalesInvoices(){
-
-    alert("Scheda nuova Fattura di Vendita in costruzione.");
-
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Dettaglio Fattura
-|--------------------------------------------------------------------------
-*/
-
-function showSalesInvoicesDetails(invoiceCode){
-
-    const invoice = invoiceList.find(
-        item => item.code === invoiceCode
-    );
-
-    if(!invoice){
-
-        return;
-
-    }
-
-    alert(`Scheda Fattura: ${invoice.companyName}`);
-
-}

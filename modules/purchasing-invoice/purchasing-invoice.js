@@ -126,7 +126,7 @@ function renderPurchasingInvoicesPage(){
 
             <div class="km-page-header">
 
-                <h1>Fatture</h1>
+                <h1>Fatture di Acquisto</h1>
 
             </div>
 
@@ -220,38 +220,3 @@ function renderPurchasingInvoicesPage(){
 
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| Nuova Fattura
-|--------------------------------------------------------------------------
-*/
-
-function showNewPurchasingInvoices(){
-
-    alert("Scheda nuova Fattura di Vendita in costruzione.");
-
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Dettaglio Fattura
-|--------------------------------------------------------------------------
-*/
-
-function showPurchasingInvoicesDetails(invoiceCode){
-
-    const invoice = invoiceList.find(
-        item => item.code === invoiceCode
-    );
-
-    if(!invoice){
-
-        return;
-
-    }
-
-    alert(`Scheda Fattura: ${invoice.companyName}`);
-
-}

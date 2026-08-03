@@ -32,12 +32,12 @@ function navigate(page) {
             showDashboard();
             break;
 
-        case "new-order":
-            showNewOrder();
+        case "sales-orders":
+            showSalesOrder();
             break;
 
-        case "orders-list":
-            showOrdersList();
+        case "purchasing-orders":
+            showPurchasingOrder();
             break;
 
         case "records":
@@ -47,11 +47,15 @@ function navigate(page) {
         case "orders":
             showOrders();
             break;
-        
-        case "purchasing":
-            showPurchasing();
+
+        case "sales-order":
+            showSalesOrders();
             break;
 
+        case "purchasing-order":
+            showPurchasingOrders();
+            break;
+        
         case "production":
             showProduction();
             break;
@@ -74,6 +78,14 @@ function navigate(page) {
 
         case "warehouse":
             showWarehouse();
+            break;
+
+        case "stock-warehouse":
+            showStockWarehouse();
+            break;
+
+        case "pn-warehouse":
+            showPNWarehouse();
             break;
 
         case "statistics":
@@ -131,10 +143,4 @@ function navigate(page) {
     }
 
 }
-
-/*
-|--------------------------------------------------------------------------
-| Evidenzia il menu attivo
-|--------------------------------------------------------------------------
-*/
 
