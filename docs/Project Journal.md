@@ -637,3 +637,13 @@ e lui restituisce
     ...
 
 }
+
+# REGOLA PER CREAZIONE PAGINA / MENU
+
+Quando aggiungi una nuova pagina in KiTho, ormai il rito è sempre questo:
+
+✅ menu.js (o il menu dove compare la voce)
+✅ router.js
+✅ workspace.js (che è quello che ti ha fregato)
+✅ index.html (se c'è un nuovo file JS)
+✅ controllare che i nomi delle funzioni coincidano

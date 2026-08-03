@@ -169,7 +169,7 @@ function renderDDTPage(){
 
             {
                 key: "country",
-                title: "Stato"
+                title: "Nazione"
             },
 
             {

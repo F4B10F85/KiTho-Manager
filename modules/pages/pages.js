@@ -64,12 +64,6 @@ function showOrders() {
 }
 */
 
-function showPurchasing() {
-
-    setWorkspacePage("purchasing");
-
-}
-
 function showProduction() {
 
     setWorkspacePage("production");
@@ -91,6 +85,18 @@ function showDDT() {
 function showInvoices() {
 
     setWorkspacePage("invoices");
+
+}
+
+function showSalesInvoices() {
+
+    setWorkspacePage("sales-invoices");
+
+}
+
+function showPurchasingInvoices() {
+
+    setWorkspacePage("purchasing-invoices");
 
 }
 

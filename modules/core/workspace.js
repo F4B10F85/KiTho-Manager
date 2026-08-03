@@ -85,9 +85,15 @@ function setWorkspacePage(pageId){
 
             return;
         
-        case "invoices":
+        case "sales-invoices":
 
-            renderInvoicePage();
+            renderSalesInvoicesPage();
+
+            return;
+
+        case "purchasing-invoices":
+
+            renderPurchasingInvoicesPage();
 
             return;
 

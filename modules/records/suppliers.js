@@ -162,7 +162,7 @@ function renderSuppliersPage() {
 
             {
                 key: "country",
-                title: "Stato"
+                title: "Nazione"
             },
 
             {

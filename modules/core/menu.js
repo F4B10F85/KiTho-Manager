@@ -54,30 +54,31 @@ const menu = [
 
     {
         id: "orders",
-        title: "Ordini Vendita",
+        title: "Ordini",
         icon: "📦",
-        /*
+        
         children: [
 
             {
-                id: "new-order",
-                title: "Nuovo Ordine"
+                id: "sell-order",
+                title: "Ordini di Vendita"
             },
 
             {
-                id: "orders-list",
-                title: "Elenco Ordini"
+                id: "purchasing-order",
+                title: "Ordini di Acquisto"
             }
 
         ]
-        */
+        
     },
-
+    /*
     {
         id: "purchasing",
         title: "Ordini Acquisto",
         icon: "💶"
     },
+    */
 
     {
         id: "production",
@@ -114,7 +115,21 @@ const menu = [
     {
         id: "invoices",
         title: "Fatture",
-        icon: "🧾"
+        icon: "🧾",
+        
+        children: [
+
+            {
+                id: "sales-invoices",
+                title: "Fatture di Vendita"
+            },
+
+            {
+                id: "purchasing-invoices",
+                title: "Fatture di Acquisto"
+            }
+
+        ]
     },
 
     {

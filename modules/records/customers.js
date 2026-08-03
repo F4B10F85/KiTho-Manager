@@ -258,7 +258,7 @@ function renderCustomersPage() {
 
             {
                 key: "country",
-                title: "Stato"
+                title: "Nazione"
             },
 
             {

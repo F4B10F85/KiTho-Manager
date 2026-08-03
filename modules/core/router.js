@@ -60,20 +60,16 @@ function navigate(page) {
             showDDT();
             break;
 
-        case "ddt-sales":
-            showDDTSales();
-            break;
-
-        case "ddt-gift":
-            showDDTGift();
-            break;
-
-        case "ddt-account-sale":
-            showDDTAccountSale();
-            break;
-
         case "invoices":
             showInvoices();
+            break;
+
+        case "sales-invoices":
+            showSalesInvoices();
+            break;
+
+        case "purchasing-invoices":
+            showPurchasingInvoices();
             break;
 
         case "warehouse":

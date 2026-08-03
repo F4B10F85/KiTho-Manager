@@ -8,7 +8,7 @@
 |--------------------------------------------------------------------------
 */
 
-const invoiceList = [
+const salesinvoiceList = [
     {
         code: "FT0001",
         date: "04/07/2026",
@@ -94,7 +94,7 @@ const invoiceList = [
 |--------------------------------------------------------------------------
 */
 
-function renderInvoicePage(){
+function renderSalesInvoicesPage(){
 
     const workspace = document.getElementById("km-workspace");
 
@@ -112,7 +112,7 @@ function renderInvoicePage(){
 
                 <button
                     class="km-button km-button-primary"
-                    onclick="showNewInvoice()">
+                    onclick="showNewSalesInvoices()">
 
                     + Nuovo
 
@@ -122,7 +122,7 @@ function renderInvoicePage(){
 
             <div class="km-customers-table-wrapper">
 
-                <div id="km-invoice-table"></div>
+                <div id="km-sales-invoices-table"></div>
 
             </div>
 
@@ -132,14 +132,14 @@ function renderInvoicePage(){
 
     createTable({
 
-        containerId: "km-invoice-table",
+        containerId: "km-sales-invoices-table",
 
         columns: [
 
             {
                 title:"",
                 type:"details",
-                onClick:"showInvoiceDetails"
+                onClick:"showSalesInvoicesDetails"
             },
 
             {
@@ -174,7 +174,7 @@ function renderInvoicePage(){
 
             {
                 key:"country",
-                title:"Stato"
+                title:"Nazione"
             },
 
             {
@@ -190,7 +190,7 @@ function renderInvoicePage(){
 
         ],
 
-        data: invoiceList,
+        data: salesinvoiceList,
 
         filters:true
 
@@ -205,9 +205,9 @@ function renderInvoicePage(){
 |--------------------------------------------------------------------------
 */
 
-function showNewInvoice(){
+function showNewSalesInvoices(){
 
-    alert("Scheda nuova Fattura in costruzione.");
+    alert("Scheda nuova Fattura di Vendita in costruzione.");
 
 }
 
@@ -218,7 +218,7 @@ function showNewInvoice(){
 |--------------------------------------------------------------------------
 */
 
-function showInvoiceDetails(invoiceCode){
+function showSalesInvoicesDetails(invoiceCode){
 
     const invoice = invoiceList.find(
         item => item.code === invoiceCode

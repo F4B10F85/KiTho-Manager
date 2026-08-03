@@ -162,7 +162,7 @@ function renderCarriersPage() {
 
             {
                 key: "country",
-                title: "Stato"
+                title: "Nazione"
             },
 
             {
