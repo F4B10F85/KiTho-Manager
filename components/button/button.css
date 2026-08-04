@@ -86,13 +86,15 @@
 
 .km-button-export{
 
-    background:#d8f5d0;
+    background:#ecf4e9ca;
 
     color:#086905;
 
     border-color: #4f6f52;
 
     margin-left: auto;
+
+    transition:0.2s;
 }
 
 .km-button-export:hover{
@@ -100,6 +102,8 @@
     background:#67ca6e;
 
     color:#065b03;
+
+    transform:translateY(-1px);
 
 }
 
@@ -112,6 +116,8 @@
 
     border-color: #4f6f52;
 
+    transition:0.2s;
+
 }
 
 .km-button-import:hover{
@@ -119,6 +125,8 @@
     background:#6fdbc9;
 
     color:#1d1f77;
+
+    transform:translateY(-1px);
 
 }
 
@@ -129,18 +137,62 @@
     display:block;
 
 }
-/*
-.km-button-right{
 
-    margin-right:inherit;
+.km-button-neutral{
+
+    background:#bbe7f45c;
+
+    color:#2c26d3;
+
+    border-color: #2c26d3;
 
 }
-*/
-/*
-.km-customers-toolbar{
 
-    display:inline;
-    display:auto;
-    align-items:center;
+.km-button-warning{
+
+    background:#dbf1f7c1;
+
+    color:#070386;
+
+    border-color: #6157e6;
 }
-*/
+
+.km-button-plus{
+
+    color: white;
+    width:34px;
+    height:34px;
+    padding:0;
+    font-size:18px;
+    background-color: #325e40;
+    border-radius:8px;
+    border:1px solid transparent;
+    font-size:20px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.20s;
+    
+}
+.km-button-plus:hover{
+    transform:translateY(+1px);
+}
+
+.km-button-delete{
+
+    color: white;
+    width:34px;
+    height:34px;
+    padding:0;
+    font-size:18px;
+    background-color: #325e40;
+    border-radius:8px;
+    border:1px solid transparent;
+    font-size:20px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.20s;
+    
+}
+.km-button-delete:hover{
+    transform:translateY(+1px);
+}

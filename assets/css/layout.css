@@ -232,3 +232,30 @@ RUOLI
     text-align:center;
 
 }
+
+.km-input{
+
+    width:100%;
+    height:36px;
+    padding:0 10px;
+    border:1px solid #d5d5d5;
+    border-radius:6px;
+    background:#fff;
+    font-size:14px;
+    outline:none;
+    transition:.20s;
+}
+
+.km-input:focus{
+
+    border-color:#4b7a58;
+
+    box-shadow:0 0 0 3px rgba(75,122,88,.12);
+
+}
+
+.km-date-input{
+
+    width:180px;
+
+}

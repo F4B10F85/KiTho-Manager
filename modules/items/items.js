@@ -121,7 +121,7 @@ function renderItemsPage() {
 
                 <button
                     class="km-button km-button-primary"
-                    onclick="showNewCarrier()">
+                    onclick="showNewItem()">
 
                     + Nuovo
 
