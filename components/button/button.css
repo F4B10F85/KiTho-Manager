@@ -83,3 +83,64 @@
     background:#b44141;
 
 }
+
+.km-button-export{
+
+    background:#d8f5d0;
+
+    color:#086905;
+
+    border-color: #4f6f52;
+
+    margin-left: auto;
+}
+
+.km-button-export:hover{
+
+    background:#67ca6e;
+
+    color:#065b03;
+
+}
+
+
+.km-button-import{
+
+    background:#d8f5d0;
+
+    color:#078603;
+
+    border-color: #4f6f52;
+
+}
+
+.km-button-import:hover{
+
+    background:#6fdbc9;
+
+    color:#1d1f77;
+
+}
+
+.km-button-icon{
+
+    width:18px;
+    height:18px;
+    display:block;
+
+}
+/*
+.km-button-right{
+
+    margin-right:inherit;
+
+}
+*/
+/*
+.km-customers-toolbar{
+
+    display:inline;
+    display:auto;
+    align-items:center;
+}
+*/

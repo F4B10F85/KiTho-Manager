@@ -84,19 +84,27 @@ function renderStockWarehousePage(){
             <div class="km-customers-toolbar">
 
                 <button
-                    class="km-button km-button-primary"
-                    onclick="importStockWarehouse()">
+                    class="km-button km-button-export"
+                    onclick="exportStockWarehouse()">
 
-                    Carica da Excel
-
+                     Esporta
+                    <img
+                        src="assets/images/excel.png"
+                        class="km-button-icon"
+                        alt="Excel">
+                    
                 </button>
 
                 <button
-                    class="km-button km-button"
-                    onclick="exportStockWarehouse()">
+                    class="km-button km-button-import"
+                    onclick="importStockWarehouse()">
 
-                    Estrapola in Excel
-
+                    Importa
+                    <img
+                        src="assets/images/excel.png"
+                        class="km-button-icon"
+                        alt="Excel">
+                    
                 </button>
 
             </div>

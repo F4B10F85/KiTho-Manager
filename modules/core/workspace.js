@@ -73,6 +73,12 @@ function setWorkspacePage(pageId){
 
     switch(pageId){
 
+        case "items":
+
+            renderItemsPage();
+
+            return;
+
         case "warehouse":
 
             renderWarehousePage();

@@ -134,12 +134,12 @@ const menu = [
 
             {
                 id: "stock-warehouse",
-                title: "Giacenza di Magazzino"
+                title: "Giacenze"
             },
 
             {
                 id: "pn-warehouse",
-                title: "Prima Nota di Magazzino"
+                title: "Prima Nota"
             }
 
         ]
