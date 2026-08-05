@@ -104,15 +104,25 @@ function createTransferRow(){
 
     row.innerHTML = `
 
-        <input
-            class="km-input km-item-code"
-            placeholder="Codice articolo">
+        <div class="km-item-selector">
+
+            <input
+                class="km-input km-item-code"
+                placeholder="Codice articolo"
+                oninput="searchItems(this)"
+                onkeydown="navigateItemResults(event)">
+
+            <div class="km-item-results"></div>
+
+        </div>
 
         <input
-            class="km-input"
+            class="km-input km-item-description"
             readonly>
 
-        <select class="km-input km-from-warehouse">
+        <select 
+            class="km-input km-from-warehouse">
+            onchange="updateTransferStock(this)">
 
             <option value="">Seleziona...</option>
             <option>Magazzino Principale</option>
@@ -147,7 +157,7 @@ function createTransferRow(){
 
         <button
             class="km-button-delete"
-            onclick="this.parentElement.remove()">
+            onclick="removeMovementRow(this)">
 
             -
 

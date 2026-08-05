@@ -2,13 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
-| Warehouse Load
+| Warehouse Adjustment
 |--------------------------------------------------------------------------
-| Carico di Magazzino
+| Rettifica Inventariale
 |--------------------------------------------------------------------------
 */
 
-function renderWarehouseLoadPage(){
+function renderWarehouseAdjustmentPage(){
 
     const workspace = document.getElementById("km-workspace");
 
@@ -26,7 +26,7 @@ function renderWarehouseLoadPage(){
 
             </button>
 
-            <h1>Carico di Magazzino</h1>
+            <h1>Rettifica Inventariale</h1>
 
         </div>
 
@@ -41,21 +41,23 @@ function renderWarehouseLoadPage(){
 
         </div>
 
-        <div class="km-movement-table">
+        <div class="km-adjustment-table">
 
-            <div class="km-movement-head">
+            <div class="km-adjustment-head">
 
                 <span>Codice</span>
                 <span>Descrizione</span>
                 <span>Magazzino</span>
-                <span>Q.tà</span>
-                <span>Note</span>
+                <span>Giacenza</span>
+                <span>Nuova</span>
+                <span>Δ</span>
+                <span>Motivo</span>
                 <span></span>
                 <span></span>
 
             </div>
 
-            <div id="km-movement-body"></div>
+            <div id="km-adjustment-body"></div>
 
         </div>
 
@@ -82,17 +84,17 @@ function renderWarehouseLoadPage(){
 
     `;
 
-    createMovementRow();
+    createAdjustmentRow();
 
 }
 
-function createMovementRow(){
+function createAdjustmentRow(){
 
-    const body = document.getElementById("km-movement-body");
+    const body = document.getElementById("km-adjustment-body");
 
     const row = document.createElement("div");
 
-    row.className = "km-movement-row";
+    row.className = "km-adjustment-row";
 
     row.innerHTML = `
 
@@ -112,8 +114,9 @@ function createMovementRow(){
             class="km-input km-item-description"
             readonly>
 
-        <select class="km-input">
+        <select class="km-input km-warehouse">
 
+            <option value="">Seleziona...</option>
             <option>Magazzino Principale</option>
             <option>Produzione</option>
             <option>Difettoso</option>
@@ -121,14 +124,24 @@ function createMovementRow(){
         </select>
 
         <input
+            class="km-input km-current-stock"
+            readonly
+            value="0">
+
+        <input
             type="number"
-            class="km-input">
+            class="km-input km-new-stock"
+            oninput="updateAdjustmentDifference(this)">
+
+        <input
+            class="km-input km-difference"
+            readonly>
 
         <input class="km-input">
 
         <button
             class="km-button-plus"
-            onclick="createMovementRow()">
+            onclick="createAdjustmentRow()">
 
             +
 
@@ -145,5 +158,24 @@ function createMovementRow(){
     `;
 
     body.appendChild(row);
+
+}
+
+function updateAdjustmentDifference(input){
+
+    const row = input.closest(".km-adjustment-row");
+
+    const currentStock = Number(
+        row.querySelector(".km-current-stock").value
+    );
+
+    const newStock = Number(input.value);
+
+    const difference = newStock - currentStock;
+
+    const differenceField = row.querySelector(".km-difference");
+
+    differenceField.value =
+        difference > 0 ? "+" + difference : difference;
 
 }

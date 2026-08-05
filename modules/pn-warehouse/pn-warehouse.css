@@ -199,3 +199,98 @@
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.km-adjustment-head{
+    
+    display:grid;
+
+    grid-template-columns:
+        170px      /* Codice */
+        1fr        /* Descrizione */
+        180px      /* Magazzino */
+        80px       /* Giacenza */
+        80px       /* Nuova */
+        70px       /* Delta */
+        420px      /* Motivo */
+        40px       /* + */
+        40px;      /* - */
+    
+    gap:12px;
+
+    align-items:center;
+
+    font-weight:600;
+
+    padding:0 0 10px 0;
+
+    border-bottom:1px solid #dcdcdc;
+
+    margin-bottom:10px;
+    
+}
+
+.km-adjustment-row{
+    
+    display:grid;
+
+    grid-template-columns:
+        170px      /* Codice */
+        1fr        /* Descrizione */
+        180px      /* Magazzino */
+        80px       /* Giacenza */
+        80px       /* Nuova */
+        70px       /* Delta */
+        420px      /* Motivo */
+        40px       /* + */
+        40px;      /* - */
+    
+    gap:12px;
+
+    align-items:center;
+
+    margin-bottom:10px;
+    
+}
+
+.km-adjustment-table{
+
+    width:100%;
+    margin-top:25px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

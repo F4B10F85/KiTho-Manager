@@ -199,32 +199,32 @@ function showWarehouseMovementModal(){
             <div class="km-modal-body">
 
                 <button
-                    class="km-button km-button-warning km-modal-button"
-                    onclick="startWarehouseMovement('load')">
+                    class="km-button km-button-export km-modal-button"
+                    onclick="startWarehouseMovement(renderWarehouseLoadPage)">
 
                     ⬆️ Carico
 
                 </button>
 
                 <button
-                    class="km-button km-button-warning km-modal-button"
-                    onclick="startWarehouseMovement('unload')">
+                    class="km-button km-button-export km-modal-button"
+                    onclick="startWarehouseMovement(renderWarehouseUnloadPage)">
 
                     ⬇️ Scarico
 
                 </button>
 
                 <button
-                    class="km-button km-button-warning km-modal-button"
-                    onclick="startWarehouseMovement('transfer')">
+                    class="km-button km-button-export km-modal-button"
+                    onclick="startWarehouseMovement(renderWarehouseTransferPage)">
 
                     🔄 Trasferimento
 
                 </button>
 
                 <button
-                    class="km-button km-button-warning km-modal-button"
-                    onclick="startWarehouseMovement('transfer')">
+                    class="km-button km-button-export km-modal-button"
+                    onclick="startWarehouseMovement(renderWarehouseAdjustmentPage)">
 
                     *️⃣​​ Rettifica Inventariale
 
@@ -264,83 +264,15 @@ function closeWarehouseMovementModal(){
 
 }
 
-function startWarehouseMovement(type){
+function startWarehouseMovement(pageFunction){
 
     closeWarehouseMovementModal();
 
-    switch(type){
-
-        case "load":
-            renderWarehouseLoadPage();
-            break;
-
-        case "unload":
-            renderWarehouseUnloadPage();
-            break;
-
-        case "transfer":
-            renderWarehouseTransferPage();
-            break;
-
-        case "inventory":
-            renderWarehouseInventoryPage();
-            break;
-
-    }
+    pageFunction();
 
 }
 
-function renderWarehouseMovementPage(type){
 
-    const workspace = document.getElementById("km-workspace");
-
-    let title = "";
-
-    switch(type){
-
-        case "load":
-
-            title = "Carico di Magazzino";
-
-            break;
-
-        case "unload":
-
-            title = "Scarico di Magazzino";
-
-            break;
-
-        case "transfer":
-
-            title = "Trasferimento di Magazzino";
-
-            break;
-
-    }
-
-    workspace.innerHTML = `
-
-        <div class="km-page">
-
-            <div class="km-page-header">
-
-                <button
-                    class="km-button km-button-neutral"
-                    onclick="goBack('pn-warehouse')">
-
-                    ← Indietro
-
-                </button>
-
-                <h1>${title}</h1>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
 
 function goBack(previousPage){
 

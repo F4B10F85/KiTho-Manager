@@ -56,6 +56,18 @@ function renderAgentsPage(){
 
                 </button>
 
+                <button
+                    class="km-button km-button-export"
+                    onclick="exportStockWarehouse()">
+
+                        Esporta
+                    <img
+                        src="assets/images/excel.png"
+                        class="km-button-icon"
+                        alt="Excel">
+                    
+                </button>
+
             </div>
 
             <div id="km-agents-table"></div>

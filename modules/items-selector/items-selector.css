@@ -1,0 +1,73 @@
+.km-item-selector{
+
+    position:relative;
+
+}
+
+.km-item-results{
+
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+
+    background:#fff;
+
+    border:1px solid #d8d8d8;
+
+    border-radius:6px;
+
+    max-height:220px;
+
+    overflow-y:auto;
+
+    z-index:999;
+
+    display:none;
+
+}
+
+.km-item-result{
+
+    padding:8px 10px;
+
+    cursor:pointer;
+
+    border-bottom:1px solid #efefef;
+
+}
+
+.km-item-result:hover{
+
+    background:#f4f4f4;
+
+}
+
+.km-item-result-code{
+
+    font-weight:500;
+
+}
+
+.km-item-result{
+
+    font-family:Ebrima;
+    font-size:13px;
+    font-weight:500;
+    padding:8px 10px;
+    cursor:pointer;
+
+}
+
+.km-item-selected{
+
+    background:#cce8d6;
+    color:#1f2d24;
+
+}
+
+.km-item-result{
+
+    transition:background .15s,color .15s;
+
+}

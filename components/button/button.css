@@ -110,11 +110,13 @@
 
 .km-button-import{
 
-    background:#d8f5d0;
+    background:#ecf4e9ca;
 
-    color:#078603;
+    color:#086905;
 
     border-color: #4f6f52;
+
+    margin-left: auto;
 
     transition:0.2s;
 
@@ -122,9 +124,9 @@
 
 .km-button-import:hover{
 
-    background:#6fdbc9;
+    background:#fef60b;
 
-    color:#1d1f77;
+    color:#065b03;;
 
     transform:translateY(-1px);
 
