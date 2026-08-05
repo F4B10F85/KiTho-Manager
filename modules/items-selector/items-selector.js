@@ -131,7 +131,7 @@ function closeItemResults(){
 
 function removeMovementRow(button){
 
-    const body = button.closest(".km-movement-table").querySelector("[id$='-body']");
+    const body = button.parentElement.parentElement;
 
     if(body.children.length === 1){
 
