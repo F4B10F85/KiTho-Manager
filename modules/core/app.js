@@ -21,6 +21,14 @@ function initializeApplication() {
     console.log("      KiTho Business v0.1.0");
     console.log("========================================");
 
+    /*
+    |--------------------------------------------------------------------------
+    | Eventi globali
+    |--------------------------------------------------------------------------
+    */
+
+    document.addEventListener("click", handleGlobalClick);
+
     buildApplication();
 
 }
@@ -67,5 +75,27 @@ function buildApplication() {
     }
 
     showLogin();
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Eventi Globali
+|--------------------------------------------------------------------------
+*/
+
+function handleGlobalClick(event){
+
+    const exportButton = event.target.closest(".km-button-excel");
+
+    if(exportButton){
+
+        exportCurrentPage();
+
+        return;
+
+    }
 
 }

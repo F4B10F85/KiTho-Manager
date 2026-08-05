@@ -277,6 +277,10 @@ function createTable(config) {
 
     table.className = "km-table";
 
+    table.dataset.containerId = config.containerId;
+
+    table.dataset.exportName = config.exportName || config.containerId;
+
     /*
     |--------------------------------------------------------------------------
     | Header

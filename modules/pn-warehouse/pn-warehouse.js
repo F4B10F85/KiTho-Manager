@@ -88,7 +88,7 @@ function renderPNWarehousePage(){
                 </button>
 
                 <button
-                    class="km-button km-button-export">
+                    class="km-button km-button-export km-button-excel">
 
                     Esporta
                     <img

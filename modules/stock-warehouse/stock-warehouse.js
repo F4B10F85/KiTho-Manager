@@ -84,8 +84,8 @@ function renderStockWarehousePage(){
             <div class="km-customers-toolbar">
 
                 <button
-                    class="km-button km-button-export"
-                    onclick="exportStockWarehouse()">
+                    class="km-button km-button-export km-button-excel"
+                    >
 
                      Esporta
                     <img
