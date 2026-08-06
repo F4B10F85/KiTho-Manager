@@ -115,6 +115,10 @@ function navigate(page) {
         case "carriers":
             showCarriers();
             break;
+        
+        case "bom":
+            showBOM();
+            break;
 
         case "company":
             showCompany();

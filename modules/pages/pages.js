@@ -525,6 +525,12 @@ function showCarriers() {
     setWorkspacePage("carriers");
 
 }
+
+function showBOM(){
+
+    setWorkspacePage("bom");
+
+}
 /*
 function showDDTSales() {
 

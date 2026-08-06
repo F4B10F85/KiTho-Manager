@@ -647,3 +647,25 @@ Quando aggiungi una nuova pagina in KiTho, ormai il rito è sempre questo:
 ✅ workspace.js (che è quello che ti ha fregato)
 ✅ index.html (se c'è un nuovo file JS)
 ✅ controllare che i nomi delle funzioni coincidano
+
+
+# POPUP COMPONENTE DISTINTA BASE
+
+nel file items-selector.js c'è questo alert:
+
+if(duplicate){
+
+        alert("Questo componente è già presente nella distinta.");
+
+        input.value = "";
+
+        closeItemResults();
+
+        input.focus();
+
+        return;
+
+    }
+
+
+sarà da sostituire con il popup classico

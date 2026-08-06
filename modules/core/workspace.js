@@ -127,6 +127,12 @@ function setWorkspacePage(pageId){
 
             return;
 
+        case "bom":
+
+            renderBOMPage();
+
+            return;
+
         case "carriers":
 
             renderCarriersPage();

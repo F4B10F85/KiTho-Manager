@@ -46,6 +46,11 @@ const menu = [
             {
                 id: "carriers",
                 title: "Trasportatori"
+            },
+
+            {
+                id: "bom",
+                title: "Distinta Base"
             }
 
         ]

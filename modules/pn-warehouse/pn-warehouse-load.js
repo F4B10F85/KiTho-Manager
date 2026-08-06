@@ -147,3 +147,25 @@ function createMovementRow(){
     body.appendChild(row);
 
 }
+
+function removeMovementRow(button){
+
+    const row = button.closest(".km-movement-row");
+
+    if(!row){
+
+        return;
+
+    }
+
+    const body = row.parentElement;
+
+    if(body.children.length === 1){
+
+        return;
+
+    }
+
+    row.remove();
+
+}

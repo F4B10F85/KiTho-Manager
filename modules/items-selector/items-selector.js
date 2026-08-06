@@ -13,7 +13,7 @@ let currentResults = [];
 let currentContainer = null;
 let currentInput = null;
 
-function searchItems(input){
+function searchItems(input, source = items){
 
     const query = input.value.trim().toLowerCase();
 
@@ -89,6 +89,65 @@ function selectItem(item, input){
 
     const row = input.parentElement.parentElement;
 
+    const isComponentRow = input.closest(".km-bom-row");
+
+    if(isComponentRow){
+
+        const parentCode =
+            document.getElementById("km-bom-parent-code").value;
+
+        if(item.code === parentCode){
+
+            alert("L'articolo padre non può essere inserito come componente della propria distinta.");
+
+            input.value = "";
+
+            closeItemResults();
+
+            input.focus();
+
+            return;
+
+        }
+
+    }
+
+    const allRows = document.querySelectorAll(".km-bom-row");
+
+    let duplicate = false;
+
+    allRows.forEach(r => {
+
+        if(r === row){
+
+            return;
+
+        }
+
+        const code = r.querySelector(".km-item-code")?.value;
+
+        if(code === item.code){
+
+            duplicate = true;
+
+        }
+
+    });
+
+    if(duplicate){
+
+        alert("Questo componente è già presente nella distinta.");
+
+        input.value = "";
+
+        closeItemResults();
+
+        input.focus();
+
+        return;
+
+    }
+
     if(row.querySelector(".km-item-code")){
 
         row.querySelector(".km-item-code").value = item.code;
@@ -101,6 +160,12 @@ function selectItem(item, input){
 
     }
 
+    if(row.querySelector(".km-unit")){
+
+        row.querySelector(".km-unit").value = item.unit || "";
+
+    }
+
     const stockField = row.querySelector(".km-current-stock");
 
     if(stockField){
@@ -109,7 +174,17 @@ function selectItem(item, input){
 
     }
 
+    const bomBody = document.getElementById("km-bom-body");
+
+    if(bomBody && bomBody.children.length === 0){
+
+        createBOMRow();
+
+    }
+
     closeItemResults();
+
+    markBOMAsModified();
 
 }
 
@@ -129,9 +204,9 @@ function closeItemResults(){
 
 }
 
-function removeMovementRow(button){
+function removeBOMRow(button){
 
-    const body = button.parentElement.parentElement;
+    const body = document.getElementById("km-bom-body");
 
     if(body.children.length === 1){
 
@@ -139,7 +214,17 @@ function removeMovementRow(button){
 
     }
 
-    button.parentElement.remove();
+    const row = button.closest(".km-bom-row");
+
+    if(row){
+
+        row.remove();
+
+    }
+
+    refreshBOMButtons();
+
+    markBOMAsModified();
 
 }
 
