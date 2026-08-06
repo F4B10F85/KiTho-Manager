@@ -1,23 +1,447 @@
+/* ==========================================================
+   DASHBOARD
+========================================================== */
+
 .km-dashboard{
 
     width:100%;
-    height:100%;
+    min-height:100%;
 
-    display:flex;
+    position:relative;
 
-    justify-content:center;
-    align-items:center;
+    overflow:hidden;
+
+    padding:35px 45px;
+
+    box-sizing:border-box;
 
 }
 
 .km-dashboard-logo{
 
-    width:60%;
+    position:absolute;
 
-    opacity:.40;
+    width:80%;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    opacity:.15;
+
+    pointer-events:none;
 
     user-select:none;
 
-    pointer-events:none;
+    z-index:0;
+
+}
+
+.km-dashboard-content{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.km-dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+.km-dashboard-header h1{
+
+    margin:0;
+
+    font-size:34px;
+
+    font-weight:600;
+
+}
+
+#km-dashboard-date{
+
+    display:block;
+
+    margin-top:6px;
+
+    color:#7b7b7b;
+
+    font-size:14px;
+
+}
+
+/* ==========================================================
+   KPI
+========================================================== */
+
+.km-dashboard-kpi{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.km-kpi-card{
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(1px);
+
+    -webkit-backdrop-filter:blur(1px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    border-radius:14px;
+
+    padding:22px;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.10);
+
+    transition:.25s;
+
+}
+
+.km-kpi-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.km-kpi-title{
+
+    display:block;
+
+    color:#7c7c7c;
+
+    font-size:13px;
+
+    margin-bottom:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.km-kpi-card h2{
+
+    margin:0;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#1d1d1d;
+
+}
+
+/* ==========================================================
+   PANNELLI CENTRALI
+========================================================== */
+
+.km-dashboard-panels{
+
+    display:grid;
+
+    grid-template-columns:360px 1fr;
+
+    gap:20px;
+
+}
+
+.km-dashboard-panel{
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(6px);
+
+    -webkit-backdrop-filter:blur(6px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    border-radius:14px;
+
+    padding:24px;
+
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+
+    min-height:260px;
+
+}
+
+.km-dashboard-panel h3{
+
+    margin:0 0 18px 0;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+.km-dashboard-panel ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.km-dashboard-panel li{
+
+    padding:12px 0;
+
+    border-bottom:1px solid #ececec;
+
+    font-size:15px;
+
+}
+
+.km-dashboard-panel li:last-child{
+
+    border-bottom:none;
+
+}
+
+.km-dashboard-chart-placeholder{
+
+    width:100%;
+
+    height:190px;
+
+    border:2px dashed #d8d8d8;
+
+    border-radius:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#999;
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+   SHORTCUT
+========================================================== */
+
+.km-dashboard-shortcuts{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.km-dashboard-shortcut{
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(6px);
+
+    -webkit-backdrop-filter:blur(6px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:25px;
+
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    font-size:36px;
+
+}
+
+.km-dashboard-shortcut:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+
+}
+
+.km-dashboard-shortcut span{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1200px){
+
+    .km-dashboard-kpi{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .km-dashboard-panels{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .km-dashboard-shortcuts{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .km-dashboard{
+
+        padding:20px;
+
+    }
+
+    .km-dashboard-kpi{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .km-dashboard-shortcuts{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .km-dashboard-header h1{
+
+        font-size:28px;
+
+    }
+
+}
+
+/* ==========================================================
+   GRAFICO
+========================================================== */
+
+.km-dashboard-chart{
+
+    height:190px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+}
+
+.km-chart-bars{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:14px;
+
+}
+
+.km-bar{
+
+    flex:1;
+
+    background:linear-gradient(180deg,#56a8ff,#2d74d7);
+
+    border-radius:8px 8px 0 0;
+
+    position:relative;
+
+    transition:.25s;
+
+}
+
+.km-bar:hover{
+
+    filter:brightness(1.08);
+
+}
+
+.km-bar span{
+
+    position:absolute;
+
+    bottom:-28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:12px;
+
+    color:#666;
+
+}
+
+.km-current{
+
+    background:linear-gradient(180deg,#4fd57f,#2aa65b);
 
 }

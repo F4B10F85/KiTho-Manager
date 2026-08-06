@@ -29,24 +29,9 @@
 */
 
 
-function showDashboard() {
+function showDashboard(){
 
-    setNavigationContext("dashboard");
-
-    const workspace = document.getElementById("km-workspace");
-
-    workspace.innerHTML = `
-
-        <div class="km-dashboard">
-
-            <img
-                src="assets/images/logo_KTB.png"
-                class="km-dashboard-logo"
-                alt="KiTho Business">
-
-        </div>
-
-    `;
+    renderDashboard();
 
 }
 

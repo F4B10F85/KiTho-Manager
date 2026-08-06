@@ -140,6 +140,18 @@ function renderPurchasingInvoicesPage(){
 
                 </button>
 
+                <button
+                    class="km-button km-button-export km-button-excel"
+                    >
+
+                        Esporta
+                    <img
+                        src="assets/images/excel.png"
+                        class="km-button-icon"
+                        alt="Excel">
+                    
+                </button>
+
             </div>
 
             <div class="km-customers-table-wrapper">
