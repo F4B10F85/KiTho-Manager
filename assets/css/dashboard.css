@@ -5,11 +5,10 @@
 .km-dashboard{
 
     width:100%;
-    min-height:100%;
+    height: auto;
 
     position:relative;
 
-    overflow:hidden;
 
     padding:35px 45px;
 
