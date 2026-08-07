@@ -127,28 +127,3 @@ function showNewAgent(){
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| Scheda agente
-|--------------------------------------------------------------------------
-*/
-
-function showAgentDetails(agentCode){
-
-    const agent = agents.find(
-        agent => agent.code === agentCode
-    );
-
-    if(!agent){
-
-        return;
-
-    }
-
-    alert(
-
-        `Scheda agente: ${agent.name}`
-
-    );
-
-}

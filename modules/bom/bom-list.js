@@ -208,6 +208,60 @@ function showBOM() {
 
     `;
 
+    const bomTableData = itemsBOM.map(item => {
+
+        const savedBOM = boms.find(
+            bom => bom.article.code === item.code
+        );
+
+        if(savedBOM){
+
+            return {
+
+                ...item,
+
+                components: savedBOM.componentsCount,
+
+                lastEdit: savedBOM.lastEdit
+
+            };
+
+        }
+
+        return item;
+
+    });
+
+    boms.forEach(bom => {
+
+        const exists = bomTableData.some(
+            item => item.code === bom.article.code
+        );
+
+        if(!exists){
+
+            bomTableData.push({
+
+                code: bom.article.code,
+
+                description: bom.article.description,
+
+                family: bom.article.family || "—",
+
+                revision: "R01",
+
+                components: bom.componentsCount,
+
+                lastEdit: bom.lastEdit,
+
+                active: true
+
+            });
+
+        }
+
+    });
+
 
     createTable({
 
@@ -253,7 +307,7 @@ function showBOM() {
         
         ],
 
-        data: itemsBOM,
+        data: bomTableData,
 
         filters: true
 

@@ -10,9 +10,13 @@ let bomModified = true;
 |--------------------------------------------------------------------------
 */
 
-function showNewBOM(){
+function showNewBOM(bom = null){
 
     const workspace = document.querySelector(".km-workspace");
+
+    window.editingBOMCode = bom
+        ? bom.article.code
+        : null;
 
     workspace.innerHTML = `
 
@@ -20,7 +24,7 @@ function showNewBOM(){
 
             <div class="km-page-header">
 
-                <h1>Nuova Distinta Base</h1>
+                <h1>${bom ? "Modifica Distinta Base" : "Nuova Distinta Base"}</h1>
 
             </div>
 
@@ -79,7 +83,7 @@ function showNewBOM(){
 
                 <button
                     class="km-button km-button-danger"
-                    onclick="goBack('bom')">
+                    onclick="closeBOM()">
 
                     Chiudi
 
@@ -90,6 +94,105 @@ function showNewBOM(){
         </div>
 
     `;
+
+    if(bom){
+
+        window.editingBOMCode = bom.article.code;
+
+        loadExistingBOM(bom);
+
+    }else{
+
+        window.editingBOMCode = null;
+
+    }
+
+}
+
+function showItemsBOMDetails(code){
+
+    const bom = boms.find(
+        item => item.article.code === code
+    );
+
+    if(!bom){
+
+        alert("Distinta Base non trovata.");
+
+        return;
+
+    }
+
+    showNewBOM(bom);
+
+}
+
+function loadExistingBOM(bom){
+
+    const parentCode =
+        document.querySelector(
+            ".km-bom-header .km-item-code"
+        );
+
+    const parentDescription =
+        document.querySelector(
+            ".km-bom-header .km-item-description"
+        );
+
+    if(parentCode){
+
+        parentCode.value =
+            bom.article.code;
+
+    }
+
+    if(parentDescription){
+
+        parentDescription.value =
+            bom.article.description;
+
+    }
+
+    const body =
+        document.getElementById("km-bom-body");
+
+    if(!body){
+
+        return;
+
+    }
+
+    body.innerHTML = "";
+
+    bom.components.forEach(component => {
+
+        createBOMRow();
+
+        const row =
+            body.lastElementChild;
+
+        row.querySelector(".km-item-code").value =
+            component.code;
+
+        row.querySelector(".km-item-description").value =
+            component.description;
+
+        row.querySelector(".km-unit").value =
+            component.unit;
+
+        row.querySelector('input[type="number"]').value =
+            component.quantity;
+
+        row.querySelector(".km-item-type").value =
+            component.type;
+
+    });
+
+    refreshBOMButtons();
+
+    bomModified = false;
+
+    updateSaveButton(true);
 
 }
 
@@ -256,13 +359,24 @@ function validateBOM(){
 
     }
 
+    const parentCode =
+        document.querySelector(".km-bom-header .km-item-code").value;
+
+    const parentDescription =
+        document.querySelector(".km-bom-header .km-item-description").value;
+
+    const parentItem =
+        items.find(item => item.code === parentCode);
+
     const bom = {
 
         article:{
 
-            code: document.querySelector(".km-bom-header .km-item-code").value,
+            code: parentCode,
 
-            description: document.querySelector(".km-bom-header .km-item-description").value
+            description: parentDescription,
+
+            family: parentItem?.family || ""
 
         },
 
@@ -290,7 +404,27 @@ function validateBOM(){
 
     });
 
-    boms.push(bom);
+    bom.componentsCount = bom.components.length;
+
+    bom.lastEdit = new Date().toLocaleDateString("it-IT");
+
+    if(window.editingBOMCode){
+
+        const index = boms.findIndex(
+            item => item.article.code === window.editingBOMCode
+        );
+
+        if(index !== -1){
+
+            boms[index] = bom;
+
+        }
+
+    }else{
+
+        boms.push(bom);
+
+    }
 
     console.table(boms);
 
@@ -337,5 +471,25 @@ function markBOMAsModified(){
         updateSaveButton(false);
 
     }
+
+}
+
+function closeBOM(){
+
+    if(bomModified){
+
+        const confirmClose = confirm(
+            "Ci sono modifiche non salvate. Vuoi chiudere comunque?"
+        );
+
+        if(!confirmClose){
+
+            return;
+
+        }
+
+    }
+
+    navigate("bom");
 
 }
