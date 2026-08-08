@@ -177,7 +177,7 @@ function showBOM() {
 
                 <button
                     class="km-button km-button-primary"
-                    onclick="showNewBOM()">
+                    onclick="showCreateBOMChoice()">
 
                     + Crea
 

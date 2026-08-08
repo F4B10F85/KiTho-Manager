@@ -6,6 +6,340 @@ let bomModified = true;
 
 /*
 |--------------------------------------------------------------------------
+| Bivio iniziale
+|--------------------------------------------------------------------------
+*/
+
+
+function showCreateBOMChoice(){
+
+    const existing = document.getElementById("km-bom-choice");
+
+    if(existing){
+
+        existing.remove();
+
+    }
+
+    const overlay = document.createElement("div");
+
+    overlay.id = "km-bom-choice";
+
+    overlay.className = "km-modal-overlay";
+
+    overlay.innerHTML = `
+
+        <div class="km-modal">
+
+            <h2>Crea Distinta Base</h2>
+
+            <p>
+                Come vuoi creare la nuova distinta?
+            </p>
+
+            <div class="km-modal-actions">
+
+                <button
+                    class="km-button km-button-zero-to-new"
+                    onclick="showNewBOM(); closeBOMChoice()">
+
+                    <span>👤</span> Nuova da zero
+
+                </button>
+
+                <button
+                    class="km-button km-button-zero-to-new"
+                    onclick="showBOMInheritance(); closeBOMChoice()">
+
+                    <span>👤👤​</span> Eredita da esistente
+
+                </button>
+
+                <button
+                    class="km-button km-button-danger"
+                    onclick="closeBOMChoice()">
+
+                    Annulla
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(overlay);
+
+}
+
+function closeBOMChoice(){
+
+    const overlay =
+        document.getElementById("km-bom-choice");
+
+    if(overlay){
+
+        overlay.remove();
+
+    }
+
+}
+
+function showBOMInheritance(){
+
+    const workspace =
+        document.querySelector(".km-workspace");
+
+    workspace.innerHTML = `
+
+        <div class="km-bom-page">
+
+            <div class="km-page-header">
+
+                <h1>Eredita Distinta Base</h1>
+
+            </div>
+
+            <div class="km-bom-header">
+
+                <div class="km-item-selector">
+
+                    <input
+                        id="km-bom-inherit-source"
+                        class="km-input km-item-code"
+                        placeholder="Cerca distinta da ereditare"
+                        oninput="searchBOMForInheritance(this)"
+                        onkeydown="navigateBOMInheritanceResults(event)">
+
+                    <div
+                        class="km-item-results"
+                        id="km-bom-inherit-results">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="km-form-footer">
+
+                <button
+                    id="km-bom-inherit-confirm"
+                    class="km-button km-button-primary"
+                    onclick="inheritSelectedBOM()"
+                    disabled>
+
+                    Eredita
+
+                </button>
+
+                <button
+                    class="km-button km-button-danger"
+                    onclick="goBack('bom')">
+
+                    Chiudi
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+    window.bomInheritanceSource = null;
+
+}
+
+function searchBOMForInheritance(input){
+
+    const query =
+        input.value.trim().toLowerCase();
+
+    const container =
+        document.getElementById(
+            "km-bom-inherit-results"
+        );
+
+    if(!container){
+
+        return;
+
+    }
+
+    if(query.length < 2){
+
+        container.innerHTML = "";
+
+        container.style.display = "none";
+
+        return;
+
+    }
+
+    const results = boms.filter(bom => {
+
+        return (
+            bom.article.code
+                .toLowerCase()
+                .includes(query)
+            ||
+            bom.article.description
+                .toLowerCase()
+                .includes(query)
+        );
+
+    });
+
+    container.innerHTML = "";
+
+    if(results.length === 0){
+
+        container.style.display = "none";
+
+        return;
+
+    }
+
+    results.forEach(bom => {
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "km-item-result";
+
+        row.innerHTML = `
+
+            <span class="km-item-result-code">
+
+                ${bom.article.code}
+
+            </span>
+
+            <span>
+
+                ${bom.article.description}
+
+            </span>
+
+        `;
+
+        row.onclick = () => {
+
+            selectBOMForInheritance(bom);
+
+        };
+
+        container.appendChild(row);
+
+    });
+
+    container.style.display = "block";
+
+}
+
+function selectBOMForInheritance(bom){
+
+    window.bomInheritanceSource = bom;
+
+    const input =
+        document.getElementById(
+            "km-bom-inherit-source"
+        );
+
+    const results =
+        document.getElementById(
+            "km-bom-inherit-results"
+        );
+
+    if(input){
+
+        input.value =
+            bom.article.code;
+
+    }
+
+    if(results){
+
+        results.innerHTML = "";
+
+        results.style.display = "none";
+
+    }
+
+    const button =
+        document.getElementById(
+            "km-bom-inherit-confirm"
+        );
+
+    if(button){
+
+        button.disabled = false;
+
+    }
+
+}
+
+function inheritSelectedBOM(){
+
+    const source =
+        window.bomInheritanceSource;
+
+    if(!source){
+
+        alert("Seleziona una distinta da ereditare.");
+
+        return;
+
+    }
+
+    const inheritedBOM =
+        JSON.parse(
+            JSON.stringify(source)
+        );
+
+    inheritedBOM.article = {
+
+        code: "",
+
+        description: "",
+
+        family: ""
+
+    };
+
+    inheritedBOM.components =
+        inheritedBOM.components.map(component => ({
+
+            code: component.code,
+
+            description: component.description,
+
+            unit: component.unit,
+
+            quantity: component.quantity,
+
+            type: component.type
+
+        }));
+
+    inheritedBOM.componentsCount =
+        inheritedBOM.components.length;
+
+    inheritedBOM.lastEdit =
+        new Date().toLocaleDateString("it-IT");
+
+    window.editingBOMCode = null;
+
+    window.bomInheritanceSource = null;
+
+    showNewBOM(inheritedBOM);
+
+}
+
+/*
+|--------------------------------------------------------------------------
 | Nuova Distinta Base
 |--------------------------------------------------------------------------
 */
@@ -101,9 +435,21 @@ function showNewBOM(bom = null){
 
         loadExistingBOM(bom);
 
+        if(!bom.article.code){
+
+            window.bomInheritanceMode = true;
+
+        }else{
+
+            window.bomInheritanceMode = false;
+
+        }
+
     }else{
 
         window.editingBOMCode = null;
+
+        window.bomInheritanceMode = false;
 
     }
 
@@ -408,10 +754,44 @@ function validateBOM(){
 
     bom.lastEdit = new Date().toLocaleDateString("it-IT");
 
-    if(window.editingBOMCode){
+    if(window.bomInheritanceMode){
+
+        const inheritedParent =
+            window.bomInheritanceParent;
+
+        if(!inheritedParent){
+
+            alert(
+                "Seleziona l'articolo padre della nuova distinta."
+            );
+
+            return false;
+
+        }
+
+        bom.article.code =
+            inheritedParent.code;
+
+        bom.article.description =
+            inheritedParent.description;
+
+        bom.article.family =
+            inheritedParent.family;
+
+        bom.componentsCount =
+            bom.components.length;
+
+        bom.lastEdit =
+            new Date().toLocaleDateString("it-IT");
+
+        boms.push(bom);
+
+    }else if(window.editingBOMCode){
 
         const index = boms.findIndex(
-            item => item.article.code === window.editingBOMCode
+            item =>
+                item.article.code ===
+                window.editingBOMCode
         );
 
         if(index !== -1){

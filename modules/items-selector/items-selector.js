@@ -87,6 +87,39 @@ function selectItem(item, input){
 
     input.value = item.code;
 
+    const isParentField =
+        input.id === "km-bom-parent-code";
+
+    if(isParentField){
+
+        const parentDescription =
+            document.getElementById(
+                "km-bom-parent-description"
+            );
+
+        if(parentDescription){
+
+            parentDescription.value =
+                item.description;
+
+        }
+
+        if(window.bomInheritanceMode){
+
+            window.bomInheritanceParent = {
+
+                code: item.code,
+
+                description: item.description,
+
+                family: item.family || ""
+
+            };
+
+        }
+
+    }
+
     const row = input.parentElement.parentElement;
 
     const isComponentRow = input.closest(".km-bom-row");
