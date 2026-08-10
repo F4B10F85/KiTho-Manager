@@ -32,6 +32,10 @@ body {
 
     width: 260px;
 
+    min-width:260px;
+
+    flex-shrink:0;
+
     background: var(--km-sidebar-bg);
 
     color: var(--km-sidebar-text);
@@ -124,6 +128,8 @@ body {
 
     flex:1;
 
+    min-width:0;
+
     display:flex;
 
     flex-direction:column;
@@ -131,6 +137,8 @@ body {
     padding:30px;
 
     overflow-y:auto;
+
+    overflow-x:auto;
 
     scrollbar-gutter:stable;
 

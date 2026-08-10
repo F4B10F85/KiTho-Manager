@@ -453,7 +453,9 @@
 
 .km-calendar-panel{
 
-    min-height:260px;
+    height:300px;
+
+    box-sizing:border-box;
 
 }
 
@@ -552,6 +554,8 @@
     grid-template-columns:repeat(7,1fr);
 
     gap:4px;
+
+    min-height:151px;
 
 }
 

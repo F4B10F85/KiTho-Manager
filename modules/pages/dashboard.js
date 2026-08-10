@@ -6,6 +6,133 @@
 |--------------------------------------------------------------------------
 */
 
+let calendarDate = new Date();
+
+function renderCalendar(){
+
+    const monthElement =
+        document.getElementById("km-calendar-month");
+
+    const daysElement =
+        document.getElementById("km-calendar-days");
+
+    if(!monthElement || !daysElement){
+
+        return;
+
+    }
+
+    const year =
+        calendarDate.getFullYear();
+
+    const month =
+        calendarDate.getMonth();
+
+    const monthName =
+        calendarDate.toLocaleDateString(
+            "it-IT",
+            {
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+    monthElement.textContent =
+        monthName;
+
+    daysElement.innerHTML = "";
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        );
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+    let startingDay =
+        firstDay.getDay();
+
+    startingDay =
+        startingDay === 0
+            ? 6
+            : startingDay - 1;
+
+    for(
+        let i = 0;
+        i < startingDay;
+        i++
+    ){
+
+        const emptyDay =
+            document.createElement("div");
+
+        emptyDay.className =
+            "km-calendar-day km-calendar-empty";
+
+        daysElement.appendChild(
+            emptyDay
+        );
+
+    }
+
+    const today =
+        new Date();
+
+    for(
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ){
+
+        const dayElement =
+            document.createElement("div");
+
+        dayElement.className =
+            "km-calendar-day";
+
+        dayElement.textContent =
+            day;
+
+        if(
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ){
+
+            dayElement.classList.add(
+                "km-calendar-today"
+            );
+
+        }
+
+        daysElement.appendChild(
+            dayElement
+        );
+
+    }
+
+}
+
+function changeCalendarMonth(direction){
+
+    calendarDate.setMonth(
+        calendarDate.getMonth() + direction
+    );
+
+    renderCalendar();
+
+}
+
+
+
+
 function renderDashboard(){
 
     setNavigationContext("dashboard");
@@ -277,108 +404,6 @@ function renderDashboard(){
         }
 
     );
-
-    let calendarDate = new Date();
-
-    function renderCalendar(){
-
-        const monthElement =
-            document.getElementById("km-calendar-month");
-
-        const daysElement =
-            document.getElementById("km-calendar-days");
-
-        if(!monthElement || !daysElement){
-
-            return;
-
-        }
-
-        const year = calendarDate.getFullYear();
-
-        const month = calendarDate.getMonth();
-
-        const monthName = calendarDate.toLocaleDateString(
-            "it-IT",
-            {
-                month:"long",
-                year:"numeric"
-            }
-        );
-
-        monthElement.textContent = monthName;
-
-        daysElement.innerHTML = "";
-
-        const firstDay = new Date(
-            year,
-            month,
-            1
-        );
-
-        const daysInMonth = new Date(
-            year,
-            month + 1,
-            0
-        ).getDate();
-
-        let startingDay = firstDay.getDay();
-
-        /*
-            JavaScript:
-            Domenica = 0
-            Lunedì = 1
-
-            Noi vogliamo:
-            Lunedì = 0
-            Domenica = 6
-        */
-
-        startingDay = startingDay === 0
-            ? 6
-            : startingDay - 1;
-
-        for(let i = 0; i < startingDay; i++){
-
-            const emptyDay =
-                document.createElement("div");
-
-            emptyDay.className =
-                "km-calendar-day km-calendar-empty";
-
-            daysElement.appendChild(emptyDay);
-
-        }
-
-        const today = new Date();
-
-        for(let day = 1; day <= daysInMonth; day++){
-
-            const dayElement =
-                document.createElement("div");
-
-            dayElement.className =
-                "km-calendar-day";
-
-            dayElement.textContent = day;
-
-            if(
-                day === today.getDate() &&
-                month === today.getMonth() &&
-                year === today.getFullYear()
-            ){
-
-                dayElement.classList.add(
-                    "km-calendar-today"
-                );
-
-            }
-
-            daysElement.appendChild(dayElement);
-
-        }
-
-    }
 
     renderCalendar();
 
