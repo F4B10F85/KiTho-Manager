@@ -88,9 +88,13 @@ function buildApplication() {
 
 function handleGlobalClick(event){
 
-    const exportButton = event.target.closest(".km-button-excel");
+    const exportButton =
+        event.target.closest(".km-button-excel");
 
-    if(exportButton){
+    if(
+        exportButton &&
+        exportButton.id !== "km-import-excel"
+    ){
 
         exportCurrentPage();
 

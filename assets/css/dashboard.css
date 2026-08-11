@@ -595,7 +595,7 @@
 
 .km-calendar-day.km-calendar-today{
 
-    background:#2d74d7;
+    background:#1b660e;
 
     color:white;
 
@@ -606,5 +606,53 @@
 .km-calendar-day.km-calendar-today:hover{
 
     background:#2565bd;
+
+}
+
+.km-kpi-filter-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.km-kpi-select{
+
+    width:100%;
+
+    margin-top:8px;
+
+    padding:8px 34px 8px 10px;
+
+    border:1px solid #d9dde2;
+
+    border-radius:7px;
+
+    background:#f8f9fa;
+
+    color:#333;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    outline:none;
+
+    appearance:auto;
+
+}
+
+.km-kpi-select:focus{
+
+    border-color:#2d74d7;
+
+    box-shadow:0 0 0 2px rgba(45,116,215,.12);
 
 }

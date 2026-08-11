@@ -61,3 +61,294 @@
     overflow:auto;
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| ANTEPRIMA TABELLA DATI DA IMPORTAZIONE EXCEL
+|--------------------------------------------------------------------------
+*/
+
+.km-import-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+
+}
+
+.km-import-modal{
+
+    width:min(900px,90vw);
+
+    max-height:80vh;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 12px 40px rgba(0,0,0,.2);
+
+    padding:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.km-import-header h2{
+
+    margin:0 0 4px 0;
+
+    font-size:20px;
+
+    color:#333;
+
+}
+
+.km-import-header span{
+
+    font-size:12px;
+
+    color:#888;
+
+}
+
+.km-import-info{
+
+    display:flex;
+
+    gap:24px;
+
+    font-size:13px;
+
+    color:#555;
+
+}
+
+.km-import-preview{
+
+    overflow:auto;
+
+    max-height:420px;
+
+    border:1px solid #e1e4e8;
+
+    border-radius:8px;
+
+}
+
+.km-import-preview table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    font-size:12px;
+
+}
+
+.km-import-preview th{
+
+    position:sticky;
+
+    top:0;
+
+    background:#f5f6f8;
+
+    font-weight:600;
+
+    color:#555;
+
+}
+
+.km-import-preview th,
+.km-import-preview td{
+
+    padding:8px 10px;
+
+    border-bottom:1px solid #eee;
+
+    text-align:left;
+
+    white-space:nowrap;
+
+}
+
+.km-import-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| MAPPATURA COLONNE IMPORTAZIONE EXCEL
+|--------------------------------------------------------------------------
+*/
+
+.km-import-mapping{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    max-height:420px;
+
+    overflow-y:auto;
+
+}
+
+.km-import-mapping-row{
+
+    display:grid;
+
+    grid-template-columns:180px 1fr;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eee;
+
+    font-size:13px;
+
+}
+
+.km-import-required{
+
+    color:#d93025;
+
+    margin-left:3px;
+
+}
+
+.km-import-column{
+
+    width:100%;
+
+    padding:8px 10px;
+
+    border:1px solid #d9dde2;
+
+    border-radius:7px;
+
+    background:#f8f9fa;
+
+    color:#333;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    outline:none;
+
+}
+
+.km-import-column:focus{
+
+    border-color:#2d74d7;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(45,116,215,.12);
+
+}
+
+/*
+|----------------------------------------------------------------------------------
+| CONTROLLO SULLA PRESENZA DI ARTICOLI NUOVI O GIA' PRESENTI DURANTE L'IMPORTAZIONE
+|----------------------------------------------------------------------------------
+*/
+
+.km-import-summary{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+.km-import-summary-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 14px;
+
+    border-radius:8px;
+
+    background:#f7f8fa;
+
+}
+
+
+.km-import-summary-icon{
+
+    font-size:18px;
+
+    width:24px;
+
+    text-align:center;
+
+}
+
+
+.km-import-summary-row div{
+
+    display:flex;
+
+    align-items:baseline;
+
+    gap:6px;
+
+}
+
+
+.km-import-summary-row strong{
+
+    font-size:17px;
+
+    color:#333;
+
+}
+
+
+.km-import-summary-row span:not(
+    .km-import-summary-icon
+){
+
+    font-size:13px;
+
+    color:#666;
+
+}
+

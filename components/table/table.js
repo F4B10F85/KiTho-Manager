@@ -480,6 +480,14 @@ function createTable(config) {
 
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Refresh esterno
+    |--------------------------------------------------------------------------
+    */
+
+    container._kmRefreshTable = renderFilteredRows;
+
 
     /*
     |--------------------------------------------------------------------------
@@ -488,6 +496,29 @@ function createTable(config) {
     */
 
     renderFilteredRows();
+
+}
+
+function refreshTable(containerId){
+
+    const container =
+        document.getElementById(containerId);
+
+    if(!container){
+
+        return;
+
+    }
+
+
+    if(
+        typeof container._kmRefreshTable ===
+        "function"
+    ){
+
+        container._kmRefreshTable();
+
+    }
 
 }
 

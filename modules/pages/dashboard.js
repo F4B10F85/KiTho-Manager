@@ -165,13 +165,54 @@ function renderDashboard(){
 
             <div class="km-dashboard-kpi">
 
-                <div class="km-kpi-card">
+                <div class="km-kpi-card km-kpi-filter-card">
 
                     <span class="km-kpi-title">
-                        Fatturato Mese
+                        Periodo Fatturato
                     </span>
 
-                    <h2>€ 17.350</h2>
+                    <select
+                        id="km-revenue-period"
+                        class="km-kpi-select"
+                        onchange="updateDashboardRevenue()">
+
+                        <option value="today">
+                            Fatturato oggi
+                        </option>
+
+                        <option value="week">
+                            Fatturato settimana
+                        </option>
+
+                        <option value="month" selected>
+                            Fatturato mese
+                        </option>
+
+                        <option value="sixMonths">
+                            Fatturato 6 mesi
+                        </option>
+
+                        <option value="year">
+                            Fatturato anno
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="km-kpi-card">
+
+                    <span
+                        id="km-revenue-title"
+                        class="km-kpi-title">
+
+                        Fatturato Mese
+
+                    </span>
+
+                    <h2 id="km-revenue-value">
+                        € 17.350
+                    </h2>
 
                 </div>
 
@@ -184,17 +225,7 @@ function renderDashboard(){
                     <h2>12</h2>
 
                 </div>
-
-                <div class="km-kpi-card">
-
-                    <span class="km-kpi-title">
-                        Produzioni Attive
-                    </span>
-
-                    <h2>8</h2>
-
-                </div>
-
+               
                 <div class="km-kpi-card">
 
                     <span class="km-kpi-title">
@@ -406,5 +437,41 @@ function renderDashboard(){
     );
 
     renderCalendar();
+
+}
+
+function updateDashboardRevenue(){
+
+    const select =
+        document.getElementById("km-revenue-period");
+
+    const title =
+        document.getElementById("km-revenue-title");
+
+    const value =
+        document.getElementById("km-revenue-value");
+
+    if(!select || !title || !value){
+
+        return;
+
+    }
+
+    const labels = {
+
+        today: "Fatturato Oggi",
+
+        week: "Fatturato Settimana",
+
+        month: "Fatturato Mese",
+
+        sixMonths: "Fatturato 6 Mesi",
+
+        year: "Fatturato Anno"
+
+    };
+
+    title.textContent =
+        labels[select.value];
 
 }
