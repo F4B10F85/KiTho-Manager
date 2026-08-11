@@ -174,6 +174,11 @@ const menu = [
             },
 
             {
+                id: "warehouses",
+                title: "Magazzini"
+            },
+
+            {
                 id: "documents",
                 title: "Documenti"
             },

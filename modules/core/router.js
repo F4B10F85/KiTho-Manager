@@ -132,6 +132,10 @@ function navigate(page) {
             showDocuments();
             break;
 
+        case "warehouses":
+            showWarehouses();
+            break;
+
         case "appearance":
             showAppearance();
             break;

@@ -125,6 +125,12 @@ function showCompany(){
 
 }
 
+function showWarehouses() {
+
+    renderWarehousesPage();
+
+}
+
 function showAccess() {
 
     const workspace = document.getElementById("km-workspace");
@@ -531,27 +537,7 @@ function showBOM(){
     setWorkspacePage("bom");
 
 }
-/*
-function showDDTSales() {
 
-    setWorkspacePage("ddt-sales");
-
-}
-*/
-/*
-function showDDTGift() {
-
-    setWorkspacePage("ddt-gift");
-
-}
-*/
-/*
-function showDDTAccountSale() {
-
-    setWorkspacePage("ddt-account-sale");
-
-}
-*/
 
 
 function testModal(){

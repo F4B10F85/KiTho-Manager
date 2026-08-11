@@ -157,6 +157,12 @@ function setWorkspacePage(pageId){
 
             break;
 
+        case "warehouses":
+
+            renderWarehousesPage();
+
+            break;
+
         default:
 
             workspace.innerHTML = `

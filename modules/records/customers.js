@@ -220,7 +220,6 @@ function renderCustomersPage() {
             
             </div>
 
-
             <div class="km-customers-table-wrapper">
 
                 <div id="km-customers-table"></div>
