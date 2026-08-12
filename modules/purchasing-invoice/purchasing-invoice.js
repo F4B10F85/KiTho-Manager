@@ -10,7 +10,7 @@
 
 const purchasinginvoiceList = [
     {
-        code: "FT089",
+        number: "FT089",
         date: "01/08/2026",
         companyName: "Conceria Rossi",
         address: "Via Roma 10",
@@ -21,7 +21,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT58A-99",
+        number: "FT58A-99",
         date: "02/08/2026",
         companyName: "Leather World",
         address: "Via Milano 5",
@@ -32,7 +32,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT01-26",
+        number: "FT01-26",
         date: "03/08/2026",
         companyName: "Ricamificio Italia",
         address: "Via Torino 18",
@@ -43,7 +43,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT9987-01-26",
+        number: "FT9987-01-26",
         date: "05/08/2026",
         companyName: "Crystal Fashion",
         address: "Via Venezia 22",
@@ -54,7 +54,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT012",
+        number: "FT012",
         date: "06/08/2026",
         companyName: "Packaging Group",
         address: "Via Bologna 3",
@@ -65,7 +65,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT-ERRE-13/26",
+        number: "FT-ERRE-13/26",
         date: "08/08/2026",
         companyName: "Conceria Rossi",
         address: "Via Roma 10",
@@ -76,7 +76,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT0014",
+        number: "FT0014",
         date: "10/08/2026",
         companyName: "Leather World",
         address: "Via Milano 5",
@@ -87,7 +87,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT0000587",
+        number: "FT0000587",
         date: "11/08/2026",
         companyName: "Crystal Fashion",
         address: "Via Venezia 22",
@@ -98,7 +98,7 @@ const purchasinginvoiceList = [
     },
 
     {
-        code: "FT00-021-26",
+        number: "FT00-021-26",
         date: "13/08/2026",
         companyName: "Packaging Group",
         address: "Via Bologna 3",
@@ -177,8 +177,8 @@ function renderPurchasingInvoicesPage(){
             },
 
             {
-                key:"code",
-                title:"Codice"
+                key:"number",
+                title:"Numero"
             },
 
             {
@@ -214,12 +214,6 @@ function renderPurchasingInvoicesPage(){
             {
                 key:"amount",
                 title:"Totale"
-            },
-
-            {
-                title:"Azioni",
-                type:"actions",
-                renderer: "renderActions_01"
             }
 
         ],

@@ -10,7 +10,7 @@
 
 const salesinvoiceList = [
     {
-        code: "FT0001",
+        number: "FT0001",
         date: "04/07/2026",
         companyName: "Rossi S.r.l.",
         address: "Via Roma 15",
@@ -21,7 +21,7 @@ const salesinvoiceList = [
     },
 
     {
-        code: "FT0002",
+        number: "FT0002",
         date: "14/07/2026",
         companyName: "Boutique World",
         address: "Hundstrasse 10",
@@ -32,7 +32,7 @@ const salesinvoiceList = [
     },
 
     {
-        code: "FT0003",
+        number: "FT0003",
         date: "15/07/2026",
         companyName: "Nuovi Cuccioli",
         address: "Via Roma 1",
@@ -43,7 +43,7 @@ const salesinvoiceList = [
     },
 
     {
-        code: "FT0004",
+        number: "FT0004",
         date: "17/07/2026",
         companyName: "Luxury Pet",
         address: "Rue de la Republique 4",
@@ -54,7 +54,7 @@ const salesinvoiceList = [
     },
 
     {
-        code: "FT0005",
+        number: "FT0005",
         date: "20/07/2026",
         companyName: "Marco Fumagalli",
         address: "Via Milano 6",
@@ -65,7 +65,7 @@ const salesinvoiceList = [
     },
 
     {
-        code: "FT0006",
+        number: "FT0006",
         date: "28/07/2026",
         companyName: "Equitazione e non solo",
         address: "Via Cavour 7",
@@ -76,7 +76,7 @@ const salesinvoiceList = [
     },
 
     {
-        code: "FT0007",
+        number: "FT0007",
         date: "29/07/2026",
         companyName: "Perrito",
         address: "Calle Alemania",
@@ -134,7 +134,7 @@ function renderSalesInvoicesPage(){
 
             <div class="km-customers-table-wrapper">
 
-                <div id="km-sales-invoices-table"></div>
+                <div id="km-purchasing-invoices-table"></div>
 
             </div>
 
@@ -144,7 +144,7 @@ function renderSalesInvoicesPage(){
 
     createTable({
 
-        containerId: "km-sales-invoices-table",
+        containerId: "km-purchasing-invoices-table",
 
         columns: [
 
@@ -155,8 +155,8 @@ function renderSalesInvoicesPage(){
             },
 
             {
-                key:"code",
-                title:"Codice"
+                key:"number",
+                title:"Numero"
             },
 
             {
@@ -197,7 +197,7 @@ function renderSalesInvoicesPage(){
             {
                 title:"Azioni",
                 type:"actions",
-                renderer: "renderActions_01"
+                renderer: "renderActions"
             }
 
         ],

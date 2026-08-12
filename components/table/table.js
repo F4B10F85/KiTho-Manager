@@ -245,10 +245,10 @@ function renderActions(row){
             </button>
 
             <button
-                class="km-action-button km-lock-button"
-                title="Blocca">
+                class="km-action-button km-print-button"
+                title="Stampa">
 
-                🔒
+                🖨️
 
             </button>
 
@@ -256,7 +256,7 @@ function renderActions(row){
                 class="km-action-button km-delete-button"
                 title="Elimina">
 
-                ❌
+                🗑️​
 
             </button>
     
