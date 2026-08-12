@@ -668,36 +668,70 @@ function refreshBOMButtons(){
     });
 
 }
-
 function validateBOM(){
 
-    const rows = document.querySelectorAll(".km-bom-row");
+    const rows =
+        document.querySelectorAll(".km-bom-row");
+
+
+    /* ==========================================================
+       VALIDAZIONE COMPONENTI
+       ========================================================== */
+
+    if(rows.length === 0){
+
+        alert(
+            "La distinta deve contenere almeno un componente."
+        );
+
+        return false;
+
+    }
+
 
     for(const row of rows){
 
-        const code = row.querySelector(".km-item-code").value.trim();
+        const code =
+            row
+                .querySelector(".km-item-code")
+                .value
+                .trim();
 
-        const qty = row.querySelector('input[type="number"]').value.trim();
+
+        const qty =
+            row
+                .querySelector('input[type="number"]')
+                .value
+                .trim();
+
 
         if(code === ""){
 
-            alert("Inserisci tutti i componenti della distinta.");
+            alert(
+                "Inserisci tutti i componenti della distinta."
+            );
 
             return false;
 
         }
+
 
         if(qty === ""){
 
-            alert("Compila la quantità di tutti i componenti.");
+            alert(
+                "Compila la quantità di tutti i componenti."
+            );
 
             return false;
 
         }
 
+
         if(Number(qty) <= 0){
 
-            alert("La quantità deve essere maggiore di zero.");
+            alert(
+                "La quantità deve essere maggiore di zero."
+            );
 
             return false;
 
@@ -705,59 +739,38 @@ function validateBOM(){
 
     }
 
+
+    /* ==========================================================
+       ARTICOLO PADRE
+       ========================================================== */
+
     const parentCode =
-        document.querySelector(".km-bom-header .km-item-code").value;
+        document
+            .querySelector(
+                ".km-bom-header .km-item-code"
+            )
+            .value
+            .trim();
+
 
     const parentDescription =
-        document.querySelector(".km-bom-header .km-item-description").value;
+        document
+            .querySelector(
+                ".km-bom-header .km-item-description"
+            )
+            .value
+            .trim();
 
-    const parentItem =
-        items.find(item => item.code === parentCode);
 
-    const bom = {
-
-        article:{
-
-            code: parentCode,
-
-            description: parentDescription,
-
-            family: parentItem?.family || ""
-
-        },
-
-        components:[]
-
-    };
-
-    document.querySelectorAll(".km-bom-row").forEach(row => {
-
-        bom.components.push({
-
-            code: row.querySelector(".km-item-code").value,
-
-            description: row.querySelector(".km-item-description").value,
-
-            unit: row.querySelector(".km-unit").value,
-
-            quantity: Number(
-                row.querySelector('input[type="number"]').value
-            ),
-
-            type: row.querySelector(".km-item-type").value
-
-        });
-
-    });
-
-    bom.componentsCount = bom.components.length;
-
-    bom.lastEdit = new Date().toLocaleDateString("it-IT");
+    /* ==========================================================
+       MODALITÀ EREDITATA
+       ========================================================== */
 
     if(window.bomInheritanceMode){
 
         const inheritedParent =
             window.bomInheritanceParent;
+
 
         if(!inheritedParent){
 
@@ -769,30 +782,171 @@ function validateBOM(){
 
         }
 
+    }
+
+
+    /* ==========================================================
+       VALIDAZIONE ARTICOLO PADRE
+       ========================================================== */
+
+    if(!window.bomInheritanceMode){
+
+        if(parentCode === ""){
+
+            alert(
+                "Seleziona l'articolo padre della distinta."
+            );
+
+            return false;
+
+        }
+
+
+        if(parentDescription === ""){
+
+            alert(
+                "L'articolo padre deve avere una descrizione."
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    /* ==========================================================
+       ARTICOLO PADRE
+       ========================================================== */
+
+    const parentItem =
+        items.find(
+            item => item.code === parentCode
+        );
+
+
+    const bom = {
+
+        article:{
+
+            code: parentCode,
+
+            description: parentDescription,
+
+            family:
+                parentItem?.family || ""
+
+        },
+
+        components:[]
+
+    };
+
+
+    /* ==========================================================
+       COMPONENTI
+       ========================================================== */
+
+    rows.forEach(row => {
+
+        bom.components.push({
+
+            code:
+                row
+                    .querySelector(".km-item-code")
+                    .value
+                    .trim(),
+
+            description:
+                row
+                    .querySelector(".km-item-description")
+                    .value
+                    .trim(),
+
+            unit:
+                row
+                    .querySelector(".km-unit")
+                    .value,
+
+            quantity:
+                Number(
+                    row
+                        .querySelector(
+                            'input[type="number"]'
+                        )
+                        .value
+                ),
+
+            type:
+                row
+                    .querySelector(".km-item-type")
+                    .value
+
+        });
+
+    });
+
+
+    /* ==========================================================
+       DATI DISTINTA
+       ========================================================== */
+
+    bom.componentsCount =
+        bom.components.length;
+
+
+    bom.lastEdit =
+        new Date()
+            .toLocaleDateString("it-IT");
+
+
+    /* ==========================================================
+       EREDITÀ
+       ========================================================== */
+
+    if(window.bomInheritanceMode){
+
+        const inheritedParent =
+            window.bomInheritanceParent;
+
+
         bom.article.code =
             inheritedParent.code;
+
 
         bom.article.description =
             inheritedParent.description;
 
+
         bom.article.family =
             inheritedParent.family;
+
 
         bom.componentsCount =
             bom.components.length;
 
+
         bom.lastEdit =
-            new Date().toLocaleDateString("it-IT");
+            new Date()
+                .toLocaleDateString("it-IT");
+
 
         boms.push(bom);
 
+
+    /* ==========================================================
+       MODIFICA DISTINTA ESISTENTE
+       ========================================================== */
+
     }else if(window.editingBOMCode){
 
-        const index = boms.findIndex(
-            item =>
-                item.article.code ===
-                window.editingBOMCode
-        );
+        const index =
+            boms.findIndex(
+                item =>
+                    item.article.code ===
+                    window.editingBOMCode
+            );
+
 
         if(index !== -1){
 
@@ -800,17 +954,30 @@ function validateBOM(){
 
         }
 
+
+    /* ==========================================================
+       NUOVA DISTINTA
+       ========================================================== */
+
     }else{
 
         boms.push(bom);
 
     }
 
+
+    /* ==========================================================
+       POST-SALVATAGGIO
+       ========================================================== */
+
     console.table(boms);
+
 
     bomModified = false;
 
+
     updateSaveButton(true);
+
 
     return true;
 
