@@ -217,6 +217,26 @@ function renderCustomersPage() {
                         alt="Excel">
                     
                 </button>
+
+                <button
+                    type="button"
+                    id="km-import-customers-excel"
+                    class="km-button km-button-import">
+
+                    Importa
+
+                    <img
+                        src="assets/images/excel.png"
+                        class="km-button-icon"
+                        alt="Excel">
+
+                </button>
+
+                <input
+                    type="file"
+                    id="km-import-customers-excel-file"
+                    accept=".xlsx,.xls"
+                    style="display:none;">
             
             </div>
 
@@ -229,6 +249,8 @@ function renderCustomersPage() {
         </div>
 
     `;
+
+    initializeCustomerImport();
 
 
     createTable({
