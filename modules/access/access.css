@@ -1,0 +1,29 @@
+/* ==========================================================
+   TABELLA RUOLI
+========================================================== */
+
+.km-access-page #km-roles-table .km-table {
+
+    width: 420px;
+
+    table-layout: fixed;
+
+}
+
+
+/* ==========================================================
+   COLONNA STATO
+========================================================== */
+
+.km-access-page #km-roles-table .km-table th:nth-child(2),
+.km-access-page #km-roles-table .km-table td:nth-child(2) {
+
+    width: 25mm;
+
+    min-width: 25mm;
+
+    max-width: 25mm;
+
+    text-align: center;
+
+}

@@ -1,3 +1,4 @@
+
 const users = [
 
     {
@@ -5,7 +6,7 @@ const users = [
         name: "Fabio",
         surname: "Filippini",        
         password: "0000",
-        role: "ADMIN",
+        roleId: 1,
         active: true,
         createdAt: "2026-07-20 09:00:00",
         lastLogin: "2026-07-27 03:05:19"
@@ -17,7 +18,7 @@ const users = [
         name: "Giulia",
         surname: "Caldari",
         password: "1234",
-        role: "CEO",
+        roleId: 1,
         active: true,
         createdAt: "2026-07-15 10:20:00",
         lastLogin: "2026-07-25 17:13:00"
@@ -29,7 +30,7 @@ const users = [
         name: "Mario",
         surname: "Rossi",
         password: "5678",
-        role: "COMMERCIALE",
+        roleId: 2,
         active: false,
         createdAt: "2026-07-18 14:30:00",
         lastLogin: null
@@ -40,7 +41,7 @@ const users = [
         name: "Paolo",
         surname: "Bianchi",
         password: "9999",
-        role: "AMMINISTRAZIONE",
+        roleId: 2,
         active: true,
         createdAt: "2026-07-25 08:07:55",
         lastLogin: "2026-07-25 09:13:47"
@@ -51,7 +52,7 @@ const users = [
         name: "Laura",
         surname: "Verdi",
         password: "8888",
-        role: "COMMERCIALE",
+        roleId: 3,
         active: true,
         createdAt: "2026-07-24 10:37:25",
         lastLogin: "2026-07-24 19:13:47"
@@ -62,7 +63,7 @@ const users = [
         name: "Enrico",
         surname: "Chiesa",
         password: "7777",
-        role: "MAGAZZINIERE",
+        roleId: 4,
         active: true,
         createdAt: "2026-07-23 09:00:00",
         lastLogin: "2026-07-24 17:29:59"
@@ -73,7 +74,7 @@ const users = [
         name: "Massimo",
         surname: "Galli",
         password: "6666",
-        role: "MAGAZZINIERE",
+        roleId: 4,
         active: false,
         createdAt: "2026-07-23 09:00:00",
         lastLogin: null

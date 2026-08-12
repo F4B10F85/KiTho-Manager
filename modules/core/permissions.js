@@ -1,5 +1,5 @@
 "use strict";
-console.log("permissions.js caricato");
+
 /*
 |--------------------------------------------------------------------------
 | Ruoli
@@ -10,22 +10,30 @@ const rolesArchive = [
 
     {
         id: 1,
-        name: "Amministratore"
+        name: "Amministratore",
+        permissionKey: "ADMIN",
+        active: true
     },
 
     {
         id: 2,
-        name: "Produzione"
+        name: "Produzione",
+        permissionKey: "PRODUZIONE",
+        active: true
     },
 
     {
         id: 3,
-        name: "Magazzino"
+        name: "Magazzino",
+        permissionKey: "MAGAZZINO",
+        active: true
     },
 
     {
         id: 4,
-        name: "Commerciale"
+        name: "Commerciale",
+        permissionKey: "COMMERCIALE",
+        active: true
     }
 
 ];
@@ -53,3 +61,27 @@ function getRoles(){
     return rolesArchive;
 
 }
+
+function getRoleById(roleId){
+
+    return rolesArchive.find(
+        role => role.id === roleId
+    ) ?? null;
+
+}
+
+
+function getCurrentUserRole(){
+
+    const user = getCurrentUser();
+
+    if(!user){
+
+        return null;
+
+    }
+
+    return getRoleById(user.roleId);
+
+}
+

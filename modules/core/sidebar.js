@@ -10,19 +10,30 @@ function buildSidebar() {
 /**
  * Costruisce automaticamente il menu laterale.
  */
-function buildMenu() {
+
+function buildMenu(){
 
     const user = getCurrentUser();
 
-    const role = getRole(user.role);
+    const role = getCurrentUserRole();
 
-    const menuContainer = document.getElementById("km-menu");
+    const menuContainer =
+        document.getElementById("km-menu");
 
     menuContainer.innerHTML = "";
 
+    if(!user || !role){
+
+        return;
+
+    }
+
     menu.forEach(item => {
 
-        if (!hasModuleAccess(user.role, item.id)) {
+        if(!hasModuleAccess(
+            role.permissionKey,
+            item.id
+        )){
 
             return;
 

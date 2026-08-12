@@ -1,0 +1,209 @@
+/* ==========================================================
+   PAGINA NUOVO UTENTE
+   ========================================================== */
+
+.km-user-page {
+
+    width: 100%;
+
+}
+
+
+/* ==========================================================
+   FORM UTENTE
+   ========================================================== */
+
+.km-user-page .km-form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 5mm 8mm;
+
+    padding: 8mm 0;
+
+}
+
+
+/* ==========================================================
+   CAMPO
+   ========================================================== */
+
+.km-user-page .km-form-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5mm;
+
+}
+
+
+.km-user-page .km-form-field label {
+
+    font-size: 3.8mm;
+
+    font-weight: 600;
+
+    color: #374151;
+
+}
+
+
+/* ==========================================================
+   INPUT E SELECT
+   ========================================================== */
+
+.km-user-page .km-form-field input,
+.km-user-page .km-form-field select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    height: 9mm;
+
+    padding:
+        0
+        2.5mm;
+
+    border:
+        1px solid
+        #D1D5DB;
+
+    border-radius:
+        1.5mm;
+
+    background:
+        #FFFFFF;
+
+    color:
+        #374151;
+
+    font-family:
+        inherit;
+
+    font-size:
+        4.2mm;
+
+    outline:
+        none;
+
+    transition:
+        border-color
+        0.15s ease,
+
+        box-shadow
+        0.15s ease;
+}
+
+
+/* ==========================================================
+   HOVER
+   ========================================================== */
+
+.km-user-page .km-form-field input:hover,
+.km-user-page .km-form-field select:hover {
+
+    border-color:
+        #B8BEC8;
+
+}
+
+
+/* ==========================================================
+   FOCUS
+   ========================================================== */
+
+.km-user-page .km-form-field input:focus,
+.km-user-page .km-form-field select:focus {
+
+    border-color:
+        #0B5FFF;
+
+    box-shadow:
+        0 0 0 0.6mm
+        rgba(
+            11,
+            95,
+            255,
+            0.10
+        );
+
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.km-user-page .km-company-footer {
+
+    margin-top:
+        6mm;
+
+}
+
+/* ==========================================================
+   PASSWORD
+   ========================================================== */
+
+.km-user-page .km-password-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+}
+
+
+.km-user-page .km-password-wrapper input {
+
+    padding-right: 11mm;
+
+}
+
+
+.km-user-page .km-password-toggle {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 2mm;
+
+    transform: translateY(-50%);
+
+    width: 7mm;
+
+    height: 7mm;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 4mm;
+
+    border-radius: 1.5mm;
+
+}
+
+
+.km-user-page .km-password-toggle:hover {
+
+    background: #EEF3FF;
+
+}

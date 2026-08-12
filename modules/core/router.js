@@ -8,13 +8,26 @@
 |--------------------------------------------------------------------------
 */
 
-function navigate(page) {
+function navigate(page){
 
     const user = getCurrentUser();
 
     const moduleId = getModuleId(page);
 
-    if (!hasModuleAccess(user.role, moduleId)) {
+    const role = getCurrentUserRole();
+
+    if(!user || !role){
+
+        alert("Accesso negato.");
+
+        return;
+
+    }
+
+    if(!hasModuleAccess(
+        role.permissionKey,
+        moduleId
+    )){
 
         alert("Accesso negato.");
 

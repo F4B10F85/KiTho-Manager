@@ -79,6 +79,12 @@ function setWorkspacePage(pageId){
 
             return;
 
+        case "access":
+
+            renderAccessPage();
+
+            return;
+
         case "warehouse":
 
             renderWarehousePage();

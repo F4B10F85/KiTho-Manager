@@ -101,10 +101,17 @@ function getRole(roleName){
 /**
  * Verifica se un ruolo può accedere ad un modulo.
  */
+
 function hasModuleAccess(roleName, moduleId){
 
-    return getRole(roleName)
-        .modules
-        .includes(moduleId);
+    const role = getRole(roleName);
+
+    if(!role){
+
+        return false;
+
+    }
+
+    return role.modules.includes(moduleId);
 
 }

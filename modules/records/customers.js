@@ -299,32 +299,3 @@ function renderCustomersPage() {
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| Nuovo cliente
-|--------------------------------------------------------------------------
-*/
-
-function showNewCustomer() {
-
-    alert("Scheda nuovo cliente in costruzione.");
-
-}
-
-function showCustomerDetails(customerCode) {
-
-    const customer = customers.find(
-        customer => customer.code === customerCode
-    );
-
-    if(!customer){
-
-        return;
-
-    }
-
-    alert(
-        `Scheda cliente: ${customer.companyName}`
-    );
-
-}

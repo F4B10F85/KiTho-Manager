@@ -118,10 +118,13 @@ function buildLayout() {
     document.getElementById("km-user-name").textContent =
     `${user.name} ${user.surname}`;
 
+    const role = getCurrentUserRole();
+
     document.getElementById("km-user-role").textContent =
-        roles[user.role].description;
+        role ? role.name : "";;
 
     const userPanel = document.getElementById("km-header-user");
+    
     const userMenu = document.getElementById("km-user-menu");
 
     userPanel.addEventListener("click", function (event) {
