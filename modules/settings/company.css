@@ -272,3 +272,42 @@
     height: 12mm;
 
 }
+
+.km-company-tip-doc-form {
+    display: block;
+    width: 700px;
+}
+
+.km-company-tip.doc-field {
+    width: 100%;
+}
+
+.km-company-tip-doc-field .km-table {
+    width: 100%;
+}
+
+.km-company-iva-form {
+    display: block;
+    width: 700px;
+}
+
+.km-company-iva-field {
+    width: 100%;
+}
+
+.km-company-iva-field .km-table {
+    width: 100%;
+}
+
+.km-company-ritenuta-form {
+    display: block;
+    width: 700px;
+}
+
+.km-company-ritenuta-field {
+    width: 100%;
+}
+
+.km-company-ritenuta-field .km-table {
+    width: 100%;
+}
