@@ -1411,3 +1411,9 @@ console.log(nomeFile);
 Usa il codice con cautela.💡 Consiglio per l'integrazione nel tuo GestionaleSe stai sviluppando un'applicazione moderna (ad esempio con React, Vue o Node/Express), puoi estendere questa funzione aggiungendo un controllo di validazione (Regex) sulla Partita IVA per assicurarti che contenga solo numeri e sia lunga esattamente 11 caratteri prima di generare il file:javascriptif (!/^\d{11}$/.test(partitaIva)) {
     throw new Error("La Partita IVA inserita non è valida.");
 }
+
+# TEST IMPORTAZIONE XML AdE
+
+nella console F12:
+
+testSupplierInvoiceImport();

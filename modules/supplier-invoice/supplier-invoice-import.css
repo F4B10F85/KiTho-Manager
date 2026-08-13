@@ -1,0 +1,368 @@
+/* ==========================================================================
+   FATTURA FORNITORE
+   Documento A4
+   ========================================================================== */
+
+.km-supplier-invoice {
+    width: 210mm;
+    min-height: 297mm;
+    box-sizing: border-box;
+
+    margin: 0 auto;
+    padding: 16mm;
+
+    background: #ffffff;
+    color: #222222;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   TESTATA
+   ========================================================================== */
+
+.km-supplier-invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding-bottom: 8mm;
+    border-bottom: 1px solid #222222;
+}
+
+.km-supplier-invoice-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.km-supplier-invoice-document-type {
+    margin-top: 4px;
+
+    color: #666666;
+    font-size: 12px;
+}
+
+.km-supplier-invoice-header-data {
+    display: flex;
+    gap: 12mm;
+}
+
+.km-supplier-invoice-header-data > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.km-supplier-invoice-header-data span {
+    color: #777777;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.km-supplier-invoice-header-data strong {
+    font-size: 13px;
+}
+
+
+/* ==========================================================================
+   FORNITORE / DESTINATARIO
+   ========================================================================== */
+
+.km-supplier-invoice-parties {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10mm;
+
+    width: 100%;
+    margin-top: 8mm;
+    padding-bottom: 8mm;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #cccccc;
+}
+
+.km-supplier-invoice-party {
+    min-width: 0;
+    padding: 4mm;
+
+    border: 1px solid #d8d8d8;
+    background: #fafafa;
+}
+
+.km-supplier-invoice-party-title {
+    margin-bottom: 4px;
+
+    color: #666666;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+}
+
+.km-supplier-invoice-party-name {
+    margin-bottom: 4px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ==========================================================================
+   SEZIONI
+   ========================================================================== */
+
+.km-supplier-invoice-section {
+    margin-top: 8mm;
+}
+
+.km-supplier-invoice-section-title {
+    margin-bottom: 3mm;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+
+/* ==========================================================================
+   TABELLE
+   ========================================================================== */
+
+.km-supplier-invoice-table {
+    width: 100%;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.km-supplier-invoice-table th,
+.km-supplier-invoice-table td {
+    border: 1px solid #d5d5d5;
+}
+
+.km-supplier-invoice-table th {
+    padding: 5px;
+
+    background: #eeeeee;
+
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.km-supplier-invoice-table td {
+    padding: 5px;
+
+    vertical-align: top;
+
+    overflow-wrap: anywhere;
+}
+
+.km-supplier-invoice-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+
+/* ==========================================================================
+   COLONNE RIGHE
+   ========================================================================== */
+
+.km-supplier-invoice-table .col-line {
+    width: 5%;
+}
+
+.km-supplier-invoice-table .col-code {
+    width: 14%;
+}
+
+.km-supplier-invoice-table .col-description {
+    width: 27%;
+}
+
+.km-supplier-invoice-table .col-quantity {
+    width: 7%;
+}
+
+.km-supplier-invoice-table .col-um {
+    width: 6%;
+}
+
+.km-supplier-invoice-table .col-price {
+    width: 12%;
+}
+
+.km-supplier-invoice-table .col-discount {
+    width: 9%;
+}
+
+.km-supplier-invoice-table .col-total {
+    width: 12%;
+}
+
+.km-supplier-invoice-table .col-vat {
+    width: 8%;
+}
+
+
+/* ==========================================================================
+   ALLINEAMENTI
+   ========================================================================== */
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   RIEPILOGO IVA / TOTALI
+   ========================================================================== */
+
+.km-supplier-invoice-bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 65mm;
+    gap: 8mm;
+
+    margin-top: 8mm;
+}
+
+.km-supplier-invoice-totals {
+    padding: 5mm;
+
+    border: 1px solid #cccccc;
+    background: #fafafa;
+}
+
+.km-supplier-invoice-totals > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    padding: 4px 0;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.km-supplier-invoice-totals > div:last-child {
+    margin-top: 4px;
+    padding-top: 7px;
+
+    border-top: 2px solid #222222;
+    border-bottom: none;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.km-supplier-invoice-totals strong {
+    white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   RIGHE VUOTE
+   ========================================================================== */
+
+.km-supplier-invoice-empty {
+    padding: 8px !important;
+
+    color: #777777;
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   DATI ELETTRONICI
+   ========================================================================== */
+
+.km-supplier-invoice-electronic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8mm;
+
+    margin-top: 10mm;
+    padding-top: 5mm;
+
+    border-top: 1px solid #cccccc;
+
+    color: #555555;
+    font-size: 9px;
+}
+
+
+/* ==========================================================================
+   PREVIEW
+   ========================================================================== */
+
+#km-supplier-invoice-preview {
+    position: fixed;
+    inset: 0;
+
+    z-index: 999999;
+
+    overflow: auto;
+
+    padding: 30px;
+    box-sizing: border-box;
+
+    background: #eeeeee;
+}
+
+#km-supplier-invoice-preview .km-supplier-invoice {
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==========================================================================
+   STAMPA
+   ========================================================================== */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+
+        background: #ffffff;
+    }
+
+    #km-supplier-invoice-preview {
+        position: static;
+
+        width: auto;
+        min-height: auto;
+
+        padding: 0;
+
+        overflow: visible;
+
+        background: #ffffff;
+    }
+
+    #km-supplier-invoice-preview .km-supplier-invoice {
+        width: 210mm;
+        min-height: 297mm;
+
+        margin: 0 auto;
+        padding: 16mm;
+
+        box-shadow: none;
+    }
+}
