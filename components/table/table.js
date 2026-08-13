@@ -14,78 +14,78 @@
 |--------------------------------------------------------------------------
 */
 
-function renderCell(column, row){
+    function renderCell(column, row){
 
-    if(column.render){
+        if(column.render){
 
-        return column.render(row);
+            return column.render(row);
+
+        }
+
+        switch(column.type){
+
+            case "details":
+
+                if(column.onClick){
+
+                    return `
+
+                        <button
+                            class="km-action-button km-details-button"
+                            title="Visualizza dettagli"
+                            onclick="${column.onClick}('${row.code}')">
+
+                            🔍
+
+                        </button>
+
+                    `;
+
+                }
+
+                return "";
+
+            case "badge":
+
+                return renderBadge(
+
+                    row[column.key],
+
+                    column.badgeType
+
+                );
+
+            case "date":
+
+                return formatDate(
+
+                    row[column.key]
+
+                );
+
+            case "actions":
+
+                if(column.renderer && typeof window[column.renderer] === "function"){
+
+                    return window[column.renderer](row);
+
+                }
+
+                return renderActions(row);
+
+            case "status":
+
+                return renderStatus(row[column.key]);
+
+            default:
+
+                return row[column.key] ?? "";
+
+            
+
+        }
 
     }
-
-    switch(column.type){
-
-        case "details":
-
-            if(column.onClick){
-
-                return `
-
-                    <button
-                        class="km-action-button km-details-button"
-                        title="Visualizza dettagli"
-                        onclick="${column.onClick}('${row.code}')">
-
-                        🔍
-
-                    </button>
-
-                `;
-
-            }
-
-            return "";
-
-        case "badge":
-
-            return renderBadge(
-
-                row[column.key],
-
-                column.badgeType
-
-            );
-
-        case "date":
-
-            return formatDate(
-
-                row[column.key]
-
-            );
-
-        case "actions":
-
-            if(column.renderer && typeof window[column.renderer] === "function"){
-
-                return window[column.renderer](row);
-
-            }
-
-            return renderActions(row);
-
-        case "status":
-
-            return renderStatus(row[column.key]);
-
-        default:
-
-            return row[column.key] ?? "";
-
-        
-
-    }
-
-}
 
 /*
 |--------------------------------------------------------------------------

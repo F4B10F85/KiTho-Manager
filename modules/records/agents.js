@@ -10,17 +10,20 @@ const agents = [
 
     {
         code: "AG001",
-        name: "Mario Rossi"
+        name: "Mario Rossi",
+        active: true
     },
 
     {
         code: "AG002",
-        name: "Luca Bianchi"
+        name: "Luca Bianchi",
+        active: true
     },
 
     {
         code: "AG003",
-        name: "Piero Cornetta"
+        name: "Piero Cornetta",
+        active: true
     }
 
 ];
@@ -97,12 +100,66 @@ function renderAgentsPage(){
 
             {
                 key: "name",
-                title: "Agente"
+                title: "Agente",
+
+                render: function(agent){
+
+                    if(agent.editing){
+
+                        return `
+
+                            <input
+                                type="text"
+                                class="km-input"
+                                data-agent-code="${agent.code}"
+                                value="${agent.name ?? ""}"
+                                onkeydown="
+                                    if(event.key === 'Enter'){
+                                        saveEditedAgent('${agent.code}');
+                                    }
+                                "
+                            >
+
+                            <button
+                                type="button"
+                                class="km-action-button"
+                                title="Salva modifica"
+                                onclick="saveEditedAgent('${agent.code}')">
+
+                                💾
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="km-action-button"
+                                title="Annulla modifica"
+                                onclick="cancelEditAgent('${agent.code}')">
+
+                                ❌
+
+                            </button>
+
+                        `;
+
+                    }
+
+                    return agent.name ?? "";
+
+                }
+
+            },
+
+            {
+                key: "active",
+                title: "Stato",
+                type: "status"
             },
 
             {
                 title: "Azioni",
-                type: "actions"
+                type: "actions",
+                renderer: "renderAgentActions"
             }
 
         ],
@@ -126,4 +183,199 @@ function showNewAgent(){
 
 }
 
+function renderAgentActions(agent){
 
+    const lockIcon =
+        agent.active === false
+            ? "🔓"
+            : "🔒";
+
+    const lockTitle =
+        agent.active === false
+            ? "Riattiva agente"
+            : "Disattiva agente";
+
+    return `
+
+        <button
+            type="button"
+            class="km-action-button"
+            title="Modifica agente"
+            onclick="editAgent('${agent.code}')">
+
+            ✏️
+
+        </button>
+
+        <button
+            type="button"
+            class="km-action-button"
+            title="${lockTitle}"
+            onclick="toggleAgentStatus('${agent.code}')">
+
+            ${lockIcon}
+
+        </button>
+
+        <button
+            type="button"
+            class="km-action-button"
+            title="Elimina agente"
+            onclick="deleteAgent('${agent.code}')">
+
+            🗑️
+
+        </button>
+
+    `;
+
+}
+
+function toggleAgentStatus(code){
+
+    const agent =
+        agents.find(
+            item => item.code === code
+        );
+
+    if(!agent){
+
+        return;
+
+    }
+
+    agent.active =
+        agent.active === false;
+
+    renderAgentsPage();
+
+}
+
+function editAgent(code){
+
+    const agent =
+        agents.find(
+            item => item.code === code
+        );
+
+    if(!agent){
+
+        return;
+
+    }
+
+    agent.editing = true;
+
+    renderAgentsPage();
+
+}
+function saveEditedAgent(code){
+
+    const agent =
+        agents.find(
+            item => item.code === code
+        );
+
+    if(!agent){
+
+        return;
+
+    }
+
+    const input =
+        document.querySelector(
+            `input[data-agent-code="${code}"]`
+        );
+
+    if(!input){
+
+        return;
+
+    }
+
+    const newName =
+        input.value.trim();
+
+    if(newName === ""){
+
+        alert(
+            "Inserisci il nome dell'agente."
+        );
+
+        return;
+
+    }
+
+    agent.name =
+        newName;
+
+    agent.editing =
+        false;
+
+    renderAgentsPage();
+
+}
+
+function cancelEditAgent(code){
+
+    const agent =
+        agents.find(
+            item => item.code === code
+        );
+
+    if(!agent){
+
+        return;
+
+    }
+
+    agent.editing =
+        false;
+
+    renderAgentsPage();
+
+}
+
+function deleteAgent(code){
+
+    const agent =
+        agents.find(
+            item => item.code === code
+        );
+
+    if(!agent){
+
+        return;
+
+    }
+
+    const confirmed =
+        confirm(
+            `Vuoi eliminare definitivamente l'agente "${agent.name}"?`
+        );
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+    const index =
+        agents.findIndex(
+            item => item.code === code
+        );
+
+    if(index === -1){
+
+        return;
+
+    }
+
+    agents.splice(
+        index,
+        1
+    );
+
+    renderAgentsPage();
+
+}
