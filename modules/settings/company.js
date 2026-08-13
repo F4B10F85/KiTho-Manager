@@ -484,6 +484,18 @@ function showCompanyTab(tabId){
 
     const content = document.getElementById("km-company-content");
 
+    const footer =
+        document.querySelector(".km-company-footer");
+
+    if(footer){
+
+        footer.style.display =
+            ["tip-doc", "iva", "ritenuta"].includes(tabId)
+                ? "none"
+                : "";
+
+    }
+
     switch(tabId){
 
         case "general":
@@ -857,7 +869,7 @@ function showCompanyTab(tabId){
 
             content.innerHTML = `
 
-                <div class="km-company-section km-company-tip-doc-section">
+                <div class="km-company-section">
 
                     <div class="km-company-form km-company-tip-doc-form">
 
@@ -875,7 +887,7 @@ function showCompanyTab(tabId){
                                         </th>
 
                                         <th>
-                                            Codice
+                                            Codice XML
                                         </th>
 
                                     </tr>
@@ -1002,7 +1014,7 @@ function showCompanyTab(tabId){
 
             content.innerHTML = `
 
-                <div class="km-company-section km-company-iva-section">
+                <div class="km-company-section">
 
                     <div class="km-company-form km-company-iva-form">
 
@@ -1019,7 +1031,7 @@ function showCompanyTab(tabId){
                                         </th>
 
                                         <th>
-                                            Codice
+                                            Codice XML
                                         </th>
 
                                     </tr>
@@ -1151,7 +1163,7 @@ function showCompanyTab(tabId){
 
             content.innerHTML = `
 
-                <div class="km-company-section km-company-ritenuta-section">
+                <div class="km-company-section">
 
                     <div class="km-company-form km-company-ritenuta-form">
 
