@@ -1164,9 +1164,7 @@ function parseSupplierInvoiceSocialContributions(
 |--------------------------------------------------------------------------
 */
 
-function parseSupplierInvoiceElectronicData(
-    xml
-){
+function parseSupplierInvoiceElectronicData(xml){
 
     const transmissionNode =
         xml.getElementsByTagName(
@@ -1178,32 +1176,61 @@ function parseSupplierInvoiceElectronicData(
 
         return {
 
-            sdiId:"",
-            transmissionDate:"",
-            deliveryStatus:""
+            idTransmittente:"",
+            progressivoInvio:"",
+            formatoTrasmissione:"",
+            codiceDestinatario:"",
+            pecDestinatario:""
 
         };
 
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | ATTENZIONE
-    |--------------------------------------------------------------------------
-    |
-    | ProgressivoInvio NON è l'identificativo SdI.
-    | Non lo memorizziamo come sdiId.
-    |
-    */
+    const idTransmittenteNode =
+        transmissionNode.getElementsByTagName(
+            "IdTrasmittente"
+        )[0];
+
 
     return {
 
-        sdiId:"",
+        idTransmittente:
+            idTransmittenteNode
+                ? getXmlValue(
+                    idTransmittenteNode,
+                    "IdPaese"
+                ) +
+                " " +
+                getXmlValue(
+                    idTransmittenteNode,
+                    "IdCodice"
+                )
+                : "",
 
-        transmissionDate:"",
+        progressivoInvio:
+            getXmlValue(
+                transmissionNode,
+                "ProgressivoInvio"
+            ),
 
-        deliveryStatus:""
+        formatoTrasmissione:
+            getXmlValue(
+                transmissionNode,
+                "FormatoTrasmissione"
+            ),
+
+        codiceDestinatario:
+            getXmlValue(
+                transmissionNode,
+                "CodiceDestinatario"
+            ),
+
+        pecDestinatario:
+            getXmlValue(
+                transmissionNode,
+                "PECDestinatario"
+            )
 
     };
 
@@ -1253,13 +1280,6 @@ function testSupplierInvoiceImport(){
                         parseSupplierInvoiceXml(
                             xmlText
                         );
-
-
-                    console.log(
-                        "Fattura fornitore importata:",
-                        invoice
-                    );
-
 
                     showSupplierInvoice(
                         invoice
@@ -1656,207 +1676,206 @@ function renderSupplierInvoice(invoice){
 
             </div>
 
+                    <!-- =========================================================
+                        BLOCCO INFERIORE
+                        ========================================================= -->
 
-            <!-- =========================================================
-                 BLOCCO INFERIORE
-                 ========================================================= -->
-
-            <div class="km-supplier-invoice-bottom">
-
-
-                <!-- =====================================================
-                     RIEPILOGO IVA
-                     ===================================================== -->
-
-                <div class="km-supplier-invoice-vat">
-
-                    <div class="km-supplier-invoice-section-title">
-                        RIEPILOGO IVA
-                    </div>
+                    <div class="km-supplier-invoice-bottom">
 
 
-                    <table class="km-supplier-invoice-table">
+                        <!-- =====================================================
+                            RIEPILOGO IVA
+                            ===================================================== -->
 
-                        <thead>
+                        <div class="km-supplier-invoice-vat">
 
-                            <tr>
+                            <div class="km-supplier-invoice-section-title">
+                                RIEPILOGO IVA
+                            </div>
 
-                                <th>
-                                    Aliquota
-                                </th>
 
-                                <th>
+                            <table class="km-supplier-invoice-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Aliquota
+                                        </th>
+
+                                        <th>
+                                            Imponibile
+                                        </th>
+
+                                        <th>
+                                            Imposta
+                                        </th>
+
+                                        <th>
+                                            Natura
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    ${
+                                        vatSummary.length
+                                            ? vatSummary.map(
+                                                item => `
+
+                                                    <tr>
+
+                                                        <td>
+                                                            ${item.vatRate ?? ""}%
+                                                        </td>
+
+                                                        <td class="text-right">
+                                                            ${formatAmount(item.taxableAmount)}
+                                                        </td>
+
+                                                        <td class="text-right">
+                                                            ${formatAmount(item.vatAmount)}
+                                                        </td>
+
+                                                        <td>
+                                                            ${item.vatNature?.code || ""}
+                                                        </td>
+
+                                                    </tr>
+
+                                                `
+                                            ).join("")
+                                            : `
+                                                <tr>
+
+                                                    <td
+                                                        colspan="4"
+                                                        class="km-supplier-invoice-empty"
+                                                    >
+                                                        Nessun riepilogo IVA
+                                                    </td>
+
+                                                </tr>
+                                            `
+                                    }
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- =====================================================
+                            TOTALI
+                            ===================================================== -->
+
+                        <div class="km-supplier-invoice-totals">
+
+                            <div>
+
+                                <span>
                                     Imponibile
-                                </th>
+                                </span>
 
-                                <th>
-                                    Imposta
-                                </th>
+                                <strong>
+                                    ${formatAmount(invoice.totals?.taxableAmount)}
+                                </strong>
 
-                                <th>
-                                    Natura
-                                </th>
-
-                            </tr>
-
-                        </thead>
+                            </div>
 
 
-                        <tbody>
+                            <div>
+
+                                <span>
+                                    IVA
+                                </span>
+
+                                <strong>
+                                    ${formatAmount(invoice.totals?.vatAmount)}
+                                </strong>
+
+                            </div>
+
 
                             ${
-                                vatSummary.length
-                                    ? vatSummary.map(
-                                        item => `
+                                invoice.totals?.stampDuty
+                                    ? `
+                                        <div>
 
-                                            <tr>
+                                            <span>
+                                                Bollo
+                                            </span>
 
-                                                <td>
-                                                    ${item.vatRate ?? ""}%
-                                                </td>
+                                            <strong>
+                                                ${formatAmount(invoice.totals.stampDuty)}
+                                            </strong>
 
-                                                <td class="text-right">
-                                                    ${formatAmount(item.taxableAmount)}
-                                                </td>
-
-                                                <td class="text-right">
-                                                    ${formatAmount(item.vatAmount)}
-                                                </td>
-
-                                                <td>
-                                                    ${item.vatNature?.code || ""}
-                                                </td>
-
-                                            </tr>
-
-                                        `
-                                    ).join("")
-                                    : `
-                                        <tr>
-
-                                            <td
-                                                colspan="4"
-                                                class="km-supplier-invoice-empty"
-                                            >
-                                                Nessun riepilogo IVA
-                                            </td>
-
-                                        </tr>
+                                        </div>
                                     `
+                                    : ""
                             }
 
-                        </tbody>
 
-                    </table>
+                            ${
+                                invoice.totals?.withholding
+                                    ? `
+                                        <div>
 
-                </div>
+                                            <span>
+                                                Ritenute
+                                            </span>
 
+                                            <strong>
+                                                ${formatAmount(invoice.totals.withholding)}
+                                            </strong>
 
-                <!-- =====================================================
-                     TOTALI
-                     ===================================================== -->
-
-                <div class="km-supplier-invoice-totals">
-
-                    <div>
-
-                        <span>
-                            Imponibile
-                        </span>
-
-                        <strong>
-                            ${formatAmount(invoice.totals?.taxableAmount)}
-                        </strong>
-
-                    </div>
+                                        </div>
+                                    `
+                                    : ""
+                            }
 
 
-                    <div>
+                            ${
+                                invoice.totals?.contributions
+                                    ? `
+                                        <div>
 
-                        <span>
-                            IVA
-                        </span>
+                                            <span>
+                                                Contributi
+                                            </span>
 
-                        <strong>
-                            ${formatAmount(invoice.totals?.vatAmount)}
-                        </strong>
+                                            <strong>
+                                                ${formatAmount(invoice.totals.contributions)}
+                                            </strong>
 
-                    </div>
-
-
-                    ${
-                        invoice.totals?.stampDuty
-                            ? `
-                                <div>
-
-                                    <span>
-                                        Bollo
-                                    </span>
-
-                                    <strong>
-                                        ${formatAmount(invoice.totals.stampDuty)}
-                                    </strong>
-
-                                </div>
-                            `
-                            : ""
-                    }
+                                        </div>
+                                    `
+                                    : ""
+                            }
 
 
-                    ${
-                        invoice.totals?.withholding
-                            ? `
-                                <div>
+                            <div class="km-supplier-invoice-total">
 
-                                    <span>
-                                        Ritenute
-                                    </span>
+                                <span>
+                                    TOTALE DOCUMENTO
+                                </span>
 
-                                    <strong>
-                                        ${formatAmount(invoice.totals.withholding)}
-                                    </strong>
+                                <strong>
+                                    ${formatAmount(invoice.totals?.totalAmount)}
+                                    ${invoice.currency || "EUR"}
+                                </strong>
 
-                                </div>
-                            `
-                            : ""
-                    }
+                            </div>
 
-
-                    ${
-                        invoice.totals?.contributions
-                            ? `
-                                <div>
-
-                                    <span>
-                                        Contributi
-                                    </span>
-
-                                    <strong>
-                                        ${formatAmount(invoice.totals.contributions)}
-                                    </strong>
-
-                                </div>
-                            `
-                            : ""
-                    }
-
-
-                    <div class="km-supplier-invoice-total">
-
-                        <span>
-                            TOTALE DOCUMENTO
-                        </span>
-
-                        <strong>
-                            ${formatAmount(invoice.totals?.totalAmount)}
-                            ${invoice.currency || "EUR"}
-                        </strong>
+                        </div>
 
                     </div>
-
-                </div>
-
-            </div>
 
 
             <!-- =========================================================
@@ -2123,7 +2142,6 @@ function renderSupplierInvoice(invoice){
                     : ""
             }
 
-
             <!-- =========================================================
                  DATI ELETTRONICI
                  ========================================================= -->
@@ -2173,6 +2191,71 @@ function renderSupplierInvoice(invoice){
                         : ""
                 }
 
+                <div class="km-supplier-invoice-electronic">
+
+                    <div>
+                        <strong>
+                            DATI TRASMISSIONE
+                        </strong>
+                    </div>
+
+                    ${
+                        invoice.electronicData?.idTransmittente
+                            ? `
+                                <div>
+                                    Id trasmittente:
+                                    ${invoice.electronicData.idTransmittente}
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    ${
+                        invoice.electronicData?.progressivoInvio
+                            ? `
+                                <div>
+                                    Progressivo invio:
+                                    ${invoice.electronicData.progressivoInvio}
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    ${
+                        invoice.electronicData?.formatoTrasmissione
+                            ? `
+                                <div>
+                                    Formato trasmissione:
+                                    ${invoice.electronicData.formatoTrasmissione}
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    ${
+                        invoice.electronicData?.codiceDestinatario
+                            ? `
+                                <div>
+                                    Codice destinatario:
+                                    ${invoice.electronicData.codiceDestinatario}
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    ${
+                        invoice.electronicData?.pecDestinatario
+                            ? `
+                                <div>
+                                    PEC destinatario:
+                                    ${invoice.electronicData.pecDestinatario}
+                                </div>
+                            `
+                            : ""
+                    }
+
+                </div>
+
             </div>
 
         </div>
@@ -2188,22 +2271,11 @@ function renderSupplierInvoice(invoice){
 */
 function showSupplierInvoice(invoice){
 
-    console.log(
-        "=== SHOW SUPPLIER INVOICE ==="
-    );
-
 
     const html =
         renderSupplierInvoice(
             invoice
         );
-
-
-    console.log(
-        "HTML GENERATO DAL RENDERER:",
-        html
-    );
-
 
     const oldPreview =
         document.getElementById(
@@ -2372,22 +2444,6 @@ function showSupplierInvoice(invoice){
             "box-shadow",
             "0 4px 18px rgba(0,0,0,0.15)",
             "important"
-        );
-
-
-        console.log(
-            "ELEMENTO A4:",
-            invoicePage
-        );
-
-        console.log(
-            "LARGHEZZA:",
-            invoicePage.getBoundingClientRect().width
-        );
-
-        console.log(
-            "ALTEZZA:",
-            invoicePage.getBoundingClientRect().height
         );
 
     }
