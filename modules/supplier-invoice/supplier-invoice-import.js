@@ -47,8 +47,7 @@ function importSupplierInvoiceXml(file){
             }
 
 
-            console.log(
-                "Fattura fornitore importata:",
+            showSupplierInvoice(
                 invoice
             );
 
@@ -2269,191 +2268,270 @@ function renderSupplierInvoice(invoice){
 | VISUALIZZA FATTURA FORNITORE
 |--------------------------------------------------------------------------
 */
-function showSupplierInvoice(invoice){
 
+function showSupplierInvoice(invoice){
 
     const html =
         renderSupplierInvoice(
             invoice
         );
 
-    const oldPreview =
-        document.getElementById(
-            "km-supplier-invoice-preview"
+
+    const previewWindow =
+        window.open(
+            "",
+            "kmSupplierInvoicePreview",
+            "width=1000,height=1200,resizable=yes,scrollbars=yes"
         );
 
 
-    if(oldPreview){
+    if(!previewWindow){
 
-        oldPreview.remove();
+        alert(
+            "Impossibile aprire la finestra della fattura. Controlla che il browser non stia bloccando i popup."
+        );
+
+        return;
 
     }
 
 
-    const preview =
-        document.createElement("div");
+    /*
+    |--------------------------------------------------------------------------
+    | DOCUMENTO DELLA NUOVA FINESTRA
+    |--------------------------------------------------------------------------
+    */
+
+    previewWindow.document.open();
 
 
-    preview.id =
-        "km-supplier-invoice-preview";
+    previewWindow.document.write(`
+        <!DOCTYPE html>
+
+        <html lang="it">
+
+        <head>
+
+            <meta charset="UTF-8">
+
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+            >
+
+            <title>
+                Fattura fornitore
+            </title>
+
+        </head>
 
 
-    preview.style.setProperty(
-        "position",
-        "fixed",
-        "important"
+        <body>
+
+            <div class="km-supplier-invoice-toolbar">
+
+                <button
+                    type="button"
+                    onclick="window.print()">
+
+                    🖨️ Stampa
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="window.print()">
+
+                    💾 Salva PDF
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="window.close()">
+
+                    🗙 Chiudi
+
+                </button>
+
+            </div>
+
+
+            <div class="km-supplier-invoice-print-area">
+
+                ${html}
+
+            </div>
+
+        </body>
+
+        </html>
+    `);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | COPIA DEGLI STYLESHEET DEL GESTIONALE
+    |--------------------------------------------------------------------------
+    */
+
+    Array.from(
+        document.querySelectorAll(
+            'link[rel="stylesheet"]'
+        )
+    )
+    .forEach(
+        link => {
+
+            const stylesheet =
+                previewWindow.document.createElement(
+                    "link"
+                );
+
+
+            stylesheet.rel =
+                "stylesheet";
+
+
+            stylesheet.href =
+                link.href;
+
+
+            previewWindow.document.head.appendChild(
+                stylesheet
+            );
+
+        }
     );
 
-    preview.style.setProperty(
-        "top",
-        "0",
-        "important"
-    );
 
-    preview.style.setProperty(
-        "left",
-        "0",
-        "important"
-    );
+    /*
+    |--------------------------------------------------------------------------
+    | CSS DELLA TOOLBAR
+    |--------------------------------------------------------------------------
+    */
 
-    preview.style.setProperty(
-        "right",
-        "0",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "bottom",
-        "0",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "width",
-        "100vw",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "height",
-        "100vh",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "z-index",
-        "999999",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "overflow",
-        "auto",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "background",
-        "#eeeeee",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "padding",
-        "30px",
-        "important"
-    );
-
-    preview.style.setProperty(
-        "box-sizing",
-        "border-box",
-        "important"
-    );
-
-
-    preview.innerHTML =
-    html;
-
-
-    document.body.appendChild(
-        preview
-    );
-
-
-    const invoicePage =
-        preview.firstElementChild;
-
-
-    if(invoicePage){
-
-        invoicePage.style.setProperty(
-            "width",
-            "210mm",
-            "important"
+    const toolbarStyle =
+        previewWindow.document.createElement(
+            "style"
         );
 
-        invoicePage.style.setProperty(
-            "min-width",
-            "210mm",
-            "important"
-        );
 
-        invoicePage.style.setProperty(
-            "max-width",
-            "210mm",
-            "important"
-        );
+    toolbarStyle.textContent = `
 
-        invoicePage.style.setProperty(
-            "min-height",
-            "297mm",
-            "important"
-        );
+        body {
 
-        invoicePage.style.setProperty(
-            "box-sizing",
-            "border-box",
-            "important"
-        );
+            margin: 0;
 
-        invoicePage.style.setProperty(
-            "margin",
-            "0 auto",
-            "important"
-        );
+            background: #eeeeee;
 
-        invoicePage.style.setProperty(
-            "padding",
-            "16mm",
-            "important"
-        );
+        }
 
-        invoicePage.style.setProperty(
-            "background",
-            "#ffffff",
-            "important"
-        );
 
-        invoicePage.style.setProperty(
-            "display",
-            "block",
-            "important"
-        );
+        .km-supplier-invoice-toolbar {
 
-        invoicePage.style.setProperty(
-            "box-shadow",
-            "0 4px 18px rgba(0,0,0,0.15)",
-            "important"
-        );
+            position: sticky;
 
-    }
-    else{
+            top: 0;
 
-        console.error(
-            "Il renderer non ha restituito un elemento HTML."
-        );
+            z-index: 1000;
 
-    }
+            display: flex;
+
+            gap: 10px;
+
+            align-items: center;
+
+            padding: 12px 16px;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #d0d0d0;
+
+            box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+
+        }
+
+
+        .km-supplier-invoice-toolbar button {
+
+            border: 1px solid #c8c8c8;
+
+            border-radius: 6px;
+
+            padding: 8px 14px;
+
+            background: #ffffff;
+
+            color: #222222;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+        }
+
+
+        .km-supplier-invoice-toolbar button:hover {
+
+            background: #f2f2f2;
+
+        }
+
+
+        .km-supplier-invoice-print-area {
+
+            padding: 30px;
+
+        }
+
+
+        @media print {
+
+            body {
+
+                background: #ffffff;
+
+            }
+
+
+            .km-supplier-invoice-toolbar {
+
+                display: none !important;
+
+            }
+
+
+            .km-supplier-invoice-print-area {
+
+                padding: 0;
+
+            }
+
+        }
+
+    `;
+
+
+    previewWindow.document.head.appendChild(
+        toolbarStyle
+    );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | CHIUSURA DOCUMENTO
+    |--------------------------------------------------------------------------
+    */
+
+    previewWindow.document.close();
+
+
+    previewWindow.focus();
 
 }
 

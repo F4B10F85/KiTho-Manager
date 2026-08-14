@@ -141,6 +141,18 @@ function renderPurchasingInvoicesPage(){
                 </button>
 
                 <button
+                    class="km-button km-button-export"
+                    onclick="importSupplierInvoiceXmlFromFile()">
+
+                    Importa XML
+                <img
+                        src="assets/images/xml.png"
+                        class="km-button-icon"
+                        alt="xml">
+
+                </button>
+
+                <button
                     class="km-button km-button-export km-button-excel"
                     >
 
@@ -226,3 +238,41 @@ function renderPurchasingInvoicesPage(){
 
 }
 
+/*
+|--------------------------------------------------------------------------
+| IMPORTAZIONE FATTURA XML
+|--------------------------------------------------------------------------
+*/
+
+function importSupplierInvoiceXmlFromFile(){
+
+    const input =
+        document.createElement("input");
+
+    input.type =
+        "file";
+
+    input.accept =
+        ".xml,text/xml";
+
+    input.onchange =
+        function(){
+
+            const file =
+                input.files[0];
+
+            if(!file){
+
+                return;
+
+            }
+
+            importSupplierInvoiceXml(
+                file
+            );
+
+        };
+
+    input.click();
+
+}
