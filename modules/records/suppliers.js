@@ -12,26 +12,26 @@ const suppliers = [
 
     {
         code:"F00001",
-        companyName:"Conceria Rossi",
-        address:"Via Roma 10",
-        city:"Arzignano",
-        province:"VI",
+        companyName:"Fedex Express Italy S.r.l",
+        address:"Via Enrico Stassano 20 ",
+        city:"Brescia",
+        province:"BS",
         country: "Italia",
-        taxCode:"01234567890",
-        phone:"0444 123456",
-        email:"info@conceriarossi.it"
+        taxCode:"09399880153",
+        phone:"800 123 800",
+        email:"fedexexpressitalysrl@legalmail.it"
     },
 
     {
         code:"F00002",
-        companyName:"Leather World",
-        address:"Via Milano 5",
-        city:"Vicenza",
-        province:"VI",
+        companyName:"SOCIETA' ALPHA SRL",
+        address:"VIALE ROMA 543",
+        city:"Sassari",
+        province:"SS",
         country: "Italia",
-        taxCode:"02345678901",
-        phone:"0444 987654",
-        email:"commerciale@leatherworld.it"
+        taxCode:"01234567890",
+        phone:"099 877441",
+        email:"alpha"
     },
 
     {

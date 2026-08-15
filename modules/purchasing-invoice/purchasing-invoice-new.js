@@ -8,7 +8,7 @@
 |--------------------------------------------------------------------------
 */
 
-function showNewPurchasingInvoices(){
+function showNewPurchasingInvoices(invoice = null){
 
     const workspace =
         document.getElementById("km-workspace");
@@ -21,7 +21,10 @@ function showNewPurchasingInvoices(){
             <div class="km-page-header">
 
                 <h1>
-                    Nuova Fattura di Acquisto
+                     ${invoice
+                        ? "Fattura di Acquisto"
+                        : "Nuova Fattura di Acquisto"
+                        }
                 </h1>
 
             </div>
@@ -344,6 +347,159 @@ function showNewPurchasingInvoices(){
         </div>
 
     `;
+
+    /*
+    |--------------------------------------------------------------------------
+    | CARICAMENTO FATTURA ESISTENTE
+    |--------------------------------------------------------------------------
+    */
+
+    if(invoice){
+
+        const supplierSelect =
+            document.getElementById(
+                "purchasing-invoice-supplier"
+            );
+
+
+        if(supplierSelect){
+
+            supplierSelect.value =
+                invoice.supplierCode || "";
+
+            populatePurchasingInvoiceSupplier();
+
+        }
+
+
+        const numberInput =
+            document.getElementById(
+                "purchasing-invoice-number"
+            );
+
+
+        const dateInput =
+            document.getElementById(
+                "purchasing-invoice-date"
+            );
+
+
+        const taxableAmountInput =
+            document.getElementById(
+                "purchasing-invoice-taxable-amount"
+            );
+
+
+        const vatAmountInput =
+            document.getElementById(
+                "purchasing-invoice-vat-amount"
+            );
+
+
+        const transportcostsAmountInput =
+            document.getElementById(
+                "purchasing-invoice-trasportcosts-amount"
+            );
+
+
+        const stampdutyAmountInput =
+            document.getElementById(
+                "purchasing-invoice-stampduty-amount"
+            );
+
+
+        const amountInput =
+            document.getElementById(
+                "purchasing-invoice-amount"
+            );
+
+
+        const notesInput =
+            document.getElementById(
+                "purchasing-invoice-notes"
+            );
+
+
+        if(numberInput){
+
+            numberInput.value =
+                invoice.number || "";
+
+        }
+
+
+        if(dateInput){
+
+            const dateParts =
+                String(
+                    invoice.date || ""
+                ).split("/");
+
+
+            if(dateParts.length === 3){
+
+                dateInput.value =
+                    `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+
+            }
+            else{
+
+                dateInput.value =
+                    invoice.date || "";
+
+            }
+
+        }
+
+
+        if(taxableAmountInput){
+
+            taxableAmountInput.value =
+                invoice.taxableAmount || "";
+
+        }
+
+
+        if(vatAmountInput){
+
+            vatAmountInput.value =
+                invoice.vatAmount || "";
+
+        }
+
+
+        if(transportcostsAmountInput){
+
+            transportcostsAmountInput.value =
+                invoice.transportcostsAmount || "";
+
+        }
+
+
+        if(stampdutyAmountInput){
+
+            stampdutyAmountInput.value =
+                invoice.stampdutyAmount || "";
+
+        }
+
+
+        if(amountInput){
+
+            amountInput.value =
+                invoice.amount || "";
+
+        }
+
+
+        if(notesInput){
+
+            notesInput.value =
+                invoice.notes || "";
+
+        }
+
+    }
 
 }
 
@@ -708,5 +864,175 @@ function formatPurchasingInvoiceAmount(value){
             maximumFractionDigits: 2
         }
     ) + " €";
+
+}
+
+function showPurchasingInvoicesDetails(reference){
+
+    if(!reference){
+
+        return;
+
+    }
+
+
+    const invoice =
+        purchasinginvoiceList.find(
+            item =>
+                item.number === reference ||
+                item.code === reference
+        );
+
+
+    if(!invoice){
+
+        return;
+
+    }
+
+
+    showNewPurchasingInvoices(
+        invoice
+    );
+
+}
+
+function populatePurchasingInvoiceForm(invoice){
+
+    const supplierSelect =
+        document.getElementById(
+            "purchasing-invoice-supplier"
+        );
+
+
+    if(supplierSelect){
+
+        supplierSelect.value =
+            invoice.supplierCode || "";
+
+    }
+
+
+    populatePurchasingInvoiceSupplier();
+
+
+    const numberInput =
+        document.getElementById(
+            "purchasing-invoice-number"
+        );
+
+
+    const dateInput =
+        document.getElementById(
+            "purchasing-invoice-date"
+        );
+
+
+    const taxableAmountInput =
+        document.getElementById(
+            "purchasing-invoice-taxable-amount"
+        );
+
+
+    const vatAmountInput =
+        document.getElementById(
+            "purchasing-invoice-vat-amount"
+        );
+
+
+    const transportcostsAmountInput =
+        document.getElementById(
+            "purchasing-invoice-trasportcosts-amount"
+        );
+
+
+    const stampdutyAmountInput =
+        document.getElementById(
+            "purchasing-invoice-stampduty-amount"
+        );
+
+
+    const amountInput =
+        document.getElementById(
+            "purchasing-invoice-amount"
+        );
+
+
+    const notesInput =
+        document.getElementById(
+            "purchasing-invoice-notes"
+        );
+
+
+    if(numberInput){
+
+        numberInput.value =
+            invoice.number || "";
+
+    }
+
+
+    if(dateInput){
+
+        const parts =
+            String(
+                invoice.date || ""
+            ).split("/");
+
+
+        dateInput.value =
+            parts.length === 3
+                ? `${parts[2]}-${parts[1]}-${parts[0]}`
+                : invoice.date || "";
+
+    }
+
+
+    if(taxableAmountInput){
+
+        taxableAmountInput.value =
+            invoice.taxableAmount || "";
+
+    }
+
+
+    if(vatAmountInput){
+
+        vatAmountInput.value =
+            invoice.vatAmount || "";
+
+    }
+
+
+    if(transportcostsAmountInput){
+
+        transportcostsAmountInput.value =
+            invoice.transportcostsAmount || "";
+
+    }
+
+
+    if(stampdutyAmountInput){
+
+        stampdutyAmountInput.value =
+            invoice.stampdutyAmount || "";
+
+    }
+
+
+    if(amountInput){
+
+        amountInput.value =
+            invoice.amount || "";
+
+    }
+
+
+    if(notesInput){
+
+        notesInput.value =
+            invoice.notes || "";
+
+    }
 
 }

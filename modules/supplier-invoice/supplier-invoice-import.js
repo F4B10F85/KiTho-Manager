@@ -33,19 +33,240 @@ function importSupplierInvoiceXml(file){
                 event.target.result;
 
 
+            /*
+            |--------------------------------------------------------------------------
+            | PARSING XML
+            |--------------------------------------------------------------------------
+            */
+
             const invoice =
                 parseSupplierInvoiceXml(
                     xmlText,
                     file.name
                 );
 
+               
+
 
             if(!invoice){
 
                 return;
 
+
+             console.log(
+                    "INVOICE PARSATA:",
+                    invoice
+                );
+
+                console.log(
+                    "FORNITORE PARSATO:",
+                    invoice?.supplier
+                );
+
+                console.log(
+                    "TAXCODE PARSATO:",
+                    invoice?.supplier?.taxCode
+                );
+
             }
 
+
+            /*
+            |--------------------------------------------------------------------------
+            | MATCH FORNITORE
+            |--------------------------------------------------------------------------
+            |
+            | Il fornitore deve essere già presente
+            | nell'anagrafica gestionale.
+            |
+            | Per il momento utilizziamo il Codice Fiscale /
+            | Partita IVA presente nel parser.
+            |
+            */
+
+            const supplier =
+                suppliers.find(
+                    item => {
+
+                        const anagraficaTaxCode =
+                            normalizeSupplierTaxCode(
+                                item.taxCode
+                            );
+
+                        const xmlTaxCode =
+                            normalizeSupplierTaxCode(
+                                invoice.supplier?.taxCode
+                            );
+
+                        console.log(
+                            "MATCH FORNITORE:",
+                            {
+                                anagrafica: item.companyName,
+                                anagraficaTaxCode,
+                                xmlTaxCode,
+                                match:
+                                    anagraficaTaxCode === xmlTaxCode
+                            }
+                        );
+
+                        return (
+                            anagraficaTaxCode ===
+                            xmlTaxCode
+                        );
+
+                    }
+                );
+
+
+            if(!supplier){
+
+                alert(
+                    "Fornitore non presente in anagrafica."
+                );
+
+                return;
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | CREAZIONE FATTURA
+            |--------------------------------------------------------------------------
+            */
+
+            const purchasingInvoice = {
+
+                ...invoice,
+
+                number:
+                    invoice.number || "",
+
+
+                date:
+                    invoice.date || "",
+
+
+                companyName:
+                    supplier.companyName || "",
+
+
+                address:
+                    supplier.address || "",
+
+
+                city:
+                    supplier.city || "",
+
+
+                province:
+                    supplier.province || "",
+
+
+                country:
+                    supplier.country || "",
+
+
+                taxableAmount:
+                    invoice.totals?.taxableAmount ?? 0,
+
+
+                vatAmount:
+                    invoice.totals?.vatAmount ?? 0,
+
+
+                transportcostsAmount:
+                    0,
+
+
+                stampdutyAmount:
+                    invoice.totals?.stampDuty ?? 0,
+
+
+                amount:
+                    invoice.totals?.totalAmount ?? 0,
+
+
+                notes:
+                    "",
+
+
+                supplierCode:
+                    supplier.code
+
+            };
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | NORMALIZZAZIONE DATA
+            |--------------------------------------------------------------------------
+            */
+
+            if(purchasingInvoice.date){
+
+                const dateParts =
+                    purchasingInvoice.date.split("-");
+
+
+                if(dateParts.length === 3){
+
+                    purchasingInvoice.date =
+                        `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+
+                }
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | NORMALIZZAZIONE IMPORTI
+            |--------------------------------------------------------------------------
+            */
+
+            purchasingInvoice.taxableAmount =
+                Number(
+                    purchasingInvoice.taxableAmount
+                ).toFixed(2);
+
+
+            purchasingInvoice.vatAmount =
+                Number(
+                    purchasingInvoice.vatAmount
+                ).toFixed(2);
+
+
+            purchasingInvoice.stampdutyAmount =
+                Number(
+                    purchasingInvoice.stampdutyAmount
+                ).toFixed(2);
+
+
+            purchasingInvoice.amount =
+                formatSupplierInvoiceAmount(
+                    purchasingInvoice.amount
+                );
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | INSERIMENTO NELL'ELENCO FATTURE
+            |--------------------------------------------------------------------------
+            */
+
+            purchasinginvoiceList.push(
+                purchasingInvoice
+            );
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | RITORNO ALLA TABELLA FATTURE
+            |--------------------------------------------------------------------------
+            */
+
+            renderPurchasingInvoicesPage();
 
             showSupplierInvoice(
                 invoice
@@ -397,6 +618,30 @@ function parseXmlNumber(
 
 }
 
+/*
+|--------------------------------------------------------------------------
+| NORMALIZZAZIONE CODICE FISCALE / PARTITA IVA
+|--------------------------------------------------------------------------
+*/
+
+function normalizeSupplierTaxCode(value){
+
+    if(!value){
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .trim()
+        .toUpperCase()
+        .replace(/\s+/g, "")
+        .replace(/^IT/, "");
+
+}
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -404,9 +649,13 @@ function parseXmlNumber(
 |--------------------------------------------------------------------------
 */
 
-function parseSupplierFromXml(
-    xml
-){
+function parseSupplierFromXml(xml){
+
+    /*
+    |--------------------------------------------------------------------------
+    | CEDENTE / PRESTATORE
+    |--------------------------------------------------------------------------
+    */
 
     const supplierNode =
         xml.getElementsByTagName(
@@ -418,99 +667,186 @@ function parseSupplierFromXml(
 
         return {
 
-            id:"",
-            code:"",
-            companyName:"",
-            vatNumber:"",
-            taxCode:"",
-            address:"",
-            postalCode:"",
-            city:"",
-            province:"",
-            country:"",
-            recipientCode:"",
-            pec:""
+            taxCode: "",
+
+            companyName: "",
+
+            address: "",
+
+            city: "",
+
+            province: "",
+
+            country: ""
 
         };
 
     }
 
 
-    const idFiscal =
+    /*
+    |--------------------------------------------------------------------------
+    | DATI ANAGRAFICI
+    |--------------------------------------------------------------------------
+    */
+
+    const dataNode =
         supplierNode.getElementsByTagName(
+            "DatiAnagrafici"
+        )[0];
+
+
+    if(!dataNode){
+
+        return {
+
+            taxCode: "",
+
+            companyName: "",
+
+            address: "",
+
+            city: "",
+
+            province: "",
+
+            country: ""
+
+        };
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | PARTITA IVA
+    |--------------------------------------------------------------------------
+    |
+    | IMPORTANTE:
+    |
+    | Cerchiamo IdFiscaleIVA SOLO all'interno del CedentePrestatore.
+    | Non utilizziamo il primo IdCodice trovato nell'intero XML,
+    | perché potrebbe essere quello di IdTrasmittente.
+    |
+    */
+
+    const vatNode =
+        dataNode.getElementsByTagName(
             "IdFiscaleIVA"
         )[0];
 
 
-    const vatNumber =
-        idFiscal
+    const vatCountry =
+        vatNode
             ? getXmlValue(
-                idFiscal,
+                vatNode,
+                "IdPaese"
+            )
+            : "";
+
+
+    const vatCode =
+        vatNode
+            ? getXmlValue(
+                vatNode,
                 "IdCodice"
             )
             : "";
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | NORMALIZZAZIONE PARTITA IVA
+    |--------------------------------------------------------------------------
+    */
+
+    const normalizedTaxCode =
+        normalizeSupplierTaxCode(
+            vatCode
+        );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | DENOMINAZIONE
+    |--------------------------------------------------------------------------
+    */
+
+    const companyName =
+        getXmlValue(
+            dataNode,
+            "Denominazione"
+        );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SEDE
+    |--------------------------------------------------------------------------
+    */
+
+    const addressNode =
+        supplierNode.getElementsByTagName(
+            "Sede"
+        )[0];
+
+
+    const address =
+        addressNode
+            ? getXmlValue(
+                addressNode,
+                "Indirizzo"
+            )
+            : "";
+
+
+    const city =
+        addressNode
+            ? getXmlValue(
+                addressNode,
+                "Comune"
+            )
+            : "";
+
+
+    const province =
+        addressNode
+            ? getXmlValue(
+                addressNode,
+                "Provincia"
+            )
+            : "";
+
+
+    const country =
+        addressNode
+            ? getXmlValue(
+                addressNode,
+                "Nazione"
+            )
+            : "";
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RISULTATO
+    |--------------------------------------------------------------------------
+    */
+
     return {
 
-        id:"",
-        code:"",
-
-        companyName:
-            getXmlValue(
-                supplierNode,
-                "Denominazione"
-            ),
-
-        vatNumber,
-
         taxCode:
-            getXmlValue(
-                supplierNode,
-                "CodiceFiscale"
-            ),
+            normalizedTaxCode,
 
-        address:
-            getXmlValue(
-                supplierNode,
-                "Indirizzo"
-            ),
+        companyName,
 
-        postalCode:
-            getXmlValue(
-                supplierNode,
-                "CAP"
-            ),
+        address,
 
-        city:
-            getXmlValue(
-                supplierNode,
-                "Comune"
-            ),
+        city,
 
-        province:
-            getXmlValue(
-                supplierNode,
-                "Provincia"
-            ),
+        province,
 
-        country:
-            getXmlValue(
-                supplierNode,
-                "Nazione"
-            ),
-
-        recipientCode:
-            getXmlValue(
-                supplierNode,
-                "CodiceDestinatario"
-            ),
-
-        pec:
-            getXmlValue(
-                supplierNode,
-                "PECDestinatario"
-            )
+        country
 
     };
 
@@ -2542,7 +2878,8 @@ function showSupplierInvoice(invoice){
 */
 
 function formatSupplierInvoiceAmount(
-    amount){
+    amount
+){
 
     return Number(
         amount || 0
@@ -2553,6 +2890,6 @@ function formatSupplierInvoiceAmount(
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         }
-    );
+    ) + " €";
 
 }

@@ -40,73 +40,7 @@ const purchasinginvoiceList = [
         province: "PD",
         country: "Italia",
         amount: "3.956,25 €"
-    },
-
-    {
-        number: "FT9987-01-26",
-        date: "05/08/2026",
-        companyName: "Crystal Fashion",
-        address: "Via Venezia 22",
-        city: "Treviso",
-        province: "TV",
-        country: "Italia",
-        amount: "5.248,90 €"
-    },
-
-    {
-        number: "FT012",
-        date: "06/08/2026",
-        companyName: "Packaging Group",
-        address: "Via Bologna 3",
-        city: "Verona",
-        province: "VR",
-        country: "Italia",
-        amount: "2.418,70 €"
-    },
-
-    {
-        number: "FT-ERRE-13/26",
-        date: "08/08/2026",
-        companyName: "Conceria Rossi",
-        address: "Via Roma 10",
-        city: "Arzignano",
-        province: "VI",
-        country: "Italia",
-        amount: "764,15 €"
-    },
-
-    {
-        number: "FT0014",
-        date: "10/08/2026",
-        companyName: "Leather World",
-        address: "Via Milano 5",
-        city: "Vicenza",
-        province: "VI",
-        country: "Italia",
-        amount: "6.934,80 €"
-    },
-
-    {
-        number: "FT0000587",
-        date: "11/08/2026",
-        companyName: "Crystal Fashion",
-        address: "Via Venezia 22",
-        city: "Treviso",
-        province: "TV",
-        country: "Italia",
-        amount: "987,50 €"
-    },
-
-    {
-        number: "FT00-021-26",
-        date: "13/08/2026",
-        companyName: "Packaging Group",
-        address: "Via Bologna 3",
-        city: "Verona",
-        province: "VR",
-        country: "Italia",
-        amount: "8.145,20 €"
-    },
+    }
 ];
 
 
@@ -226,6 +160,51 @@ function renderPurchasingInvoicesPage(){
             {
                 key:"amount",
                 title:"Totale"
+            },
+
+            {
+                title:"Azioni",
+
+                render:
+                    row => {
+
+                        const invoiceIndex =
+                            purchasinginvoiceList.indexOf(
+                                row
+                            );
+
+                        return `
+
+                            <div
+                                class="km-table-actions">
+
+                                <button
+                                    type="button"
+                                    class="km-action-button"
+                                    title="Stampa fattura"
+                                    onclick="printPurchasingInvoiceByIndex(${invoiceIndex})">
+
+                                    🖨️
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="km-action-button"
+                                    title="Elimina fattura"
+                                    onclick="deletePurchasingInvoiceByIndex(${invoiceIndex})">
+
+                                    🗑️
+
+                                </button>
+
+                            </div>
+
+                        `;
+
+                    }
+
             }
 
         ],
@@ -274,5 +253,126 @@ function importSupplierInvoiceXmlFromFile(){
         };
 
     input.click();
+
+}
+
+
+function printPurchasingInvoice(invoice){
+
+    if(!invoice){
+
+        return;
+
+    }
+
+    showSupplierInvoice(
+        invoice
+    );
+
+}
+
+
+function deletePurchasingInvoice(invoice){
+
+    if(!invoice){
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            `Vuoi eliminare la fattura ${invoice.number || ""}?`
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    const index =
+        purchasinginvoiceList.indexOf(
+            invoice
+        );
+
+
+    if(index === -1){
+
+        return;
+
+    }
+
+
+    purchasinginvoiceList.splice(
+        index,
+        1
+    );
+
+
+    renderPurchasingInvoicesPage();
+
+}
+
+function printPurchasingInvoiceByIndex(
+    index
+){
+
+    const invoice =
+        purchasinginvoiceList[index];
+
+
+    if(!invoice){
+
+        return;
+
+    }
+
+
+    showSupplierInvoice(
+        invoice
+    );
+
+}
+
+
+function deletePurchasingInvoiceByIndex(
+    index
+){
+
+    const invoice =
+        purchasinginvoiceList[index];
+
+
+    if(!invoice){
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            `Vuoi eliminare la fattura ${invoice.number || ""}?`
+        );
+        purchasinginvoiceList.push
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    purchasinginvoiceList.splice(
+        index,
+        1
+    );
+
+
+    renderPurchasingInvoicesPage();
 
 }
