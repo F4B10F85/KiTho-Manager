@@ -8,6 +8,8 @@
 |--------------------------------------------------------------------------
 */
 
+let currentSupplier = null;
+
 const suppliers = [
 
     {
@@ -17,7 +19,7 @@ const suppliers = [
         city:"Brescia",
         province:"BS",
         country: "Italia",
-        taxCode:"09399880153",
+        vatNumber:"09399880153",
         phone:"800 123 800",
         email:"fedexexpressitalysrl@legalmail.it"
     },
@@ -29,7 +31,7 @@ const suppliers = [
         city:"Sassari",
         province:"SS",
         country: "Italia",
-        taxCode:"01234567890",
+        vatNumber:"01234567890",
         phone:"099 877441",
         email:"alpha"
     }
@@ -141,7 +143,7 @@ function renderSuppliersPage() {
             },
 
             {
-                key: "taxCode",
+                key: "vatNumber",
                 title: "P.Iva"
             },
 

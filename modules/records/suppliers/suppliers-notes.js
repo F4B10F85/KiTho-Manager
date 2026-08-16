@@ -15,13 +15,9 @@ function renderSupplierNotes(supplier = {}){
             <div class="km-company-field">
 
                 <textarea
-
+                    id="supplier-notes"
                     class="km-customer-notes"
-
-                    placeholder="Scrivi qui tutte le note relative al cliente..."
-
-                    oninput="supplier.notes=this.value"
-
+                    placeholder="Scrivi qui tutte le note relative al fornitore..."
                 >${supplier.notes ?? ""}</textarea>
 
             </div>

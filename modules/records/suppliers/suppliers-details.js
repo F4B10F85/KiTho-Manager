@@ -20,7 +20,21 @@ function showSupplierDetails(supplierCode){
 
     }
 
-    const workspace = document.querySelector(".km-workspace");
+
+    /*
+    |--------------------------------------------------------------------------
+    | Crea una copia di lavoro
+    |--------------------------------------------------------------------------
+    */
+
+    currentSupplier = {
+        ...supplier
+    };
+
+
+    const workspace =
+        document.querySelector(".km-workspace");
+
 
     workspace.innerHTML = `
 
@@ -28,7 +42,7 @@ function showSupplierDetails(supplierCode){
 
             <div class="km-page-header">
 
-                <h1>${supplier.companyName}</h1>
+                <h1>${currentSupplier.companyName}</h1>
 
             </div>
 
@@ -38,13 +52,19 @@ function showSupplierDetails(supplierCode){
 
             <div class="km-company-footer">
 
-                <button class="km-button">
+                <button
+                    type="button"
+                    class="km-button"
+                    onclick="cancelSupplierEdit()">
 
                     Annulla
 
                 </button>
 
-                <button class="km-button km-button-primary">
+                <button
+                    type="button"
+                    class="km-button km-button-primary"
+                    onclick="saveSupplierChanges()">
 
                     Salva
 
@@ -56,11 +76,13 @@ function showSupplierDetails(supplierCode){
 
     `;
 
-    showSupplierTab("anagraphic", supplier);
+
+    showSupplierTab(
+        "anagraphic",
+        currentSupplier
+    );
 
 }
-
-
 
 /**
 FUNZIONE_v03 PER LA FASCIA RIASSUNTIVA
@@ -110,3 +132,75 @@ function renderSupplierSummary(supplier){
 
 }
 
+function cancelSupplierEdit(){
+
+    renderSuppliersPage();
+
+}
+
+function saveSupplierChanges(){
+
+    const activeTab =
+        document.querySelector(
+            ".km-tab.active[data-tab]"
+        );
+
+
+    if(activeTab){
+
+        const currentTabId =
+            activeTab.dataset.tab;
+
+
+        saveCurrentSupplierTab(
+            currentTabId
+        );
+
+    }
+
+
+    if(!currentSupplier){
+
+        return;
+
+    }
+
+
+    if(
+        !currentSupplier.companyName ||
+        !currentSupplier.companyName.trim()
+    ){
+
+        alert(
+            "Inserisci la ragione sociale."
+        );
+
+        return;
+
+    }
+
+
+    const supplierIndex =
+        suppliers.findIndex(
+
+            supplier =>
+                supplier.code === currentSupplier.code
+
+        );
+
+
+    if(supplierIndex === -1){
+
+        return;
+
+    }
+
+
+    suppliers[supplierIndex] = {
+        ...currentSupplier
+    };
+
+
+    renderSuppliersPage();
+
+}

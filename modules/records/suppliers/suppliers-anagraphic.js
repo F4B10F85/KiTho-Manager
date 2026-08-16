@@ -166,53 +166,54 @@ function renderSupplierAnagraphic(supplier = {}){
 
 function saveNewSupplier(){
 
-    const codeInput =
-        document.getElementById(
-            "supplier-code"
-        );
+    /*
+    |--------------------------------------------------------------------------
+    | Sincronizza l'ultima TAB visualizzata
+    |--------------------------------------------------------------------------
+    */
 
-    const companyNameInput =
-        document.getElementById(
-            "supplier-company-name"
-        );
-
-    const addressInput =
-        document.getElementById(
-            "supplier-address"
-        );
-
-    const cityInput =
-        document.getElementById(
-            "supplier-city"
-        );
-
-    const provinceInput =
-        document.getElementById(
-            "supplier-province"
-        );
-
-    const countryInput =
-        document.getElementById(
-            "supplier-country"
-        );
-
-    const vatNumberInput =
-        document.getElementById(
-            "supplier-vat-number"
-        );
-
-    const typeInput =
-        document.getElementById(
-            "supplier-type"
-        );
-
-    const activeInput =
-        document.getElementById(
-            "supplier-active"
+    const activeTab =
+        document.querySelector(
+            ".km-tab.active[data-tab]"
         );
 
 
-    if(!companyNameInput.value.trim()){
+    if(activeTab){
+
+        const currentTabId =
+            activeTab.dataset.tab;
+
+
+        saveCurrentSupplierTab(
+            currentTabId
+        );
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Verifica che esista il fornitore corrente
+    |--------------------------------------------------------------------------
+    */
+
+    if(!currentSupplier){
+
+        return;
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validazione dati obbligatori
+    |--------------------------------------------------------------------------
+    */
+
+    if(
+        !currentSupplier.companyName ||
+        !currentSupplier.companyName.trim()
+    ){
 
         alert(
             "Inserisci la ragione sociale."
@@ -223,42 +224,22 @@ function saveNewSupplier(){
     }
 
 
-    const newSupplier = {
-
-        code:
-            codeInput.value,
-
-        companyName:
-            companyNameInput.value.trim(),
-
-        address:
-            addressInput.value.trim(),
-
-        city:
-            cityInput.value.trim(),
-
-        province:
-            provinceInput.value.trim(),
-
-        country:
-            countryInput.value.trim(),
-
-        vatNumber:
-            vatNumberInput.value.trim(),
-
-        type:
-            typeInput.value,
-
-        active:
-            activeInput.value === "true"
-
-    };
-
+    /*
+    |--------------------------------------------------------------------------
+    | Salvataggio
+    |--------------------------------------------------------------------------
+    */
 
     suppliers.push(
-        newSupplier
+        currentSupplier
     );
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Torna alla tabella Fornitori
+    |--------------------------------------------------------------------------
+    */
 
     renderSuppliersPage();
 

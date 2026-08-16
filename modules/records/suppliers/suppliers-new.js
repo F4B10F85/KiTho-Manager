@@ -17,6 +17,13 @@ function showNewSupplier(){
         getNextSupplierCode();
 
 
+    currentSupplier = {
+
+        code: newSupplierCode
+
+    };
+
+
     workspace.innerHTML = `
 
         <div class="km-customer-page">
@@ -60,9 +67,7 @@ function showNewSupplier(){
 
     showSupplierTab(
         "anagraphic",
-        {
-            code: newSupplierCode
-        }
+        currentSupplier
     );
 
 }

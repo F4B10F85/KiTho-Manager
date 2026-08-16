@@ -27,15 +27,6 @@ function showSupplierTab(tabId, supplier = {}){
 
             break;
 
-        case "attachments":
-
-            content.innerHTML =
-                renderSupplierAttachments(supplier);
-
-            initSupplierAttachments(supplier);
-
-            break;
-
     }
 
 }
@@ -67,8 +58,7 @@ function renderSupplierTabs(showDocuments = true){
                 data-tab="anagraphic"
                 onclick="
 
-                    setActiveSupplierTab('anagraphic');
-                    showSupplierTab('anagraphic');
+                    switchSupplierTab('anagraphic');
 
                 ">
 
@@ -81,8 +71,7 @@ function renderSupplierTabs(showDocuments = true){
                 data-tab="contacts"
                 onclick="
 
-                    setActiveSupplierTab('contacts');
-                    showSupplierTab('contacts');
+                    switchSupplierTab('contacts');
 
                 ">
 
@@ -95,31 +84,166 @@ function renderSupplierTabs(showDocuments = true){
                 data-tab="notes"
                 onclick="
 
-                    setActiveSupplierTab('notes');
-                    showSupplierTab('notes');
+                    switchSupplierTab('notes');
 
                 ">
 
                 Note
 
-            </button> 
-
-            <button
-                class="km-tab"
-                data-tab="attachments"
-                onclick="
-
-                    setActiveSupplierTab('attachments');
-                    showSupplierTab('attachments');
-
-                ">
-
-                Allegati
-
-            </button> 
+            </button>
 
         </div>
 
     `;
+
+}
+
+function switchSupplierTab(tabId){
+
+    const activeTab =
+        document.querySelector(
+            ".km-tab.active[data-tab]"
+        );
+
+
+    if(activeTab){
+
+        const currentTabId =
+            activeTab.dataset.tab;
+
+
+        saveCurrentSupplierTab(
+            currentTabId
+        );
+
+    }
+
+
+    setActiveSupplierTab(
+        tabId
+    );
+
+
+    showSupplierTab(
+        tabId,
+        currentSupplier
+    );
+
+}
+
+function saveCurrentSupplierTab(tabId){
+
+    if(!currentSupplier){
+
+        return;
+
+    }
+
+
+    switch(tabId){
+
+        case "anagraphic":
+
+            currentSupplier.code =
+                document.getElementById(
+                    "supplier-code"
+                )?.value || "";
+
+
+            currentSupplier.companyName =
+                document.getElementById(
+                    "supplier-company-name"
+                )?.value.trim() || "";
+
+
+            currentSupplier.address =
+                document.getElementById(
+                    "supplier-address"
+                )?.value.trim() || "";
+
+
+            currentSupplier.city =
+                document.getElementById(
+                    "supplier-city"
+                )?.value.trim() || "";
+
+
+            currentSupplier.province =
+                document.getElementById(
+                    "supplier-province"
+                )?.value.trim() || "";
+
+
+            currentSupplier.country =
+                document.getElementById(
+                    "supplier-country"
+                )?.value.trim() || "";
+
+
+            currentSupplier.vatNumber =
+                document.getElementById(
+                    "supplier-vat-number"
+                )?.value.trim() || "";
+
+
+            currentSupplier.type =
+                document.getElementById(
+                    "supplier-type"
+                )?.value || "";
+
+
+            currentSupplier.active =
+                document.getElementById(
+                    "supplier-active"
+                )?.value === "true";
+
+
+            break;
+
+        case "contacts":
+
+            currentSupplier.phone =
+                document.getElementById(
+                    "supplier-phone"
+                )?.value.trim() || "";
+
+
+            currentSupplier.email =
+                document.getElementById(
+                    "supplier-email"
+                )?.value.trim() || "";
+
+
+            currentSupplier.pec =
+                document.getElementById(
+                    "supplier-pec"
+                )?.value.trim() || "";
+
+
+            currentSupplier.website =
+                document.getElementById(
+                    "supplier-website"
+                )?.value.trim() || "";
+
+
+            currentSupplier.contactPerson =
+                document.getElementById(
+                    "supplier-contact-person"
+                )?.value.trim() || "";
+
+
+            break;
+
+        case "notes":
+
+            currentSupplier.notes =
+                document.getElementById(
+                    "supplier-notes"
+                )?.value || "";
+
+
+            break;
+
+    }
 
 }

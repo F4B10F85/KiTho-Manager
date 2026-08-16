@@ -23,6 +23,7 @@ function renderSupplierContacts(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-phone"
                         type="text"
                         value="${supplier.phone ?? ""}">
 
@@ -37,6 +38,7 @@ function renderSupplierContacts(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-email"
                         type="email"
                         value="${supplier.email ?? ""}">
 
@@ -51,6 +53,7 @@ function renderSupplierContacts(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-pec"
                         type="email"
                         value="${supplier.pec ?? ""}">
 
@@ -65,6 +68,7 @@ function renderSupplierContacts(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-website"
                         type="text"
                         value="${supplier.website ?? ""}">
 
@@ -79,6 +83,7 @@ function renderSupplierContacts(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-contact-person"
                         type="text"
                         value="${supplier.contactPerson ?? ""}">
 
