@@ -1,5 +1,7 @@
 "use strict";
 
+let customerAttachments = [];
+
 /*
 |--------------------------------------------------------------------------
 | TAB Allegati Cliente
@@ -121,65 +123,65 @@ function initCustomerAttachments(customer){
 |--------------------------------------------------------------------------
 */
 
+
 function getCustomerAttachments(customerCode){
+
+    const mockAttachments = [
+
+        {
+            id:1,
+            customerCode:"C00001",
+            fileName:"Contratto_2026.pdf",
+            category:"Contratto",
+            uploaded:"31/07/2026",
+            size:"2.3 MB"
+        },
+
+        {
+            id:2,
+            customerCode:"C00001",
+            fileName:"Carta_Identita.pdf",
+            category:"Documento",
+            uploaded:"12/06/2026",
+            size:"540 KB"
+        },
+
+        {
+            id:3,
+            customerCode:"C00001",
+            fileName:"Visura_Camerale.pdf",
+            category:"Visura",
+            uploaded:"03/05/2026",
+            size:"1.8 MB"
+        },
+
+        {
+            id:4,
+            customerCode:"C00001",
+            fileName:"Preventivo_Firmato.pdf",
+            category:"Preventivo",
+            uploaded:"18/04/2026",
+            size:"860 KB"
+        }
+
+    ];
+
 
     return [
 
-        {
+        ...mockAttachments.filter(
 
-            id:1,
+            attachment =>
+                attachment.customerCode === customerCode
 
-            fileName:"Contratto_2026.pdf",
+        ),
 
-            category:"Contratto",
+        ...customerAttachments.filter(
 
-            uploaded:"31/07/2026",
+            attachment =>
+                attachment.customerCode === customerCode
 
-            size:"2.3 MB"
-
-        },
-
-        {
-
-            id:2,
-
-            fileName:"Carta_Identita.pdf",
-
-            category:"Documento",
-
-            uploaded:"12/06/2026",
-
-            size:"540 KB"
-
-        },
-
-        {
-
-            id:3,
-
-            fileName:"Visura_Camerale.pdf",
-
-            category:"Visura",
-
-            uploaded:"03/05/2026",
-
-            size:"1.8 MB"
-
-        },
-
-        {
-
-            id:4,
-
-            fileName:"Preventivo_Firmato.pdf",
-
-            category:"Preventivo",
-
-            uploaded:"18/04/2026",
-
-            size:"860 KB"
-
-        }
+        )
 
     ];
 

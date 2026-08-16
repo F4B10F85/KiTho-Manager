@@ -17,7 +17,7 @@ const carriers = [
         city:"Verona",
         province:"VR",
         country:"Italia",
-        taxCode:"01765430981",
+        vatNumber:"01765430981",
         phone:"045 8123456",
         email:"info@trasportiveloci.it"
     },
@@ -29,7 +29,7 @@ const carriers = [
         city:"Brescia",
         province:"BS",
         country:"Italia",
-        taxCode:"02876541092",
+        vatNumber:"02876541092",
         phone:"030 4455667",
         email:"spedizioni@logisticanord.it"
     },
@@ -41,7 +41,7 @@ const carriers = [
         city:"Padova",
         province:"PD",
         country:"Italia",
-        taxCode:"03987652103",
+        vatNumber:"03987652103",
         phone:"049 7788990",
         email:"commerciale@expresscargo.it"
     },
@@ -53,7 +53,7 @@ const carriers = [
         city:"Vicenza",
         province:"VI",
         country:"Italia",
-        taxCode:"04123456789",
+        vatNumber:"04123456789",
         phone:"0444 556677",
         email:"info@autotrasportibianchi.it"
     },
@@ -65,7 +65,7 @@ const carriers = [
         city:"Bologna",
         province:"BO",
         country:"Italia",
-        taxCode:"05234567890",
+        vatNumber:"05234567890",
         phone:"051 6677889",
         email:"operations@globalfreight.it"
     },
@@ -178,7 +178,7 @@ function renderCarriersPage() {
             },
 
             {
-                key: "taxCode",
+                key: "vatNumber",
                 title: "P.Iva"
             },
 

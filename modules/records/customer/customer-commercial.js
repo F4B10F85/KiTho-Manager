@@ -22,7 +22,7 @@ function renderCustomerCommercial(customer = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="customer-classification">
 
                         ${masterData.customerTypes.map(type => `
 
@@ -48,7 +48,7 @@ function renderCustomerCommercial(customer = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="customer-price-list">
 
                         ${masterData.customerPriceLists.map(list => `
 
@@ -74,7 +74,7 @@ function renderCustomerCommercial(customer = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="customer-discount-category">
 
                         ${masterData.customerDiscountCategories.map(discount => `
 
@@ -100,7 +100,7 @@ function renderCustomerCommercial(customer = {}){
 
                 <div class="km-company-field">
                     
-                    <select>
+                    <select id="customer-agent">
 
                         <option value=""></option>
 
@@ -128,7 +128,7 @@ function renderCustomerCommercial(customer = {}){
 
                 <div class="km-company-field">
                     
-                    <select>
+                    <select id="customer-payment-method">
 
                         ${masterData.paymentMethods.map(method => `
 

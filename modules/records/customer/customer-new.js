@@ -8,9 +8,17 @@
 
 function showNewCustomer(){
 
-    const workspace = document.querySelector(".km-workspace");
+    const workspace =
+        document.querySelector(".km-workspace");
+
 
     const newCustomerCode = getNextCustomerCode();
+
+    currentCustomer = {
+
+        code: newCustomerCode
+
+    };
 
     workspace.innerHTML = `
 
@@ -22,9 +30,12 @@ function showNewCustomer(){
 
             </div>
 
+
             ${renderCustomerTabs(false)}
 
+
             <div id="km-customer-content"></div>
+
 
             <div class="km-company-footer">
 
@@ -53,11 +64,10 @@ function showNewCustomer(){
 
     `;
 
+
     showCustomerTab(
         "anagraphic",
-        {
-            code: newCustomerCode
-        }
+        currentCustomer
     );
 
 }

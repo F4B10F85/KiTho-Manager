@@ -152,8 +152,135 @@ function checkAttachmentForm(){
 
 function uploadAttachment(){
 
-    console.log("UPLOAD MOCK");
+    const fileInput =
+        document.getElementById(
+            "attachment-file"
+        );
+
+    const categoryInput =
+        document.getElementById(
+            "attachment-category"
+        );
+
+
+    const file =
+        fileInput?.files?.[0];
+
+    const category =
+        categoryInput?.value;
+
+
+    if(!file){
+
+        alert(
+            "Seleziona un file."
+        );
+
+        return;
+
+    }
+
+
+    if(!category){
+
+        alert(
+            "Seleziona una categoria."
+        );
+
+        return;
+
+    }
+
+
+    if(!currentCustomer){
+
+        alert(
+            "Cliente non disponibile."
+        );
+
+        return;
+
+    }
+
+
+    const newAttachment = {
+
+        id:
+            Date.now(),
+
+        customerCode:
+            currentCustomer.code,
+
+        fileName:
+            file.name,
+
+        category:
+            category,
+
+        uploaded:
+            new Date().toLocaleDateString(
+                "it-IT"
+            ),
+
+        size:
+            formatFileSize(
+                file.size
+            )
+
+    };
+
+
+    customerAttachments.push(
+        newAttachment
+    );
+
 
     closeModal();
+
+
+    initCustomerAttachments(
+        currentCustomer
+    );
+
+}
+
+function formatFileSize(bytes){
+
+    if(bytes === 0){
+
+        return "0 Bytes";
+
+    }
+
+
+    const units = [
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+
+    const index =
+        Math.floor(
+            Math.log(bytes) /
+            Math.log(1024)
+        );
+
+
+    return (
+        parseFloat(
+            (
+                bytes /
+                Math.pow(
+                    1024,
+                    index
+                )
+            ).toFixed(1)
+        )
+        +
+        " " +
+        units[index]
+    );
 
 }

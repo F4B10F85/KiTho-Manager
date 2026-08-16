@@ -20,7 +20,7 @@ function renderCustomerNotes(customer = {}){
 
                     placeholder="Scrivi qui tutte le note relative al cliente..."
 
-                    oninput="customer.notes=this.value"
+                    oninput="currentCustomer.notes=this.value"
 
                 >${customer.notes ?? ""}</textarea>
 

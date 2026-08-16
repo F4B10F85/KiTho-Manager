@@ -22,7 +22,7 @@ function renderCustomerTax(customer = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="customer-vat-code">
 
                         ${masterData.vatCodes.map(code => `
 
@@ -49,6 +49,7 @@ function renderCustomerTax(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-sdi-code"
                         type="text"
                         value="${customer.sdiCode ?? ""}">
 
@@ -63,6 +64,7 @@ function renderCustomerTax(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-invoice-pec"
                         type="text"
                         value="${customer.invoicePec ?? ""}">
 

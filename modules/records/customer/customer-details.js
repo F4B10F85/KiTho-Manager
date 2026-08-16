@@ -322,61 +322,18 @@ function renderCustomerSummary(customer){
 
 function saveNewCustomer(){
 
-    const codeInput =
-        document.getElementById(
-            "customer-code"
+    if(!currentCustomer){
+
+        alert(
+            "Nessun cliente da salvare."
         );
 
+        return;
 
-    const companyNameInput =
-        document.getElementById(
-            "customer-company-name"
-        );
+    }
 
 
-    const addressInput =
-        document.getElementById(
-            "customer-address"
-        );
-
-
-    const cityInput =
-        document.getElementById(
-            "customer-city"
-        );
-
-
-    const provinceInput =
-        document.getElementById(
-            "customer-province"
-        );
-
-
-    const countryInput =
-        document.getElementById(
-            "customer-country"
-        );
-
-
-    const vatNumberInput =
-        document.getElementById(
-            "customer-vat-number"
-        );
-
-
-    const typeInput =
-        document.getElementById(
-            "customer-type"
-        );
-
-
-    const activeInput =
-        document.getElementById(
-            "customer-active"
-        );
-
-
-    if(!companyNameInput.value.trim()){
+    if(!currentCustomer.companyName?.trim()){
 
         alert(
             "Inserisci la ragione sociale."
@@ -387,40 +344,8 @@ function saveNewCustomer(){
     }
 
 
-    const newCustomer = {
-
-        code:
-            codeInput.value,
-
-        companyName:
-            companyNameInput.value.trim(),
-
-        address:
-            addressInput.value.trim(),
-
-        city:
-            cityInput.value.trim(),
-
-        province:
-            provinceInput.value.trim(),
-
-        country:
-            countryInput.value.trim(),
-
-        vatNumber:
-            vatNumberInput.value.trim(),
-
-        type:
-            typeInput.value,
-
-        active:
-            activeInput.value === "true"
-
-    };
-
-
     customers.push(
-        newCustomer
+        currentCustomer
     );
 
 

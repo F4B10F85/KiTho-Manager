@@ -23,6 +23,7 @@ function renderCustomerContacts(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-phone"
                         type="text"
                         value="${customer.phone ?? ""}">
 
@@ -37,6 +38,7 @@ function renderCustomerContacts(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-email"
                         type="email"
                         value="${customer.email ?? ""}">
 
@@ -51,6 +53,7 @@ function renderCustomerContacts(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-pec"
                         type="email"
                         value="${customer.pec ?? ""}">
 
@@ -65,6 +68,7 @@ function renderCustomerContacts(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-website"
                         type="text"
                         value="${customer.website ?? ""}">
 
@@ -79,6 +83,7 @@ function renderCustomerContacts(customer = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="customer-contact-person"
                         type="text"
                         value="${customer.contactPerson ?? ""}">
 
