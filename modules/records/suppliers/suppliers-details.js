@@ -32,8 +32,6 @@ function showSupplierDetails(supplierCode){
 
             </div>
 
-            ${renderSupplierSummary(supplier)}
-
             ${renderSupplierTabs()}
 
             <div id="km-customer-content"></div>

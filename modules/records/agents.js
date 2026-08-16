@@ -88,12 +88,6 @@ function renderAgentsPage(){
         columns: [
 
             {
-                title: "",
-                type: "details",
-                onClick:"showAgentDetails"
-            },
-
-            {
                 key: "code",
                 title: "Codice"
             },

@@ -20,7 +20,10 @@ function showCustomerDetails(customerCode){
 
     }
 
-    const workspace = document.querySelector(".km-workspace");
+
+    const workspace =
+        document.querySelector(".km-workspace");
+
 
     workspace.innerHTML = `
 
@@ -32,21 +35,32 @@ function showCustomerDetails(customerCode){
 
             </div>
 
+
             ${renderCustomerSummary(customer)}
+
 
             ${renderCustomerTabs()}
 
+
             <div id="km-customer-content"></div>
+
 
             <div class="km-company-footer">
 
-                <button class="km-button">
+                <button
+                    type="button"
+                    class="km-button"
+                    onclick="renderCustomersPage()">
 
                     Annulla
 
                 </button>
 
-                <button class="km-button km-button-primary">
+
+                <button
+                    type="button"
+                    class="km-button km-button-primary"
+                    onclick="saveCustomerChanges('${customer.code}')">
 
                     Salva
 
@@ -58,7 +72,11 @@ function showCustomerDetails(customerCode){
 
     `;
 
-    showCustomerTab("anagraphic", customer);
+
+    showCustomerTab(
+        "anagraphic",
+        customer
+    );
 
 }
 
@@ -302,3 +320,110 @@ function renderCustomerSummary(customer){
 
 }
 
+function saveNewCustomer(){
+
+    const codeInput =
+        document.getElementById(
+            "customer-code"
+        );
+
+
+    const companyNameInput =
+        document.getElementById(
+            "customer-company-name"
+        );
+
+
+    const addressInput =
+        document.getElementById(
+            "customer-address"
+        );
+
+
+    const cityInput =
+        document.getElementById(
+            "customer-city"
+        );
+
+
+    const provinceInput =
+        document.getElementById(
+            "customer-province"
+        );
+
+
+    const countryInput =
+        document.getElementById(
+            "customer-country"
+        );
+
+
+    const vatNumberInput =
+        document.getElementById(
+            "customer-vat-number"
+        );
+
+
+    const typeInput =
+        document.getElementById(
+            "customer-type"
+        );
+
+
+    const activeInput =
+        document.getElementById(
+            "customer-active"
+        );
+
+
+    if(!companyNameInput.value.trim()){
+
+        alert(
+            "Inserisci la ragione sociale."
+        );
+
+        return;
+
+    }
+
+
+    const newCustomer = {
+
+        code:
+            codeInput.value,
+
+        companyName:
+            companyNameInput.value.trim(),
+
+        address:
+            addressInput.value.trim(),
+
+        city:
+            cityInput.value.trim(),
+
+        province:
+            provinceInput.value.trim(),
+
+        country:
+            countryInput.value.trim(),
+
+        vatNumber:
+            vatNumberInput.value.trim(),
+
+        type:
+            typeInput.value,
+
+        active:
+            activeInput.value === "true"
+
+    };
+
+
+    customers.push(
+        newCustomer
+    );
+
+
+    renderCustomersPage();
+
+}

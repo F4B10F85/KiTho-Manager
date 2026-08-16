@@ -8,13 +8,14 @@ function renderSupplierAnagraphic(supplier = {}){
 
                 <div class="km-company-label">
 
-                    Codice cliente
+                    Codice fornitore
 
                 </div>
 
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-code"
                         type="text"
                         value="${supplier.code ?? ""}"
                         readonly>
@@ -30,9 +31,9 @@ function renderSupplierAnagraphic(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-company-name"
                         type="text"
-                        value="${supplier.businessName ?? ""}"
-                        >
+                        value="${supplier.companyName ?? ""}">
 
                 </div>
 
@@ -45,6 +46,7 @@ function renderSupplierAnagraphic(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-address"
                         type="text"
                         value="${supplier.address ?? ""}">
 
@@ -59,6 +61,7 @@ function renderSupplierAnagraphic(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-city"
                         type="text"
                         value="${supplier.city ?? ""}">
 
@@ -73,6 +76,7 @@ function renderSupplierAnagraphic(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-province"
                         type="text"
                         value="${supplier.province ?? ""}">
 
@@ -87,6 +91,7 @@ function renderSupplierAnagraphic(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-country"
                         type="text"
                         value="${supplier.country ?? ""}">
 
@@ -101,6 +106,7 @@ function renderSupplierAnagraphic(supplier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="supplier-vat-number"
                         type="text"
                         value="${supplier.vatNumber ?? ""}">
 
@@ -114,18 +120,14 @@ function renderSupplierAnagraphic(supplier = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="supplier-type">
 
-                        <option ${supplier.type==="company"?"selected":""}>
-
+                        <option value="company" ${supplier.type === "company" ? "selected" : ""}>
                             Società di Capitali
-
                         </option>
 
-                        <option ${supplier.type==="private"?"selected":""}>
-
+                        <option value="private" ${supplier.type === "private" ? "selected" : ""}>
                             Privato
-
                         </option>
 
                     </select>
@@ -140,18 +142,14 @@ function renderSupplierAnagraphic(supplier = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="supplier-active">
 
-                        <option ${supplier.active!==false?"selected":""}>
-
+                        <option value="true" ${supplier.active !== false ? "selected" : ""}>
                             Attivo
-
                         </option>
 
-                        <option ${supplier.active===false?"selected":""}>
-
+                        <option value="false" ${supplier.active === false ? "selected" : ""}>
                             Non attivo
-
                         </option>
 
                     </select>
@@ -166,3 +164,102 @@ function renderSupplierAnagraphic(supplier = {}){
 
 }
 
+function saveNewSupplier(){
+
+    const codeInput =
+        document.getElementById(
+            "supplier-code"
+        );
+
+    const companyNameInput =
+        document.getElementById(
+            "supplier-company-name"
+        );
+
+    const addressInput =
+        document.getElementById(
+            "supplier-address"
+        );
+
+    const cityInput =
+        document.getElementById(
+            "supplier-city"
+        );
+
+    const provinceInput =
+        document.getElementById(
+            "supplier-province"
+        );
+
+    const countryInput =
+        document.getElementById(
+            "supplier-country"
+        );
+
+    const vatNumberInput =
+        document.getElementById(
+            "supplier-vat-number"
+        );
+
+    const typeInput =
+        document.getElementById(
+            "supplier-type"
+        );
+
+    const activeInput =
+        document.getElementById(
+            "supplier-active"
+        );
+
+
+    if(!companyNameInput.value.trim()){
+
+        alert(
+            "Inserisci la ragione sociale."
+        );
+
+        return;
+
+    }
+
+
+    const newSupplier = {
+
+        code:
+            codeInput.value,
+
+        companyName:
+            companyNameInput.value.trim(),
+
+        address:
+            addressInput.value.trim(),
+
+        city:
+            cityInput.value.trim(),
+
+        province:
+            provinceInput.value.trim(),
+
+        country:
+            countryInput.value.trim(),
+
+        vatNumber:
+            vatNumberInput.value.trim(),
+
+        type:
+            typeInput.value,
+
+        active:
+            activeInput.value === "true"
+
+    };
+
+
+    suppliers.push(
+        newSupplier
+    );
+
+
+    renderSuppliersPage();
+
+}

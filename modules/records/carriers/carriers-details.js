@@ -31,9 +31,7 @@ function showCarrierDetails(carrierCode){
                 <h1>${carrier.companyName}</h1>
 
             </div>
-
-            ${renderCarrierSummary(carrier)}
-
+            
             ${renderCarrierTabs()}
 
             <div id="km-customer-content"></div>

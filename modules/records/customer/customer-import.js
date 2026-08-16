@@ -361,8 +361,8 @@ function showCustomerImportMapping(
         },
 
         {
-            key:"taxCode",
-            label:"Codice Fiscale",
+            key:"vatNumber",
+            label:"P.Iva",
             required:true
         },
 
@@ -611,7 +611,7 @@ function showCustomerImportMapping(
             const requiredFields = [
 
                 "companyName",
-                "taxCode"
+                "vatNumber"
 
             ];
 
@@ -624,7 +624,7 @@ function showCustomerImportMapping(
                 ){
 
                     alert(
-                        "Devi associare Ragione sociale e Codice Fiscale."
+                        "Devi associare Ragione sociale e Partita IVA."
                     );
 
                     return;
@@ -684,7 +684,7 @@ function processCustomerImport(
             existingCustomerKeys.add(
                 buildCustomerIdentity(
                     customer.companyName,
-                    customer.taxCode
+                    customer.vatNumber
                 )
             );
 
@@ -778,10 +778,10 @@ function processCustomerImport(
                 ),
 
 
-            taxCode:
+            vatNumber:
                 getImportedValue(
                     row,
-                    mapping.taxCode
+                    mapping.vatNumber
                 ),
 
 
@@ -814,7 +814,7 @@ function processCustomerImport(
 
         if(
             !customer.companyName ||
-            !customer.taxCode
+            !customer.vatNumber
         ){
 
             invalidCustomers.push({
@@ -839,7 +839,7 @@ function processCustomerImport(
         const customerKey =
             buildCustomerIdentity(
                 customer.companyName,
-                customer.taxCode
+                customer.vatNumber
             );
 
 
@@ -963,14 +963,14 @@ function processCustomerImport(
 |
 | Il cliente è identificato dalla coppia:
 |
-| Ragione Sociale + Codice Fiscale
+| Ragione Sociale + Partita IVA
 |
 |--------------------------------------------------------------------------
 */
 
 function buildCustomerIdentity(
     companyName,
-    taxCode
+    vatNumber
 ){
 
     return [
@@ -980,7 +980,7 @@ function buildCustomerIdentity(
         ),
 
         normalizeCustomerValue(
-            taxCode
+            vatNumber
         )
 
     ].join("|");
@@ -1399,7 +1399,7 @@ function importNewCustomers(
             existingKeys.add(
                 buildCustomerIdentity(
                     customer.companyName,
-                    customer.taxCode
+                    customer.vatNumber
                 )
             );
 
@@ -1440,7 +1440,7 @@ function importNewCustomers(
 
         if(
             !customer.companyName ||
-            !customer.taxCode
+            !customer.vatNumber
         ){
 
             continue;
@@ -1451,7 +1451,7 @@ function importNewCustomers(
         const customerKey =
             buildCustomerIdentity(
                 customer.companyName,
-                customer.taxCode
+                customer.vatNumber
             );
 
 

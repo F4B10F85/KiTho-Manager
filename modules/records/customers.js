@@ -17,7 +17,7 @@ const customers = [
         city: "Milano",
         province: "MI",
         country: "Italia",
-        taxCode: "01234567890",
+        vatNumber: "01234567890",
         phone: "338/9874101",
         email: "rossi@gmail.com"
     },
@@ -29,7 +29,7 @@ const customers = [
         city: "Torino",
         province: "TO",
         country: "Italia",
-        taxCode: "02345678901",
+        vatNumber: "02345678901",
         phone: "328/33341431",
         email: "bianchii@gmail.com"
     },
@@ -41,7 +41,7 @@ const customers = [
         city: "Bergamo",
         province: "BG",
         country: "Italia",
-        taxCode: "03456789012",
+        vatNumber: "03456789012",
         phone: "339/9779784",
         email: "alfa@industrie.com"
     },
@@ -53,7 +53,7 @@ const customers = [
         city: "Brescia",
         province: "BS",
         country: "Italia",
-        taxCode: "04567890123",
+        vatNumber: "04567890123",
         phone: "379/1232456",
         email: "angelo@commerciale.com"
         
@@ -66,7 +66,7 @@ const customers = [
         city: "Berlin",
         province: "EE",
         country: "Deutchland",
-        taxCode: "04577722123",
+        vatNumber: "04577722123",
         phone: "339/9779784",
         email: "boutique@email.com"
     },
@@ -78,7 +78,7 @@ const customers = [
         city: "Verona",
         province: "VR",
         country: "Italia",
-        taxCode: "08787990123",
+        vatNumber: "08787990123",
         phone: "339/9779784",
         email: "marco922@libero.it"
     },
@@ -90,7 +90,7 @@ const customers = [
         city: "Piacenza",
         province: "PC",
         country: "Italia",
-        taxCode: "04567814447",
+        vatNumber: "04567814447",
         phone: "339/9779784",
         email: "matto@felino.com"
     },
@@ -102,7 +102,7 @@ const customers = [
         city: "Calvagese della Riviera",
         province: "BS",
         country: "Italia",
-        taxCode: "05867890887",
+        vatNumber: "05867890887",
         phone: "339/9779784",
         email: "claudia.chiesa@gmail.com"
     },
@@ -114,7 +114,7 @@ const customers = [
         city: "Paris",
         province: "EE",
         country: "France",
-        taxCode: "07767770123",
+        vatNumber: "07767770123",
         phone: "339/9779784",
         email: "paris@luxurypet.com"
     },
@@ -126,7 +126,7 @@ const customers = [
         city: "Modena",
         province: "MO",
         country: "Italia",
-        taxCode: "04117111123",
+        vatNumber: "04117111123",
         phone: "339/9779784",
         email: "riccardo.marini@me.com"
     },
@@ -138,7 +138,7 @@ const customers = [
         city: "Trento",
         province: "TN",
         country: "Italia",
-        taxCode: "04337893333",
+        vatNumber: "04337893333",
         phone: "339/9779784",
         email: "info@yahoo.it"
     },
@@ -150,7 +150,7 @@ const customers = [
         city: "Napoli",
         province: "NA",
         country: "Italia",
-        taxCode: "05537855533",
+        vatNumber: "05537855533",
         phone: "339/5779555",
         email: "ugo@gmail.it"
     },
@@ -162,7 +162,7 @@ const customers = [
         city: "Valencia",
         province: "EE",
         country: "Spain",
-        taxCode: "05544855093",
+        vatNumber: "05544855093",
         phone: "3478/987410",
         email: "carmela@perrito.es"
     }
@@ -296,8 +296,8 @@ function renderCustomersPage() {
             },
 
             {
-                key: "taxCode",
-                title: "Codice Fiscale"
+                key: "vatNumber",
+                title: "P.Iva"
             },
 
             {

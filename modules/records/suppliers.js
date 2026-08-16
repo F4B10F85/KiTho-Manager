@@ -32,44 +32,7 @@ const suppliers = [
         taxCode:"01234567890",
         phone:"099 877441",
         email:"alpha"
-    },
-
-    {
-        code:"F00003",
-        companyName:"Ricamificio Italia",
-        address:"Via Torino 18",
-        city:"Padova",
-        province:"PD",
-        country: "Italia",
-        taxCode:"03456789012",
-        phone:"049 456789",
-        email:"info@ricamificio.it"
-    },
-
-    {
-        code:"F00004",
-        companyName:"Crystal Fashion",
-        address:"Via Venezia 22",
-        city:"Treviso",
-        province:"TV",
-        country: "Italia",
-        taxCode:"04567890123",
-        phone:"0422 654321",
-        email:"sales@crystalfashion.it"
-    },
-
-    {
-        code:"F00005",
-        companyName:"Packaging Group",
-        address:"Via Bologna 3",
-        city:"Verona",
-        province:"VR",
-        country: "Italia",
-        taxCode:"05678901234",
-        phone:"045 778899",
-        email:"office@packaginggroup.it"
     }
-
 ];
 
 
@@ -179,7 +142,7 @@ function renderSuppliersPage() {
 
             {
                 key: "taxCode",
-                title: "Codice Fiscale"
+                title: "P.Iva"
             },
 
             {
@@ -199,5 +162,42 @@ function renderSuppliersPage() {
         filters: true
 
     });
+
+}
+
+function getNextSupplierCode(){
+
+    let maxNumber = 0;
+
+    suppliers.forEach(
+        supplier => {
+
+            const match =
+                String(supplier.code || "")
+                    .match(/^F(\d+)$/);
+
+            if(!match){
+
+                return;
+
+            }
+
+            const number =
+                parseInt(
+                    match[1],
+                    10
+                );
+
+            if(number > maxNumber){
+
+                maxNumber = number;
+
+            }
+
+        }
+    );
+
+
+    return `F${String(maxNumber + 1).padStart(5, "0")}`;
 
 }

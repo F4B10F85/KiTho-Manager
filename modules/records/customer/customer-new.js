@@ -10,6 +10,8 @@ function showNewCustomer(){
 
     const workspace = document.querySelector(".km-workspace");
 
+    const newCustomerCode = getNextCustomerCode();
+
     workspace.innerHTML = `
 
         <div class="km-customer-page">
@@ -26,13 +28,20 @@ function showNewCustomer(){
 
             <div class="km-company-footer">
 
-                <button class="km-button">
+                <button
+                    type="button"
+                    class="km-button"
+                    onclick="renderCustomersPage()">
 
                     Annulla
 
                 </button>
 
-                <button class="km-button km-button-primary">
+
+                <button
+                    type="button"
+                    class="km-button km-button-primary"
+                    onclick="saveNewCustomer()">
 
                     Salva
 
@@ -44,7 +53,48 @@ function showNewCustomer(){
 
     `;
 
-    showCustomerTab("anagraphic");
+    showCustomerTab(
+        "anagraphic",
+        {
+            code: newCustomerCode
+        }
+    );
 
 }
 
+function getNextCustomerCode(){
+
+    let maxNumber = 0;
+
+    customers.forEach(
+        customer => {
+
+            const match =
+                String(customer.code || "")
+                    .match(/^C(\d+)$/);
+
+            if(!match){
+
+                return;
+
+            }
+
+            const number =
+                parseInt(
+                    match[1],
+                    10
+                );
+
+            if(number > maxNumber){
+
+                maxNumber = number;
+
+            }
+
+        }
+    );
+
+
+    return `C${String(maxNumber + 1).padStart(5, "0")}`;
+
+}

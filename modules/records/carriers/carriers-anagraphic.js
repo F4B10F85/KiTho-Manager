@@ -8,18 +8,20 @@ function renderCarrierAnagraphic(carrier = {}){
 
                 <div class="km-company-label">
 
-                    Codice cliente
+                    Codice trasportatore
 
                 </div>
 
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-code"
                         type="text"
                         value="${carrier.code ?? ""}"
                         readonly>
 
                 </div>
+
 
                 <div class="km-company-label">
 
@@ -30,11 +32,12 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-business-name"
                         type="text"
-                        value="${carrier.businessName ?? ""}"
-                        >
+                        value="${carrier.businessName ?? ""}">
 
                 </div>
+
 
                 <div class="km-company-label">
 
@@ -45,10 +48,12 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-address"
                         type="text"
                         value="${carrier.address ?? ""}">
 
                 </div>
+
 
                 <div class="km-company-label">
 
@@ -59,10 +64,12 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-city"
                         type="text"
                         value="${carrier.city ?? ""}">
 
                 </div>
+
 
                 <div class="km-company-label">
 
@@ -73,10 +80,12 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-province"
                         type="text"
                         value="${carrier.province ?? ""}">
 
                 </div>
+
 
                 <div class="km-company-label">
 
@@ -87,10 +96,12 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-country"
                         type="text"
                         value="${carrier.country ?? ""}">
 
                 </div>
+
 
                 <div class="km-company-label">
 
@@ -101,28 +112,34 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-vat-number"
                         type="text"
                         value="${carrier.vatNumber ?? ""}">
 
                 </div>
 
+
                 <div class="km-company-label">
 
-                    Tipo cliente
+                    Tipo trasportatore
 
                 </div>
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="carrier-type">
 
-                        <option ${carrier.type==="company"?"selected":""}>
+                        <option
+                            value="company"
+                            ${carrier.type === "company" ? "selected" : ""}>
 
                             Società di Capitali
 
                         </option>
 
-                        <option ${carrier.type==="private"?"selected":""}>
+                        <option
+                            value="private"
+                            ${carrier.type === "private" ? "selected" : ""}>
 
                             Privato
 
@@ -132,6 +149,7 @@ function renderCarrierAnagraphic(carrier = {}){
 
                 </div>
 
+
                 <div class="km-company-label">
 
                     Stato anagrafica
@@ -140,15 +158,19 @@ function renderCarrierAnagraphic(carrier = {}){
 
                 <div class="km-company-field">
 
-                    <select>
+                    <select id="carrier-active">
 
-                        <option ${carrier.active!==false?"selected":""}>
+                        <option
+                            value="true"
+                            ${carrier.active !== false ? "selected" : ""}>
 
                             Attivo
 
                         </option>
 
-                        <option ${carrier.active===false?"selected":""}>
+                        <option
+                            value="false"
+                            ${carrier.active === false ? "selected" : ""}>
 
                             Non attivo
 

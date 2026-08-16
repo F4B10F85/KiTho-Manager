@@ -179,7 +179,7 @@ function renderCarriersPage() {
 
             {
                 key: "taxCode",
-                title: "Codice Fiscale"
+                title: "P.Iva"
             },
 
             {

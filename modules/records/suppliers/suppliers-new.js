@@ -6,9 +6,16 @@
 |--------------------------------------------------------------------------
 */
 
+
 function showNewSupplier(){
 
-    const workspace = document.querySelector(".km-workspace");
+    const workspace =
+        document.querySelector(".km-workspace");
+
+
+    const newSupplierCode =
+        getNextSupplierCode();
+
 
     workspace.innerHTML = `
 
@@ -26,13 +33,19 @@ function showNewSupplier(){
 
             <div class="km-company-footer">
 
-                <button class="km-button">
+                <button
+                    type="button"
+                    class="km-button"
+                    onclick="renderSuppliersPage()">
 
                     Annulla
 
                 </button>
 
-                <button class="km-button km-button-primary">
+                <button
+                    type="button"
+                    class="km-button km-button-primary"
+                    onclick="saveNewSupplier()">
 
                     Salva
 
@@ -44,7 +57,13 @@ function showNewSupplier(){
 
     `;
 
-    showSupplierTab("anagraphic");
+
+    showSupplierTab(
+        "anagraphic",
+        {
+            code: newSupplierCode
+        }
+    );
 
 }
 
