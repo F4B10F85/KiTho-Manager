@@ -1,42 +1,211 @@
 "use strict";
 
-function showCarrierTab(tabId, carrier = {}){
+let currentCarrier = null;
 
-    const content = document.getElementById("km-customer-content");
+function showCarrierTab(tabId, carrier = null){
+
+    const content =
+        document.getElementById(
+            "km-customer-content"
+        );
+
+
+    if(!carrier){
+
+        carrier =
+            currentCarrier || {};
+
+    }
+
+
+    currentCarrier =
+        carrier;
+
 
     switch(tabId){
 
         case "anagraphic":
 
             content.innerHTML =
-                renderCarrierAnagraphic(carrier);
+                renderCarrierAnagraphic(
+                    currentCarrier
+                );
 
             break;
+
 
         case "contacts":
 
             content.innerHTML =
-                renderCarrierContacts(carrier);
+                renderCarrierContacts(
+                    currentCarrier
+                );
 
             break;
+
 
         case "notes":
 
             content.innerHTML =
-                renderCarrierNotes(carrier);
-
-            break;
-
-        case "attachments":
-
-            content.innerHTML =
-                renderCarrierAttachments(carrier);
-
-            initCarrierAttachments(carrier);
+                renderCarrierNotes(
+                    currentCarrier
+                );
 
             break;
 
     }
+
+}
+
+function saveCurrentCarrierTab(tabId){
+
+    if(!currentCarrier){
+
+        return;
+
+    }
+
+
+    switch(tabId){
+
+        case "anagraphic":
+
+            currentCarrier.code =
+                document.getElementById(
+                    "carrier-code"
+                )?.value || "";
+
+
+            currentCarrier.companyName =
+                document.getElementById(
+                    "carrier-company-name"
+                )?.value.trim() || "";
+
+
+            currentCarrier.address =
+                document.getElementById(
+                    "carrier-address"
+                )?.value.trim() || "";
+
+
+            currentCarrier.city =
+                document.getElementById(
+                    "carrier-city"
+                )?.value.trim() || "";
+
+
+            currentCarrier.province =
+                document.getElementById(
+                    "carrier-province"
+                )?.value.trim() || "";
+
+
+            currentCarrier.country =
+                document.getElementById(
+                    "carrier-country"
+                )?.value.trim() || "";
+
+
+            currentCarrier.vatNumber =
+                document.getElementById(
+                    "carrier-vat-number"
+                )?.value.trim() || "";
+
+
+            currentCarrier.type =
+                document.getElementById(
+                    "carrier-type"
+                )?.value || "";
+
+
+            currentCarrier.active =
+                document.getElementById(
+                    "carrier-active"
+                )?.value === "true";
+
+
+            break;
+
+
+        case "contacts":
+
+            currentCarrier.phone =
+                document.getElementById(
+                    "carrier-phone"
+                )?.value.trim() || "";
+
+
+            currentCarrier.email =
+                document.getElementById(
+                    "carrier-email"
+                )?.value.trim() || "";
+
+
+            currentCarrier.pec =
+                document.getElementById(
+                    "carrier-pec"
+                )?.value.trim() || "";
+
+
+            currentCarrier.website =
+                document.getElementById(
+                    "carrier-website"
+                )?.value.trim() || "";
+
+
+            currentCarrier.contactPerson =
+                document.getElementById(
+                    "carrier-contact-person"
+                )?.value.trim() || "";
+
+
+            break;
+
+
+        case "notes":
+
+            currentCarrier.notes =
+                document.getElementById(
+                    "carrier-notes"
+                )?.value || "";
+
+
+            break;
+
+    }
+
+}
+
+function switchCarrierTab(tabId){
+
+    const activeTab =
+        document.querySelector(
+            ".km-tab.active[data-tab]"
+        );
+
+
+    if(activeTab){
+
+        const currentTabId =
+            activeTab.dataset.tab;
+
+
+        saveCurrentCarrierTab(
+            currentTabId
+        );
+
+    }
+
+
+    setActiveCarrierTab(
+        tabId
+    );
+
+
+    showCarrierTab(
+        tabId,
+        currentCarrier
+    );
 
 }
 
@@ -56,7 +225,7 @@ function setActiveCarrierTab(tabId){
 
 }
 
-function renderCarrierTabs(showDocuments = true){
+function renderCarrierTabs(){
 
     return `
 
@@ -65,58 +234,31 @@ function renderCarrierTabs(showDocuments = true){
             <button
                 class="km-tab active"
                 data-tab="anagraphic"
-                onclick="
-
-                    setActiveCarrierTab('anagraphic');
-                    showCarrierTab('anagraphic');
-
-                ">
+                onclick="switchCarrierTab('anagraphic')">
 
                 Anagrafica
 
-            </button> 
+            </button>
+
 
             <button
                 class="km-tab"
                 data-tab="contacts"
-                onclick="
-
-                    setActiveCarrierTab('contacts');
-                    showCarrierTab('contacts');
-
-                ">
+                onclick="switchCarrierTab('contacts')">
 
                 Contatti
 
             </button>
 
+
             <button
                 class="km-tab"
                 data-tab="notes"
-                onclick="
-
-                    setActiveCarrierTab('notes');
-                    showCarrierTab('notes');
-
-                ">
+                onclick="switchCarrierTab('notes')">
 
                 Note
 
-            </button> 
-
-            <button
-                class="km-tab"
-                data-tab="attachments"
-                onclick="
-
-                    setActiveCarrierTab('attachments');
-                    showCarrierTab('attachments');
-
-                ">
-
-                Allegati
-
-            </button> 
+            </button>
 
         </div>
 

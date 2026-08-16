@@ -8,11 +8,12 @@
 
 function showCarrierDetails(carrierCode){
 
-    const carrier = carriers.find(
+    const carrier =
+        carriers.find(
+            carrier =>
+                carrier.code === carrierCode
+        );
 
-        carrier => carrier.code === carrierCode
-
-    );
 
     if(!carrier){
 
@@ -20,7 +21,23 @@ function showCarrierDetails(carrierCode){
 
     }
 
-    const workspace = document.querySelector(".km-workspace");
+
+    const workspace =
+        document.querySelector(
+            ".km-workspace"
+        );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Creiamo una copia del record originale
+    |--------------------------------------------------------------------------
+    */
+
+    currentCarrier = {
+        ...carrier
+    };
+
 
     workspace.innerHTML = `
 
@@ -28,23 +45,35 @@ function showCarrierDetails(carrierCode){
 
             <div class="km-page-header">
 
-                <h1>${carrier.companyName}</h1>
+                <h1>
+                    ${currentCarrier.companyName}
+                </h1>
 
             </div>
-            
+
+
             ${renderCarrierTabs()}
+
 
             <div id="km-customer-content"></div>
 
+
             <div class="km-company-footer">
 
-                <button class="km-button">
+                <button
+                    type="button"
+                    class="km-button"
+                    onclick="renderCarriersPage()">
 
                     Annulla
 
                 </button>
 
-                <button class="km-button km-button-primary">
+
+                <button
+                    type="button"
+                    class="km-button km-button-primary"
+                    onclick="saveCarrierChanges()">
 
                     Salva
 
@@ -56,15 +85,13 @@ function showCarrierDetails(carrierCode){
 
     `;
 
-    showCarrierTab("anagraphic", carrier);
+
+    showCarrierTab(
+        "anagraphic",
+        currentCarrier
+    );
 
 }
-
-
-
-/**
-FUNZIONE_v03 PER LA FASCIA RIASSUNTIVA
-*/
 
 function renderCarrierSummary(carrier){
 

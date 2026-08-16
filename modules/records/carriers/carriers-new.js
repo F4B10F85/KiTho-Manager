@@ -16,6 +16,13 @@ function showNewCarrier(){
         getNextCarrierCode();
 
 
+    currentCarrier = {
+
+        code: newCarrierCode
+
+    };
+
+
     workspace.innerHTML = `
 
         <div class="km-customer-page">
@@ -27,7 +34,7 @@ function showNewCarrier(){
             </div>
 
 
-            ${renderCarrierTabs(false)}
+            ${renderCarrierTabs()}
 
 
             <div id="km-customer-content"></div>
@@ -63,70 +70,45 @@ function showNewCarrier(){
 
     showCarrierTab(
         "anagraphic",
-        {
-            code: newCarrierCode
-        }
+        currentCarrier
     );
 
 }
 
 function saveNewCarrier(){
 
-    const codeInput =
-        document.getElementById(
-            "carrier-code"
+    /*
+    |--------------------------------------------------------------------------
+    | 1. Salva nel currentCarrier i dati della TAB attualmente aperta
+    |--------------------------------------------------------------------------
+    */
+
+    const activeTab =
+        document.querySelector(
+            ".km-tab.active[data-tab]"
         );
 
 
-    const businessNameInput =
-        document.getElementById(
-            "carrier-business-name"
+    if(activeTab){
+
+        const currentTabId =
+            activeTab.dataset.tab;
+
+
+        saveCurrentCarrierTab(
+            currentTabId
         );
 
-
-    const addressInput =
-        document.getElementById(
-            "carrier-address"
-        );
+    }
 
 
-    const cityInput =
-        document.getElementById(
-            "carrier-city"
-        );
+    /*
+    |--------------------------------------------------------------------------
+    | 2. Controllo obbligatorio ragione sociale
+    |--------------------------------------------------------------------------
+    */
 
-
-    const provinceInput =
-        document.getElementById(
-            "carrier-province"
-        );
-
-
-    const countryInput =
-        document.getElementById(
-            "carrier-country"
-        );
-
-
-    const vatNumberInput =
-        document.getElementById(
-            "carrier-vat-number"
-        );
-
-
-    const typeInput =
-        document.getElementById(
-            "carrier-type"
-        );
-
-
-    const activeInput =
-        document.getElementById(
-            "carrier-active"
-        );
-
-
-    if(!businessNameInput.value.trim()){
+    if(!currentCarrier.companyName?.trim()){
 
         alert(
             "Inserisci la ragione sociale."
@@ -137,42 +119,29 @@ function saveNewCarrier(){
     }
 
 
-    const newCarrier = {
+    /*
+    |--------------------------------------------------------------------------
+    | 3. Salva il nuovo trasportatore
+    |--------------------------------------------------------------------------
+    */
 
-        code:
-            codeInput.value,
+    carriers.push({
 
-        businessName:
-            businessNameInput.value.trim(),
+        ...currentCarrier,
 
-        address:
-            addressInput.value.trim(),
+        companyName:
+            currentCarrier.companyName.trim()
 
-        city:
-            cityInput.value.trim(),
-
-        province:
-            provinceInput.value.trim(),
-
-        country:
-            countryInput.value.trim(),
-
-        vatNumber:
-            vatNumberInput.value.trim(),
-
-        type:
-            typeInput.value,
-
-        active:
-            activeInput.value === "true"
-
-    };
+    });
 
 
-    carriers.push(
-        newCarrier
-    );
+    /*
+    |--------------------------------------------------------------------------
+    | 4. Torna alla tabella Trasportatori
+    |--------------------------------------------------------------------------
+    */
 
+    currentCarrier = null;
 
     renderCarriersPage();
 
@@ -212,5 +181,77 @@ function getNextCarrierCode(){
 
 
     return `T${String(maxNumber + 1).padStart(5, "0")}`;
+
+}
+
+function saveCarrierChanges(){
+
+    const activeTab =
+        document.querySelector(
+            ".km-tab.active[data-tab]"
+        );
+
+
+    if(activeTab){
+
+        const currentTabId =
+            activeTab.dataset.tab;
+
+
+        saveCurrentCarrierTab(
+            currentTabId
+        );
+
+    }
+
+
+    if(!currentCarrier){
+
+        return;
+
+    }
+
+
+    if(
+        !currentCarrier.companyName ||
+        !currentCarrier.companyName.trim()
+    ){
+
+        alert(
+            "Inserisci la ragione sociale."
+        );
+
+        return;
+
+    }
+
+
+    const carrierIndex =
+        carriers.findIndex(
+
+            carrier =>
+                carrier.code === currentCarrier.code
+
+        );
+
+
+    if(carrierIndex === -1){
+
+        return;
+
+    }
+
+
+    carriers[carrierIndex] = {
+
+        ...currentCarrier
+
+    };
+
+
+    currentCarrier = null;
+
+
+    renderCarriersPage();
 
 }

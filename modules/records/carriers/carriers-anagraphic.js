@@ -32,9 +32,9 @@ function renderCarrierAnagraphic(carrier = {}){
                 <div class="km-company-field">
 
                     <input
-                        id="carrier-business-name"
+                        id="carrier-company-name"
                         type="text"
-                        value="${carrier.businessName ?? ""}">
+                        value="${carrier.companyName ?? ""}">
 
                 </div>
 

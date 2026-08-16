@@ -23,6 +23,7 @@ function renderCarrierContacts(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-phone"
                         type="text"
                         value="${carrier.phone ?? ""}">
 
@@ -37,6 +38,7 @@ function renderCarrierContacts(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-email"
                         type="email"
                         value="${carrier.email ?? ""}">
 
@@ -51,6 +53,7 @@ function renderCarrierContacts(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-pec"
                         type="email"
                         value="${carrier.pec ?? ""}">
 
@@ -65,6 +68,7 @@ function renderCarrierContacts(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-website"
                         type="text"
                         value="${carrier.website ?? ""}">
 
@@ -79,6 +83,7 @@ function renderCarrierContacts(carrier = {}){
                 <div class="km-company-field">
 
                     <input
+                        id="carrier-contact-person"
                         type="text"
                         value="${carrier.contactPerson ?? ""}">
 

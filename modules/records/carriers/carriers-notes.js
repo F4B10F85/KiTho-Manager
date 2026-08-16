@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 
-function renderCarriersNotes(supplier = {}){
+function renderCarrierNotes(carrier = {}){
 
     return `
 
@@ -15,13 +15,9 @@ function renderCarriersNotes(supplier = {}){
             <div class="km-company-field">
 
                 <textarea
-
+                    id="carrier-notes"
                     class="km-customer-notes"
-
-                    placeholder="Scrivi qui tutte le note relative al cliente..."
-
-                    oninput="supplier.notes=this.value"
-
+                    placeholder="Scrivi qui tutte le note relative al trasportatore..."
                 >${carrier.notes ?? ""}</textarea>
 
             </div>
