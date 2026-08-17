@@ -69,7 +69,8 @@ function buildLayout() {
 
                                 <button
                                     id="km-profile-button"
-                                    class="km-user-menu-item">
+                                    class="km-user-menu-item"
+                                    onclick="showUserProfile()">
 
                                     Profilo
 
@@ -142,20 +143,12 @@ function buildLayout() {
     });
 
     document
-    .getElementById("km-profile-button")
+    .getElementById("km-change-password-button")
     .addEventListener("click", function () {
 
-        alert("Modulo Profilo in costruzione.");
+        showChangePassword();
 
     });
-
-    document
-        .getElementById("km-change-password-button")
-        .addEventListener("click", function () {
-
-            alert("Cambio password in costruzione.");
-
-        });
 
     document
         .getElementById("km-logout-button")

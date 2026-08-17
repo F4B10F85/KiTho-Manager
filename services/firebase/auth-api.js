@@ -3,7 +3,8 @@
 import {
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    updatePassword
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
@@ -64,6 +65,55 @@ window.authAPI = {
 
     observeAuthState,
 
-    getCurrentFirebaseUser
+    getCurrentFirebaseUser,
+
+    changePassword
 
 };
+
+async function changePassword(
+    currentPassword,
+    newPassword
+){
+
+    const user =
+        auth.currentUser;
+
+
+    if(!user){
+
+        throw new Error(
+            "Nessun utente autenticato."
+        );
+
+    }
+
+
+    if(!user.email){
+
+        throw new Error(
+            "L'utente autenticato non possiede un indirizzo email."
+        );
+
+    }
+
+
+    /*
+    |----------------------------------------------------------------------
+    | Firebase richiede una nuova autenticazione per operazioni sensibili.
+    |----------------------------------------------------------------------
+    */
+
+    await signInWithEmailAndPassword(
+        auth,
+        user.email,
+        currentPassword
+    );
+
+
+    await updatePassword(
+        user,
+        newPassword
+    );
+
+}
