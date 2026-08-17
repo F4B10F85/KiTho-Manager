@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", initializeApplication);
 /**
  * Avvia l'applicazione.
  */
-function initializeApplication() {
+
+function initializeApplication(){
 
     console.clear();
 
@@ -21,15 +22,96 @@ function initializeApplication() {
     console.log("      KiTho Business v0.1.0");
     console.log("========================================");
 
+
     /*
     |--------------------------------------------------------------------------
     | Eventi globali
     |--------------------------------------------------------------------------
     */
 
-    document.addEventListener("click", handleGlobalClick);
+    document.addEventListener(
+        "click",
+        handleGlobalClick
+    );
 
-    buildApplication();
+
+    /*
+    |--------------------------------------------------------------------------
+    | Developer mode
+    |--------------------------------------------------------------------------
+    */
+
+    if(APP.developerMode){
+
+        buildApplication();
+
+        return;
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Firebase Authentication
+    |--------------------------------------------------------------------------
+    |
+    | Aspettiamo che Firebase abbia terminato il ripristino
+    | della sessione prima di costruire l'applicazione.
+    |
+    */
+
+    window.authAPI.observeAuthState(
+        firebaseUser => {
+
+            console.log(
+                "Firebase Auth state:",
+                firebaseUser
+            );
+
+
+            if(firebaseUser){
+
+                /*
+                |----------------------------------------------------------
+                | Cerchiamo l'utente applicativo tramite Firebase UID.
+                |----------------------------------------------------------
+                */
+
+                const user =
+                    users.find(
+                        item =>
+                            item.firebaseUid ===
+                            firebaseUser.uid
+                    );
+
+
+                if(user && user.active){
+
+                    setCurrentUser(
+                        user
+                    );
+
+                }else{
+
+                    setCurrentUser(
+                        null
+                    );
+
+                }
+
+            }else{
+
+                setCurrentUser(
+                    null
+                );
+
+            }
+
+
+            buildApplication();
+
+        }
+    );
 
 }
 
@@ -98,28 +180,69 @@ function buildApplication(){
         window.authAPI.getCurrentFirebaseUser();
 
 
-    const user =
-        getCurrentUser();
+    if(!firebaseUser){
 
+        clearCurrentUser();
 
-    if(
-        firebaseUser &&
-        user
-    ){
-
-        buildLayout();
-
-        navigate(
-            "dashboard"
-        );
-
+        showLogin();
 
         return;
 
     }
 
 
-    showLogin();
+    const user =
+        getCurrentUser();
+
+
+    if(!user){
+
+        console.error(
+            "Utente Firebase autenticato ma utente applicativo non trovato."
+        );
+
+        window.authAPI.logout();
+
+        return;
+
+    }
+
+
+    if(
+        !user.firebaseEmail ||
+        user.firebaseEmail.toLowerCase() !==
+        firebaseUser.email?.toLowerCase()
+    ){
+
+        console.error(
+            "Corrispondenza utente Firebase/applicativo non valida."
+        );
+
+        window.authAPI.logout();
+
+        return;
+
+    }
+
+
+    if(!user.active){
+
+        console.error(
+            "Utente applicativo disattivato."
+        );
+
+        window.authAPI.logout();
+
+        return;
+
+    }
+
+
+    buildLayout();
+
+    navigate(
+        "dashboard"
+    );
 
 }
 

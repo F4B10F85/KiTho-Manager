@@ -121,6 +121,32 @@ async function authenticate(
 
         /*
         |--------------------------------------------------------------------------
+        | Controllo UID Firebase
+        |--------------------------------------------------------------------------
+        */
+
+        if(
+            firebaseUser.uid !==
+            user.firebaseUid
+        ){
+
+            await window.authAPI.logout();
+
+            return {
+
+                success:
+                    false,
+
+                message:
+                    "Utente Firebase non autorizzato."
+
+            };
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
         | Controllo opzionale di corrispondenza email.
         |--------------------------------------------------------------------------
         */

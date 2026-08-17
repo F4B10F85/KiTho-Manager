@@ -39,7 +39,7 @@ const users = [
             "fab.filippini@gmail.com",
 
         firebaseUid:
-            "",
+            "wg6mQd43mJNSWUsfKEqeQDpe24i1",
 
         roleId:
             1,
