@@ -173,7 +173,50 @@ function renderAgentsPage(){
 
 function showNewAgent(){
 
-    alert("Scheda nuovo agente in costruzione.");
+    let maxNumber = 0;
+
+    agents.forEach(agent => {
+
+        const match =
+            String(agent.code ?? "").match(/^AG(\d+)$/);
+
+        if(match){
+
+            const number =
+                parseInt(match[1], 10);
+
+            if(number > maxNumber){
+
+                maxNumber = number;
+
+            }
+
+        }
+
+    });
+
+
+    const newCode =
+        "AG" +
+        String(maxNumber + 1).padStart(3, "0");
+
+
+    agents.push({
+
+        code: newCode,
+
+        name: "",
+
+        active: true,
+
+        editing: true,
+
+        isNew: true
+
+    });
+
+
+    renderAgentsPage();
 
 }
 
@@ -263,6 +306,7 @@ function editAgent(code){
     renderAgentsPage();
 
 }
+
 function saveEditedAgent(code){
 
     const agent =
@@ -276,6 +320,7 @@ function saveEditedAgent(code){
 
     }
 
+
     const input =
         document.querySelector(
             `input[data-agent-code="${code}"]`
@@ -287,8 +332,10 @@ function saveEditedAgent(code){
 
     }
 
+
     const newName =
         input.value.trim();
+
 
     if(newName === ""){
 
@@ -300,11 +347,16 @@ function saveEditedAgent(code){
 
     }
 
+
     agent.name =
         newName;
 
     agent.editing =
         false;
+
+    agent.isNew =
+        false;
+
 
     renderAgentsPage();
 
@@ -323,8 +375,30 @@ function cancelEditAgent(code){
 
     }
 
-    agent.editing =
-        false;
+
+    if(agent.isNew){
+
+        const index =
+            agents.findIndex(
+                item => item.code === code
+            );
+
+        if(index !== -1){
+
+            agents.splice(
+                index,
+                1
+            );
+
+        }
+
+    }else{
+
+        agent.editing =
+            false;
+
+    }
+
 
     renderAgentsPage();
 
