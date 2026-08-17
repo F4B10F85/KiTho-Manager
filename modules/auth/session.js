@@ -1,46 +1,69 @@
 "use strict";
 
+
 /*
 |--------------------------------------------------------------------------
 | Session Manager
 |--------------------------------------------------------------------------
-| Gestisce la sessione dell'utente autenticato.
+| Gestisce la sessione dell'utente applicativo.
 |--------------------------------------------------------------------------
 */
 
-let currentUser = null;
 
-/**
- * Imposta l'utente corrente.
- */
-function setCurrentUser(user) {
+let currentUser =
+    null;
 
-    currentUser = user;
+
+/*
+|--------------------------------------------------------------------------
+| Imposta l'utente corrente
+|--------------------------------------------------------------------------
+*/
+
+function setCurrentUser(
+    user
+){
+
+    currentUser =
+        user;
 
 }
 
-/**
- * Restituisce l'utente corrente.
- */
-function getCurrentUser() {
+
+/*
+|--------------------------------------------------------------------------
+| Restituisce l'utente corrente
+|--------------------------------------------------------------------------
+*/
+
+function getCurrentUser(){
 
     return currentUser;
 
 }
 
-/**
- * Chiude la sessione.
- */
-function clearCurrentUser() {
 
-    currentUser = null;
+/*
+|--------------------------------------------------------------------------
+| Chiude la sessione applicativa
+|--------------------------------------------------------------------------
+*/
+
+function clearCurrentUser(){
+
+    currentUser =
+        null;
 
 }
 
-/**
- * Verifica se esiste una sessione attiva.
- */
-function isLogged() {
+
+/*
+|--------------------------------------------------------------------------
+| Verifica se esiste una sessione applicativa attiva
+|--------------------------------------------------------------------------
+*/
+
+function isLogged(){
 
     return currentUser !== null;
 

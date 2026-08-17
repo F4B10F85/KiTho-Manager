@@ -33,46 +33,91 @@ function initializeApplication() {
 
 }
 
-/**
- * Costruisce l'applicazione - utilizzare per login vero.
-
-function buildApplication() {
-
-    if (getCurrentUser()) {
-
-        buildLayout();
-
-        navigate("dashboard");
-
-    } else {
-
-        showLogin();
-
-    }
-
-}
+/* 
+ * Costruisce l'applicazione.
+ *
+ * developerMode = true
+ * → bypass autenticazione Firebase
+ * → utilizza l'utente locale di sviluppo
+ *
+ * developerMode = false
+ * → autenticazione Firebase reale
+ * → mostra login se nessun utente è autenticato
 */
 
 
-/**
- * Costruisce l'applicazione - utilizzare per sviluppo.
-*/
+function buildApplication(){
 
-function buildApplication() {
+    /*
+    |--------------------------------------------------------------------------
+    | Developer mode
+    |--------------------------------------------------------------------------
+    |
+    | Durante lo sviluppo bypassiamo Firebase e impostiamo direttamente
+    | l'utente tecnico.
+    |
+    */
+    
+    if(APP.developerMode){
 
-    if (APP.developerMode) {
+        const user =
+            findUser(
+                "FABIO.FILIPPINI"
+            );
 
-        const user = findUser("FABIO.FILIPPINI");
 
-        setCurrentUser(user);
+        setCurrentUser(
+            user
+        );
+
 
         buildLayout();
 
-        navigate("dashboard");
+        navigate(
+            "dashboard"
+        );
+
 
         return;
 
     }
+      
+
+    /*
+    |--------------------------------------------------------------------------
+    | Produzione
+    |--------------------------------------------------------------------------
+    |
+    | In modalità normale l'accesso deve essere già stato effettuato
+    | tramite Firebase Authentication.
+    |
+    */
+    
+    
+    const firebaseUser =
+        window.authAPI.getCurrentFirebaseUser();
+
+
+    const user =
+        getCurrentUser();
+
+
+    if(
+        firebaseUser &&
+        user
+    ){
+
+        buildLayout();
+
+        navigate(
+            "dashboard"
+        );
+
+
+        return;
+
+    }
+
 
     showLogin();
 
