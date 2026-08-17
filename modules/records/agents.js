@@ -1,43 +1,169 @@
 "use strict";
 
+
 /*
-|--------------------------------------------------------------------------
-| Dataset provvisorio
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
+| Dataset
+|---------------------------------------------------------------------------
 */
 
-const agents = [
-
-    {
-        code: "AG001",
-        name: "Mario Rossi",
-        active: true
-    },
-
-    {
-        code: "AG002",
-        name: "Luca Bianchi",
-        active: true
-    },
-
-    {
-        code: "AG003",
-        name: "Piero Cornetta",
-        active: true
-    }
-
-];
+let agentsData = [];
 
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
+| Ordinamento agenti
+|---------------------------------------------------------------------------
+|
+| L'ordine viene determinato dal codice agente:
+|
+| AG001
+| AG002
+| AG003
+| AG004
+|
+| e NON dall'ID automatico generato da Firebase.
+|---------------------------------------------------------------------------
+*/
+
+function sortAgents(){
+
+    agentsData.sort(
+        (a, b) => {
+
+            return String(
+                a.code ?? ""
+            ).localeCompare(
+                String(
+                    b.code ?? ""
+                ),
+                undefined,
+                {
+                    numeric: true,
+                    sensitivity: "base"
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/*
+|---------------------------------------------------------------------------
+| Render tabella
+|---------------------------------------------------------------------------
+*/
+
+function renderAgentsTable(){
+
+    sortAgents();
+
+
+    createTable({
+
+        containerId:
+            "km-agents-table",
+
+        filters:
+            true,
+
+        columns: [
+
+            {
+                key: "code",
+                title: "Codice"
+            },
+
+            {
+                key: "name",
+                title: "Agente",
+
+                render:
+                    function(agent){
+
+                        if(agent.editing){
+
+                            return `
+
+                                <input
+                                    type="text"
+                                    class="km-input"
+                                    data-agent-code="${agent.code}"
+                                    value="${agent.name ?? ""}"
+                                    onkeydown="
+                                        if(event.key === 'Enter'){
+                                            saveEditedAgent('${agent.code}');
+                                        }
+                                    "
+                                >
+
+                                <button
+                                    type="button"
+                                    class="km-action-button"
+                                    title="Salva modifica"
+                                    onclick="saveEditedAgent('${agent.code}')">
+
+                                    💾
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="km-action-button"
+                                    title="Annulla modifica"
+                                    onclick="cancelEditAgent('${agent.code}')">
+
+                                    ❌
+
+                                </button>
+
+                            `;
+
+                        }
+
+                        return agent.name ?? "";
+
+                    }
+
+            },
+
+            {
+                key: "active",
+                title: "Stato",
+                type: "status"
+            },
+
+            {
+                title: "Azioni",
+                type: "actions",
+                renderer: "renderAgentActions"
+            }
+
+        ],
+
+        data:
+            agentsData
+
+    });
+
+}
+
+
+/*
+|---------------------------------------------------------------------------
 | Pagina principale
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
 */
 
-function renderAgentsPage(){
+async function renderAgentsPage(){
 
-    const workspace = document.getElementById("km-workspace");
+    const workspace =
+        document.getElementById(
+            "km-workspace"
+        );
+
 
     workspace.innerHTML = `
 
@@ -60,15 +186,15 @@ function renderAgentsPage(){
                 </button>
 
                 <button
-                    class="km-button km-button-export km-button-excel"
-                    >
+                    class="km-button km-button-export km-button-excel">
 
-                        Esporta
+                    Esporta
+
                     <img
                         src="assets/images/excel.png"
                         class="km-button-icon"
                         alt="Excel">
-                    
+
                 </button>
 
             </div>
@@ -79,146 +205,170 @@ function renderAgentsPage(){
 
     `;
 
-    createTable({
 
-        containerId: "km-agents-table",
+    try{
 
-        filters: true,
+        agentsData =
+            await window.agentsAPI.getAgents();
 
-        columns: [
 
-            {
-                key: "code",
-                title: "Codice"
-            },
+        sortAgents();
 
-            {
-                key: "name",
-                title: "Agente",
+        renderAgentsTable();
 
-                render: function(agent){
 
-                    if(agent.editing){
+    }catch(error){
 
-                        return `
+        console.error(
+            "Errore caricamento agenti:",
+            error
+        );
 
-                            <input
-                                type="text"
-                                class="km-input"
-                                data-agent-code="${agent.code}"
-                                value="${agent.name ?? ""}"
-                                onkeydown="
-                                    if(event.key === 'Enter'){
-                                        saveEditedAgent('${agent.code}');
-                                    }
-                                "
-                            >
-
-                            <button
-                                type="button"
-                                class="km-action-button"
-                                title="Salva modifica"
-                                onclick="saveEditedAgent('${agent.code}')">
-
-                                💾
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="km-action-button"
-                                title="Annulla modifica"
-                                onclick="cancelEditAgent('${agent.code}')">
-
-                                ❌
-
-                            </button>
-
-                        `;
-
-                    }
-
-                    return agent.name ?? "";
-
-                }
-
-            },
-
-            {
-                key: "active",
-                title: "Stato",
-                type: "status"
-            },
-
-            {
-                title: "Azioni",
-                type: "actions",
-                renderer: "renderAgentActions"
-            }
-
-        ],
-
-        data: agents
-
-    });
+    }
 
 }
 
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
 | Nuovo agente
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
 */
 
-function showNewAgent(){
+async function showNewAgent(){
 
-    let maxNumber = 0;
+    console.log(
+        "SHOW NEW AGENT"
+    );
 
-    agents.forEach(agent => {
 
-        const match =
-            String(agent.code ?? "").match(/^AG(\d+)$/);
+    try{
 
-        if(match){
+        /*
+        |-------------------------------------------------------------------
+        | Recuperiamo i dati aggiornati da Firebase solamente per
+        | determinare il prossimo codice agente.
+        |-------------------------------------------------------------------
+        */
 
-            const number =
-                parseInt(match[1], 10);
+        const existingAgents =
+            await window.agentsAPI.getAgents();
 
-            if(number > maxNumber){
 
-                maxNumber = number;
+        let maxNumber = 0;
+
+
+        existingAgents.forEach(
+            agent => {
+
+                const match =
+                    String(
+                        agent.code ?? ""
+                    ).match(
+                        /^AG(\d+)$/
+                    );
+
+
+                if(match){
+
+                    const number =
+                        parseInt(
+                            match[1],
+                            10
+                        );
+
+
+                    if(
+                        number > maxNumber
+                    ){
+
+                        maxNumber =
+                            number;
+
+                    }
+
+                }
 
             }
+        );
+
+
+        const newCode =
+            "AG" +
+            String(
+                maxNumber + 1
+            ).padStart(
+                3,
+                "0"
+            );
+
+
+        agentsData.push({
+
+            code:
+                newCode,
+
+            name:
+                "",
+
+            active:
+                true,
+
+            editing:
+                true,
+
+            isNew:
+                true
+
+        });
+
+
+        /*
+        |-------------------------------------------------------------------
+        | NON ricarichiamo renderAgentsPage().
+        |
+        | L'agente temporaneo rimane nell'array locale.
+        |-------------------------------------------------------------------
+        */
+
+        renderAgentsTable();
+
+
+        /*
+        |-------------------------------------------------------------------
+        | Focus automatico sul campo nome.
+        |-------------------------------------------------------------------
+        */
+
+        const input =
+            document.querySelector(
+                `input[data-agent-code="${newCode}"]`
+            );
+
+
+        if(input){
+
+            input.focus();
 
         }
 
-    });
+    }catch(error){
 
+        console.error(
+            "Errore creazione nuovo agente:",
+            error
+        );
 
-    const newCode =
-        "AG" +
-        String(maxNumber + 1).padStart(3, "0");
-
-
-    agents.push({
-
-        code: newCode,
-
-        name: "",
-
-        active: true,
-
-        editing: true,
-
-        isNew: true
-
-    });
-
-
-    renderAgentsPage();
+    }
 
 }
+
+
+/*
+|---------------------------------------------------------------------------
+| Azioni tabella
+|---------------------------------------------------------------------------
+*/
 
 function renderAgentActions(agent){
 
@@ -227,10 +377,12 @@ function renderAgentActions(agent){
             ? "🔓"
             : "🔒";
 
+
     const lockTitle =
         agent.active === false
             ? "Riattiva agente"
             : "Disattiva agente";
+
 
     return `
 
@@ -268,12 +420,21 @@ function renderAgentActions(agent){
 
 }
 
-function toggleAgentStatus(code){
+
+/*
+|---------------------------------------------------------------------------
+| Attiva / disattiva agente
+|---------------------------------------------------------------------------
+*/
+
+async function toggleAgentStatus(code){
 
     const agent =
-        agents.find(
-            item => item.code === code
+        agentsData.find(
+            item =>
+                item.code === code
         );
+
 
     if(!agent){
 
@@ -281,19 +442,93 @@ function toggleAgentStatus(code){
 
     }
 
-    agent.active =
-        agent.active === false;
 
-    renderAgentsPage();
+    if(agent.isNew){
+
+        return;
+
+    }
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Salviamo lo stato precedente FUORI dal try, così è disponibile
+    | anche nel catch in caso di errore Firebase.
+    |-----------------------------------------------------------------------
+    */
+
+    const previousStatus =
+        agent.active;
+
+
+    try{
+
+        agent.active =
+            agent.active === false;
+
+
+        await window.agentsAPI.updateAgent(
+
+            agent.id,
+
+            {
+
+                code:
+                    agent.code,
+
+                name:
+                    agent.name,
+
+                active:
+                    agent.active
+
+            }
+
+        );
+
+
+        renderAgentsTable();
+
+
+    }catch(error){
+
+        console.error(
+            "Errore aggiornamento stato agente:",
+            error
+        );
+
+
+        /*
+        |-------------------------------------------------------------------
+        | Ripristiniamo lo stato precedente.
+        |-------------------------------------------------------------------
+        */
+
+        agent.active =
+            previousStatus;
+
+
+        renderAgentsTable();
+
+    }
 
 }
+
+
+/*
+|---------------------------------------------------------------------------
+| Modifica agente
+|---------------------------------------------------------------------------
+*/
 
 function editAgent(code){
 
     const agent =
-        agents.find(
-            item => item.code === code
+        agentsData.find(
+            item =>
+                item.code === code
         );
+
 
     if(!agent){
 
@@ -301,18 +536,60 @@ function editAgent(code){
 
     }
 
-    agent.editing = true;
 
-    renderAgentsPage();
+    agent.editing =
+        true;
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Ridisegniamo SOLO la tabella.
+    |
+    | NON richiamiamo renderAgentsPage(), quindi NON facciamo una nuova
+    | lettura da Firebase e non perdiamo agent.editing.
+    |-----------------------------------------------------------------------
+    */
+
+    renderAgentsTable();
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Focus automatico sul campo.
+    |-----------------------------------------------------------------------
+    */
+
+    const input =
+        document.querySelector(
+            `input[data-agent-code="${code}"]`
+        );
+
+
+    if(input){
+
+        input.focus();
+
+        input.select();
+
+    }
 
 }
 
-function saveEditedAgent(code){
+
+/*
+|---------------------------------------------------------------------------
+| Salvataggio modifica
+|---------------------------------------------------------------------------
+*/
+
+async function saveEditedAgent(code){
 
     const agent =
-        agents.find(
-            item => item.code === code
+        agentsData.find(
+            item =>
+                item.code === code
         );
+
 
     if(!agent){
 
@@ -325,6 +602,7 @@ function saveEditedAgent(code){
         document.querySelector(
             `input[data-agent-code="${code}"]`
         );
+
 
     if(!input){
 
@@ -348,26 +626,116 @@ function saveEditedAgent(code){
     }
 
 
-    agent.name =
-        newName;
+    try{
 
-    agent.editing =
-        false;
+        /*
+        |-------------------------------------------------------------------
+        | Nuovo agente
+        |-------------------------------------------------------------------
+        */
 
-    agent.isNew =
-        false;
+        if(agent.isNew){
+
+            const createdAgent =
+                await window.agentsAPI.createAgent({
+
+                    code:
+                        agent.code,
+
+                    name:
+                        newName,
+
+                    active:
+                        agent.active
+
+                });
 
 
-    renderAgentsPage();
+            agent.id =
+                createdAgent.id;
+
+            agent.name =
+                newName;
+
+            agent.editing =
+                false;
+
+            agent.isNew =
+                false;
+
+        }
+
+        /*
+        |-------------------------------------------------------------------
+        | Agente esistente
+        |-------------------------------------------------------------------
+        */
+
+        else{
+
+            await window.agentsAPI.updateAgent(
+
+                agent.id,
+
+                {
+
+                    code:
+                        agent.code,
+
+                    name:
+                        newName,
+
+                    active:
+                        agent.active
+
+                }
+
+            );
+
+
+            agent.name =
+                newName;
+
+            agent.editing =
+                false;
+
+        }
+
+
+        renderAgentsTable();
+
+
+    }catch(error){
+
+        console.error(
+            "Errore salvataggio agente:",
+            error
+        );
+
+
+        alert(
+            "Errore durante il salvataggio dell'agente."
+        );
+
+    }
 
 }
+
+
+/*
+|---------------------------------------------------------------------------
+| Annulla modifica
+|---------------------------------------------------------------------------
+*/
 
 function cancelEditAgent(code){
 
     const agent =
-        agents.find(
-            item => item.code === code
+        agentsData.find(
+            item =>
+                item.code === code
         );
+
 
     if(!agent){
 
@@ -376,23 +744,39 @@ function cancelEditAgent(code){
     }
 
 
+    /*
+    |-----------------------------------------------------------------------
+    | Se è un nuovo agente non ancora salvato, lo rimuoviamo dall'array.
+    |-----------------------------------------------------------------------
+    */
+
     if(agent.isNew){
 
         const index =
-            agents.findIndex(
-                item => item.code === code
+            agentsData.findIndex(
+                item =>
+                    item.code === code
             );
+
 
         if(index !== -1){
 
-            agents.splice(
+            agentsData.splice(
                 index,
                 1
             );
 
         }
 
-    }else{
+    }
+
+    /*
+    |-----------------------------------------------------------------------
+    | Se è un agente esistente, usciamo dalla modalità modifica.
+    |-----------------------------------------------------------------------
+    */
+
+    else{
 
         agent.editing =
             false;
@@ -400,16 +784,25 @@ function cancelEditAgent(code){
     }
 
 
-    renderAgentsPage();
+    renderAgentsTable();
 
 }
 
-function deleteAgent(code){
+
+/*
+|---------------------------------------------------------------------------
+| Elimina agente
+|---------------------------------------------------------------------------
+*/
+
+async function deleteAgent(code){
 
     const agent =
-        agents.find(
-            item => item.code === code
+        agentsData.find(
+            item =>
+                item.code === code
         );
+
 
     if(!agent){
 
@@ -417,10 +810,12 @@ function deleteAgent(code){
 
     }
 
+
     const confirmed =
         confirm(
             `Vuoi eliminare definitivamente l'agente "${agent.name}"?`
         );
+
 
     if(!confirmed){
 
@@ -428,22 +823,62 @@ function deleteAgent(code){
 
     }
 
-    const index =
-        agents.findIndex(
-            item => item.code === code
+
+    try{
+
+        /*
+        |-------------------------------------------------------------------
+        | Se l'agente esiste su Firebase, lo eliminiamo.
+        |-------------------------------------------------------------------
+        */
+
+        if(agent.id){
+
+            await window.agentsAPI.deleteAgent(
+                agent.id
+            );
+
+        }
+
+
+        /*
+        |-------------------------------------------------------------------
+        | Rimuoviamo l'agente anche dall'array locale.
+        |-------------------------------------------------------------------
+        */
+
+        const index =
+            agentsData.findIndex(
+                item =>
+                    item.code === code
+            );
+
+
+        if(index !== -1){
+
+            agentsData.splice(
+                index,
+                1
+            );
+
+        }
+
+
+        renderAgentsTable();
+
+
+    }catch(error){
+
+        console.error(
+            "Errore eliminazione agente:",
+            error
         );
 
-    if(index === -1){
 
-        return;
+        alert(
+            "Errore durante l'eliminazione dell'agente."
+        );
 
     }
-
-    agents.splice(
-        index,
-        1
-    );
-
-    renderAgentsPage();
 
 }
