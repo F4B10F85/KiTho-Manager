@@ -65,9 +65,29 @@ function showCompany() {
 
         activeTab:"general",
 
-        onChange:showCompanyTab
+        onChange:changeCompanyTab
 
     });
+
+}
+
+let currentCompanyTab = "general";
+
+
+function changeCompanyTab(tabId){
+
+    saveCurrentCompanyTab(
+        currentCompanyTab
+    );
+
+
+    currentCompanyTab =
+        tabId;
+
+
+    showCompanyTab(
+        tabId
+    );
 
 }
 
@@ -510,14 +530,20 @@ function showCompanyTab(tabId){
                             Ragione Sociale
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-name"
+                                type="text"
+                                value="${company.name ?? ""}">
                         </div>
 
                         <div class="km-company-label">
                             Indirizzo
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-address"
+                                type="text"
+                                value="${company.address ?? ""}">
                         </div>
 
                         <div class="km-company-label">
@@ -525,11 +551,16 @@ function showCompanyTab(tabId){
                         </div>
                         <div class="km-company-field km-company-inline">
 
-                            <input type="text">
+                            <input
+                                id="company-city"
+                                type="text"
+                                value="${company.city ?? ""}">
 
                             <span>Prov.</span>
 
-                            <input type="text">
+                            <input
+                                id="company-province"
+                                type="text">
 
                         </div>
 
@@ -538,11 +569,17 @@ function showCompanyTab(tabId){
                         </div>
                         <div class="km-company-field km-company-inline-large">
 
-                            <input type="text">
+                            <input
+                                id="company-zip"
+                                type="text"
+                                value="${company.zip ?? ""}">
 
                             <span>Stato</span>
 
-                            <input type="text">
+                            <input
+                                id="company-country"
+                                type="text"
+                                value="${company.country ?? ""}">
 
                         </div>
 
@@ -550,35 +587,50 @@ function showCompanyTab(tabId){
                             Cellulare
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-phone"
+                                type="text"
+                                value="${company.phone ?? ""}">
                         </div>
 
                         <div class="km-company-label">
                             E-mail
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-email"
+                                type="text"
+                                value="${company.email ?? ""}">
                         </div>
 
                         <div class="km-company-label">
                             PEC
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-pec"
+                                type="text"
+                                value="${company.pec ?? ""}">
                         </div>
 
                         <div class="km-company-label">
                             Sito Web
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-website"
+                                type="text"
+                                value="${company.website ?? ""}">
                         </div>
 
                         <div class="km-company-label">
                             Pagina Instagram
                         </div>
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-instagram"
+                                type="text"
+                                value="${company.instagram ?? ""}">
                         </div>
 
                     </div>
@@ -602,7 +654,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-vat-number"
+                                type="text"
+                                value="${company.vatNumber ?? ""}">
                         </div>
 
                         <div class="km-company-label">
@@ -610,7 +665,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-tax-code"
+                                type="text"
+                                value="${company.taxCode ?? ""}">
                         </div>
 
                         <div class="km-company-label">
@@ -618,7 +676,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-fiscal-regime"
+                                type="text"
+                                value="${company.fiscalRegime ?? ""}">
                         </div>
 
                         <div class="km-company-label">
@@ -626,7 +687,10 @@ function showCompanyTab(tabId){
                         </div>
 
                         <div class="km-company-field">
-                            <input type="text">
+                            <input
+                                id="company-rea"
+                                type="text"
+                                value="${company.rea ?? ""}">
                         </div>
 
                         <div class="km-company-label">
@@ -635,15 +699,24 @@ function showCompanyTab(tabId){
 
                         <div class="km-company-field">
 
-                            <select>
+                            <select id="company-sale-vat-mode">
 
-                                <option>IVA Esclusa</option>
+                                <option
+                                    value="IVA Esclusa"
+                                    ${company.saleVatMode === "IVA Esclusa" ? "selected" : ""}>
+                                    IVA Esclusa
+                                </option>
 
-                                <option>IVA Compresa</option>
+                                <option
+                                    value="IVA Compresa"
+                                    ${company.saleVatMode === "IVA Compresa" ? "selected" : ""}>
+                                    IVA Compresa
+                                </option>
 
                             </select>
 
                         </div>
+
 
                         <div class="km-company-label">
                             IVA - Prezzo di acquisto
@@ -651,11 +724,19 @@ function showCompanyTab(tabId){
 
                         <div class="km-company-field">
 
-                            <select>
+                            <select id="company-purchase-vat-mode">
 
-                                <option>IVA Esclusa</option>
+                                <option
+                                    value="IVA Esclusa"
+                                    ${company.purchaseVatMode === "IVA Esclusa" ? "selected" : ""}>
+                                    IVA Esclusa
+                                </option>
 
-                                <option>IVA Compresa</option>
+                                <option
+                                    value="IVA Compresa"
+                                    ${company.purchaseVatMode === "IVA Compresa" ? "selected" : ""}>
+                                    IVA Compresa
+                                </option>
 
                             </select>
 
@@ -1296,5 +1377,122 @@ function setupPreview(buttonId,inputId,previewId){
         reader.readAsDataURL(file);
 
     };
+
+}
+
+function saveCurrentCompanyTab(tabId){
+
+    switch(tabId){
+
+        case "general":
+
+            company.name =
+                document.getElementById(
+                    "company-name"
+                )?.value.trim() || "";
+
+
+            company.address =
+                document.getElementById(
+                    "company-address"
+                )?.value.trim() || "";
+
+
+            company.city =
+                document.getElementById(
+                    "company-city"
+                )?.value.trim() || "";
+
+
+            company.province =
+                document.getElementById(
+                    "company-province"
+                )?.value.trim() || "";
+
+
+            company.zip =
+                document.getElementById(
+                    "company-zip"
+                )?.value.trim() || "";
+
+
+            company.country =
+                document.getElementById(
+                    "company-country"
+                )?.value.trim() || "";
+
+
+            company.phone =
+                document.getElementById(
+                    "company-phone"
+                )?.value.trim() || "";
+
+
+            company.email =
+                document.getElementById(
+                    "company-email"
+                )?.value.trim() || "";
+
+
+            company.pec =
+                document.getElementById(
+                    "company-pec"
+                )?.value.trim() || "";
+
+
+            company.website =
+                document.getElementById(
+                    "company-website"
+                )?.value.trim() || "";
+
+
+            company.instagram =
+                document.getElementById(
+                    "company-instagram"
+                )?.value.trim() || "";
+
+            break;
+
+
+        case "tax":
+
+            company.vatNumber =
+                document.getElementById(
+                    "company-vat-number"
+                )?.value.trim() || "";
+
+
+            company.taxCode =
+                document.getElementById(
+                    "company-tax-code"
+                )?.value.trim() || "";
+
+
+            company.fiscalRegime =
+                document.getElementById(
+                    "company-fiscal-regime"
+                )?.value.trim() || "";
+
+
+            company.rea =
+                document.getElementById(
+                    "company-rea"
+                )?.value.trim() || "";
+
+
+            company.saleVatMode =
+                document.getElementById(
+                    "company-sale-vat-mode"
+                )?.value || "";
+
+
+            company.purchaseVatMode =
+                document.getElementById(
+                    "company-purchase-vat-mode"
+                )?.value || "";
+
+            break;
+
+    }
 
 }
