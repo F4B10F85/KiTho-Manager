@@ -47,11 +47,14 @@ const users = [
         active:
             true,
 
+        isCoreUser:
+            true,
+
         createdAt:
             "2026-07-20 09:00:00",
 
         lastLogin:
-            null
+            null,
     },
 
 
@@ -66,15 +69,18 @@ const users = [
             "Caldari",
 
         firebaseEmail:
-            "",
+            "commercial@kithopet.com",
 
         firebaseUid:
-            "",
+            "Pa8BQHXo4MefPQV7EJKT7DvgtHn1",
 
         roleId:
             1,
 
         active:
+            true,
+
+        isCoreUser:
             true,
 
         createdAt:

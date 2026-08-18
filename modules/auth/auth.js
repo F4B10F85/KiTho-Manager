@@ -1,5 +1,11 @@
 "use strict";
 
+
+
+import {
+    syncFirebaseUser
+} from "../../services/firebase/firebase-users.js";
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Engine
@@ -7,7 +13,6 @@
 | Gestisce autenticazione Firebase e autorizzazione applicativa.
 |--------------------------------------------------------------------------
 */
-
 
 /*
 |--------------------------------------------------------------------------
@@ -169,6 +174,10 @@ async function authenticate(
             };
 
         }
+    
+        await syncFirebaseUser(
+            firebaseUser
+        );
 
 
         return {
@@ -236,3 +245,6 @@ async function authenticate(
     }
 
 }
+
+window.authenticate =
+    authenticate;

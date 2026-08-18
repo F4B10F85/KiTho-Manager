@@ -63,12 +63,6 @@ function initializeApplication(){
     window.authAPI.observeAuthState(
         firebaseUser => {
 
-            console.log(
-                "Firebase Auth state:",
-                firebaseUser
-            );
-
-
             if(firebaseUser){
 
                 /*

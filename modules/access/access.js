@@ -100,9 +100,55 @@ function showAccess() {
 
 }
 
-function showUsersTab() {
+async function showUsersTab(){
 
-    document.getElementById("km-tab-content").innerHTML = `
+    const firebaseUsers =
+        await window.firebaseUsersAPI.getFirebaseUsers();
+
+    const coreUsers =
+        users.filter(
+            user =>
+                user.isCoreUser === true
+        );
+
+
+    const firebaseUsersMap =
+        new Map(
+            firebaseUsers.map(
+                user => [
+                    user.uid,
+                    user
+                ]
+            )
+        );
+
+
+    const usersTable =
+        coreUsers.map(
+            user => {
+
+                const firebaseUser =
+                    firebaseUsersMap.get(
+                        user.firebaseUid
+                    );
+
+
+                return {
+
+                    ...user,
+
+                    lastLogin:
+                        firebaseUser?.lastLogin
+                        ?? user.lastLogin
+
+                };
+
+            }
+        );
+
+    document.getElementById(
+        "km-tab-content"
+    ).innerHTML = `
 
         <div class="km-list-page">
 
@@ -128,60 +174,83 @@ function showUsersTab() {
 
     `;
 
-    createTable({
 
-        containerId:"km-users-table",
+    try{
 
-        columns:[
+        const accessUsers =
+            await getAccessUsers();
 
-            {
-                key:"name",
-                title:"Nome"
-            },
 
-            {
-                key:"surname",
-                title:"Cognome"
-            },
+        createTable({
 
-            {
-                title:"Ruolo",
-                render: row => {
+            containerId:"km-users-table",
 
-                    const role = getRoleById(row.roleId);
+            columns:[
 
-                    return role
-                        ? role.name
-                        : "";
+                {
+                    key:"name",
+                    title:"Nome"
+                },
 
+                {
+                    key:"surname",
+                    title:"Cognome"
+                },
+
+                {
+                    title:"Ruolo",
+
+                    render: row => {
+
+                        const role =
+                            getRoleById(
+                                row.roleId
+                            );
+
+                        return role
+                            ? role.name
+                            : "";
+
+                    }
+
+                },
+
+                {
+                    key:"lastLogin",
+                    title:"Ultimo accesso",
+                    type:"date"
+                },
+
+                {
+                    key:"active",
+                    title:"Attivo",
+                    type:"badge"
+                },
+
+                {
+                    title:"Azioni",
+                    type:"actions",
+                    renderer:"renderUserActions"
                 }
-            },
 
-            {
-                key:"lastLogin",
-                title:"Ultimo accesso",
-                type:"date"
-            },
+            ],
 
-            {
-                key:"active",
-                title:"Attivo",
-                type:"badge"
-            },
+            data:
+                usersTable
 
-            {
-                title: "Azioni",
-                type: "actions",
-                renderer: "renderUserActions"
-            }
+        });
 
-        ],
+    }catch(error){
 
-        data:users
+        console.error(
+            "Errore caricamento utenti:",
+            error
+        );
 
-    });
+    }
 
 }
+
 function showRolesTab(){
 
     const roles = getRoles();
@@ -471,54 +540,7 @@ function showPermissionsTab() {
     document.getElementById("km-tab-content").innerHTML = html;
 
 }
-/*
-function testModal(){
 
-    createModal({
-
-        id:"test",
-
-        title:"Nuovo Utente",
-
-        size:"medium",
-
-        content:`
-
-            Questo è il primo Modal
-            intelligente di KiTho Business.
-
-        `,
-
-        buttons:[
-
-            {
-
-                text:"Annulla",
-
-                action:closeModal
-
-            },
-
-            {
-
-                text:"Salva",
-
-                primary:true,
-
-                action:function(){
-
-                    alert("Salvataggio simulato");
-
-                }
-
-            }
-
-        ]
-
-    });
-
-}
-*/
 /*
 |--------------------------------------------------------------------------
 | RENDER SPECIFICO DEI RUOLI
@@ -899,5 +921,61 @@ function deleteUser(username){
     );
 
     showUsersTab();
+
+}
+
+async function getAccessUsers(){
+
+    /*
+    |--------------------------------------------------------------------------
+    | UTENTI CORE
+    |--------------------------------------------------------------------------
+    |
+    | Fabio e Giulia rimangono definiti in users.js.
+    |
+    */
+
+    const coreUsers =
+        users
+            .filter(
+                user =>
+                    user.isCoreUser === true
+            )
+            .map(
+                user => ({
+                    ...user
+                })
+            );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | UTENTI FIRESTORE
+    |--------------------------------------------------------------------------
+    |
+    | Gli utenti normali verranno caricati da Firestore.
+    |
+    | Per ora la struttura è predisposta, ma non leggiamo ancora
+    | documenti perché dobbiamo collegare il repository Firebase
+    | definitivo degli utenti.
+    |
+    */
+
+    const teamUsers = [];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | LISTA UNIFICATA
+    |--------------------------------------------------------------------------
+    */
+
+    return [
+
+        ...coreUsers,
+
+        ...teamUsers
+
+    ];
 
 }

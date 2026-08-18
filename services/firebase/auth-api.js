@@ -4,7 +4,8 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-    updatePassword
+    updatePassword,
+    createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
@@ -67,7 +68,9 @@ window.authAPI = {
 
     getCurrentFirebaseUser,
 
-    changePassword
+    changePassword,
+
+    /*createFirebaseUser*/
 
 };
 
@@ -117,3 +120,22 @@ async function changePassword(
     );
 
 }
+
+/*
+async function createFirebaseUser(
+    email,
+    password
+){
+
+    const result =
+        await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+
+    return result.user;
+
+}
+*/
