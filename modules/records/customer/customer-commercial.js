@@ -104,7 +104,7 @@ function renderCustomerCommercial(customer = {}){
 
                         <option value=""></option>
 
-                        ${agents.map(agent => `
+                        ${agentsData.map(agent => `
 
                             <option
                                 value="${agent.code}"

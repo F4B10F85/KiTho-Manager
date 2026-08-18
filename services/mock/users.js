@@ -75,7 +75,7 @@ const users = [
             "Pa8BQHXo4MefPQV7EJKT7DvgtHn1",
 
         roleId:
-            1,
+            2,
 
         active:
             true,

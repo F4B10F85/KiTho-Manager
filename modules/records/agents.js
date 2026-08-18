@@ -882,3 +882,17 @@ async function deleteAgent(code){
     }
 
 }
+
+
+async function ensureAgentsLoaded(){
+
+    if(agentsData.length > 0){
+
+        return;
+
+    }
+
+    agentsData =
+        await window.agentsAPI.getAgents();
+
+}

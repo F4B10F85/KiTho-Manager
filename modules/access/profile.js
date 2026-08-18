@@ -91,7 +91,7 @@ function getProfileRoleName(user){
             "Amministratore",
 
         2:
-            "Operatore",
+            "CEO",
 
         3:
             "Commerciale",

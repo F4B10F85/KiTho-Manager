@@ -180,7 +180,7 @@ function saveCurrentCustomerTab(tabId){
 
 }
 
-function showCustomerTab(tabId, customer = null){
+async function showCustomerTab(tabId, customer = null){
 
     const content =
         document.getElementById(
@@ -223,6 +223,8 @@ function showCustomerTab(tabId, customer = null){
 
 
         case "commercial":
+
+            await ensureAgentsLoaded();
 
             content.innerHTML =
                 renderCustomerCommercial(
@@ -299,7 +301,7 @@ function setActiveCustomerTab(tabId){
 
 }
 
-function switchCustomerTab(tabId){
+async function switchCustomerTab(tabId){
 
     const activeTab =
         document.querySelector(
@@ -325,7 +327,7 @@ function switchCustomerTab(tabId){
     );
 
 
-    showCustomerTab(
+    await showCustomerTab(
         tabId,
         currentCustomer
     );

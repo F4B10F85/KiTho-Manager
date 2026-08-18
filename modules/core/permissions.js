@@ -17,8 +17,8 @@ const rolesArchive = [
 
     {
         id: 2,
-        name: "Produzione",
-        permissionKey: "PRODUZIONE",
+        name: "CEO",
+        permissionKey: "CEO",
         active: true
     },
 
