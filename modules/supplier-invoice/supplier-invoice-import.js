@@ -88,30 +88,30 @@ function importSupplierInvoiceXml(file){
                 suppliers.find(
                     item => {
 
-                        const anagraficaTaxCode =
+                        const anagraficaVatNumber =
                             normalizeSupplierTaxCode(
-                                item.taxCode
+                                item.vatNumber
                             );
 
-                        const xmlTaxCode =
+                        const xmlVatNumber =
                             normalizeSupplierTaxCode(
-                                invoice.supplier?.taxCode
+                                invoice.supplier?.vatNumber
                             );
 
                         console.log(
                             "MATCH FORNITORE:",
                             {
                                 anagrafica: item.companyName,
-                                anagraficaTaxCode,
-                                xmlTaxCode,
+                                anagraficaVatNumber,
+                                xmlVatNumber,
                                 match:
-                                    anagraficaTaxCode === xmlTaxCode
+                                    anagraficaVatNumber === xmlVatNumber
                             }
                         );
 
                         return (
-                            anagraficaTaxCode ===
-                            xmlTaxCode
+                            anagraficaVatNumber ===
+                            xmlVatNumber
                         );
 
                     }
@@ -667,6 +667,8 @@ function parseSupplierFromXml(xml){
 
         return {
 
+            vatNumber: "",
+
             taxCode: "",
 
             companyName: "",
@@ -699,6 +701,8 @@ function parseSupplierFromXml(xml){
     if(!dataNode){
 
         return {
+
+            vatNumber: "",
 
             taxCode: "",
 
@@ -835,9 +839,14 @@ function parseSupplierFromXml(xml){
 
     return {
 
-        taxCode:
+        vatNumber:
             normalizedTaxCode,
 
+        taxCode:
+            getXmlValue(
+                dataNode,
+                "CodiceFiscale"
+            ),
         companyName,
 
         address,
